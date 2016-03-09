@@ -77,7 +77,7 @@
 
 	<!--spring 和 mybatis 整合，扫描所有dao-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="edu.xiyou.andrew.myshop.dao"/>
+		<property name="basePackage" value="edu.xiyou.shotrent.dao"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>
 
