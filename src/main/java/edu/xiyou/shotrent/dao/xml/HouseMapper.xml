@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.xiyou.shotrent.dao.HouseMapper" >
+  <resultMap id="BaseResultMap" type="edu.xiyou.shotrent.model.House" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="owerId" property="owerid" jdbcType="INTEGER" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="houseType" property="housetype" jdbcType="BIT" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="imagePath" property="imagepath" jdbcType="VARCHAR" />
+    <result column="furniture" property="furniture" jdbcType="VARCHAR" />
+    <result column="online" property="online" jdbcType="BIT" />
+    <result column="checked" property="checked" jdbcType="BIT" />
+    <result column="rented" property="rented" jdbcType="BIT" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="edu.xiyou.shotrent.model.House" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, owerId, mobile, tel, houseType, address, area, price, imagePath, furniture, online, 
+    checked, rented, createTime, updateTime
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from houses
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from houses
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.xiyou.shotrent.model.House" >
+    insert into houses (id, owerId, mobile, 
+      tel, houseType, address, 
+      area, price, imagePath, 
+      furniture, online, checked, 
+      rented, createTime, updateTime, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{owerid,jdbcType=INTEGER}, #{mobile,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{housetype,jdbcType=BIT}, #{address,jdbcType=VARCHAR}, 
+      #{area,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, #{imagepath,jdbcType=VARCHAR}, 
+      #{furniture,jdbcType=VARCHAR}, #{online,jdbcType=BIT}, #{checked,jdbcType=BIT}, 
+      #{rented,jdbcType=BIT}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.xiyou.shotrent.model.House" >
+    insert into houses
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="owerid != null" >
+        owerId,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="housetype != null" >
+        houseType,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="imagepath != null" >
+        imagePath,
+      </if>
+      <if test="furniture != null" >
+        furniture,
+      </if>
+      <if test="online != null" >
+        online,
+      </if>
+      <if test="checked != null" >
+        checked,
+      </if>
+      <if test="rented != null" >
+        rented,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="owerid != null" >
+        #{owerid,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="housetype != null" >
+        #{housetype,jdbcType=BIT},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="imagepath != null" >
+        #{imagepath,jdbcType=VARCHAR},
+      </if>
+      <if test="furniture != null" >
+        #{furniture,jdbcType=VARCHAR},
+      </if>
+      <if test="online != null" >
+        #{online,jdbcType=BIT},
+      </if>
+      <if test="checked != null" >
+        #{checked,jdbcType=BIT},
+      </if>
+      <if test="rented != null" >
+        #{rented,jdbcType=BIT},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.xiyou.shotrent.model.House" >
+    update houses
+    <set >
+      <if test="owerid != null" >
+        owerId = #{owerid,jdbcType=INTEGER},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="housetype != null" >
+        houseType = #{housetype,jdbcType=BIT},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="imagepath != null" >
+        imagePath = #{imagepath,jdbcType=VARCHAR},
+      </if>
+      <if test="furniture != null" >
+        furniture = #{furniture,jdbcType=VARCHAR},
+      </if>
+      <if test="online != null" >
+        online = #{online,jdbcType=BIT},
+      </if>
+      <if test="checked != null" >
+        checked = #{checked,jdbcType=BIT},
+      </if>
+      <if test="rented != null" >
+        rented = #{rented,jdbcType=BIT},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="edu.xiyou.shotrent.model.House" >
+    update houses
+    set owerId = #{owerid,jdbcType=INTEGER},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      houseType = #{housetype,jdbcType=BIT},
+      address = #{address,jdbcType=VARCHAR},
+      area = #{area,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      imagePath = #{imagepath,jdbcType=VARCHAR},
+      furniture = #{furniture,jdbcType=VARCHAR},
+      online = #{online,jdbcType=BIT},
+      checked = #{checked,jdbcType=BIT},
+      rented = #{rented,jdbcType=BIT},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.xiyou.shotrent.model.House" >
+    update houses
+    set owerId = #{owerid,jdbcType=INTEGER},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      houseType = #{housetype,jdbcType=BIT},
+      address = #{address,jdbcType=VARCHAR},
+      area = #{area,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      imagePath = #{imagepath,jdbcType=VARCHAR},
+      furniture = #{furniture,jdbcType=VARCHAR},
+      online = #{online,jdbcType=BIT},
+      checked = #{checked,jdbcType=BIT},
+      rented = #{rented,jdbcType=BIT},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
