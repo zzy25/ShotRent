@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="TestJSP_JSTL"
+  id="myeclipse.1442366696344"
+  context-root="/TestJSP_JSTL"
+  j2ee-spec="5.0"
+  archive="TestJSP_JSTL.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebRoot" />
+  </attributes>
+</project-module>
+
