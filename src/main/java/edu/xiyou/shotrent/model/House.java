@@ -2,7 +2,7 @@ package edu.xiyou.shotrent.model;
 
 import java.util.Date;
 
-public class House {
+public class House extends BaseModel{
     private Integer id;
 
     private Integer owerid;
@@ -11,7 +11,7 @@ public class House {
 
     private String tel;
 
-    private Boolean housetype;
+    private Short housetype;
 
     private String address;
 
@@ -23,11 +23,11 @@ public class House {
 
     private String furniture;
 
-    private Boolean online;
+    private Short online;
 
-    private Boolean checked;
+    private Short checked;
 
-    private Boolean rented;
+    private Short rented;
 
     private Date createtime;
 
@@ -67,11 +67,11 @@ public class House {
         this.tel = tel == null ? null : tel.trim();
     }
 
-    public Boolean getHousetype() {
+    public Short getHousetype() {
         return housetype;
     }
 
-    public void setHousetype(Boolean housetype) {
+    public void setHousetype(Short housetype) {
         this.housetype = housetype;
     }
 
@@ -115,27 +115,27 @@ public class House {
         this.furniture = furniture == null ? null : furniture.trim();
     }
 
-    public Boolean getOnline() {
+    public Short getOnline() {
         return online;
     }
 
-    public void setOnline(Boolean online) {
+    public void setOnline(Short online) {
         this.online = online;
     }
 
-    public Boolean getChecked() {
+    public Short getChecked() {
         return checked;
     }
 
-    public void setChecked(Boolean checked) {
+    public void setChecked(Short checked) {
         this.checked = checked;
     }
 
-    public Boolean getRented() {
+    public Short getRented() {
         return rented;
     }
 
-    public void setRented(Boolean rented) {
+    public void setRented(Short rented) {
         this.rented = rented;
     }
 

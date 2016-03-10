@@ -1,7 +1,11 @@
 package edu.xiyou.shotrent.dao;
 
 import edu.xiyou.shotrent.model.House;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface HouseMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,4 +20,6 @@ public interface HouseMapper {
     int updateByPrimaryKeyWithBLOBs(House record);
 
     int updateByPrimaryKey(House record);
+
+    List<House> selectBySelective(House house);
 }

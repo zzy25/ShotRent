@@ -2,7 +2,7 @@ package edu.xiyou.shotrent.model;
 
 import java.util.Date;
 
-public class Order {
+public class Order extends BaseModel{
     private Integer id;
 
     private Integer hourseid;
@@ -17,7 +17,7 @@ public class Order {
 
     private Date endtime;
 
-    private Boolean terminate;
+    private Short terminate;
 
     public Integer getId() {
         return id;
@@ -75,11 +75,11 @@ public class Order {
         this.endtime = endtime;
     }
 
-    public Boolean getTerminate() {
+    public Short getTerminate() {
         return terminate;
     }
 
-    public void setTerminate(Boolean terminate) {
+    public void setTerminate(Short terminate) {
         this.terminate = terminate;
     }
 }

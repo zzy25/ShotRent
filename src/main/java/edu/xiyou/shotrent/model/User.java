@@ -2,7 +2,7 @@ package edu.xiyou.shotrent.model;
 
 import java.util.Date;
 
-public class User {
+public class User extends BaseModel{
     private Integer id;
 
     private String username;
@@ -11,7 +11,7 @@ public class User {
 
     private String email;
 
-    private Boolean permission;
+    private Short permission;
 
     private String mobile;
 
@@ -51,11 +51,11 @@ public class User {
         this.email = email == null ? null : email.trim();
     }
 
-    public Boolean getPermission() {
+    public Short getPermission() {
         return permission;
     }
 
-    public void setPermission(Boolean permission) {
+    public void setPermission(Short permission) {
         this.permission = permission;
     }
 

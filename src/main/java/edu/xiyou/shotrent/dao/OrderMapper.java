@@ -1,7 +1,9 @@
 package edu.xiyou.shotrent.dao;
 
 import edu.xiyou.shotrent.model.Order;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer id);
 
