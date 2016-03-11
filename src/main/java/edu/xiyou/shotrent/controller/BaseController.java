@@ -1,5 +1,6 @@
 package edu.xiyou.shotrent.controller;
 
+import edu.xiyou.shotrent.service.HouseService;
 import edu.xiyou.shotrent.service.RentService;
 import edu.xiyou.shotrent.service.UserService;
 import org.slf4j.Logger;
@@ -20,6 +21,9 @@ public class BaseController {
     @Resource
     UserService userService;
 
+    @Resource
+    HouseService houseService;
+
     public RentService getRentService() {
         return rentService;
     }
@@ -34,5 +38,13 @@ public class BaseController {
 
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    public HouseService getHouseService() {
+        return houseService;
+    }
+
+    public void setHouseService(HouseService houseService) {
+        this.houseService = houseService;
     }
 }
