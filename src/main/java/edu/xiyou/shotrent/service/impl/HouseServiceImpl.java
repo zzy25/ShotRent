@@ -1,6 +1,7 @@
 package edu.xiyou.shotrent.service.impl;
 
 import edu.xiyou.shotrent.dao.HouseMapper;
+import edu.xiyou.shotrent.exception.ArguException;
 import edu.xiyou.shotrent.model.House;
 import edu.xiyou.shotrent.service.HouseService;
 import edu.xiyou.shotrent.utils.ArguUtils;
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by andrew on 16-3-10.
@@ -38,6 +40,53 @@ public class HouseServiceImpl implements HouseService {
         }
 
         return num;
+    }
+
+    @Override
+    public List<House> selectHouseByOweId(Integer owerid) throws Exception {
+        List<House> houseList = null;
+        try {
+            House house = new House();
+            house.setOwerid(owerid);
+            houseList = houseMapper.selectBySelective(house);
+        }catch (Exception e){
+            logger.error("selectHouseByOweId owerid={}, exception={}", owerid, e);
+            throw new Exception("通过业主id查询房子列表失败");
+        }
+        return houseList;
+    }
+
+    @Override
+    public void updateHouse(House house) throws Exception {
+        if (house == null || house.getId() == null){
+            throw new ArguException("请输入合适的信息");
+        }
+
+        if (ArguUtils.fiedldAllNull(house, House.class, "mobile", "tel", "price",
+                "content", "furniture", "online", "checked", "rented")){
+            logger.debug("updateHouse record={}, message={}", house, "没有修给任何信息");
+            return;
+        }
+
+        try {
+            houseMapper.updateByPrimaryKeySelective(house);
+        }catch (Exception e){
+            logger.error("updateHouse record={}, exception={}", house, e);
+            throw new Exception("更新信息失败");
+        }
+    }
+
+    @Override
+    public House selectHouseByHouseId(Integer houseId) throws Exception {
+        ArguUtils.notNull(houseId, "房间id");
+        House house;
+        try {
+            house = houseMapper.selectByPrimaryKey(houseId);
+        }catch (Exception e){
+            logger.error("selectHouseByHouseId houseId={}, exception={}", houseId, e);
+            throw new Exception("查询信息失败");
+        }
+        return house;
     }
 
     public HouseMapper getHouseMapper() {
