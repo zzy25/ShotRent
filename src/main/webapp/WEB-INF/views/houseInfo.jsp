@@ -10,6 +10,7 @@
   String path = request.getContextPath();
   String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<jsp:useBean id="house" scope="page" type="edu.xiyou.shortrent.model.House"/>
 <!DOCTYPE html>
 
 <!--[if IE 8]>
@@ -1659,7 +1660,8 @@
 
                     <ul class="unstyled inline">
 
-                      <li><i class="icon-calendar"></i> <a href="#">2015-04-30</a></li>
+                      <li><i class="icon-calendar"></i> <a href="#">
+                      <fmt:formatDate value="${house.updatetime}" pattern="yyyy年MM月dd日"/></a></li>
 
                       <li><i class="icon-comments"></i> <a href="#">10 点评</a></li>
 

@@ -112,6 +112,8 @@ public class RentController extends BaseController {
         }catch (Exception e){
             logger.error("orderList owerId={}, exception={}", owerId, e);
         }
+        User user = (User) request.getSession().getAttribute(UserConstant.USER_DETAIL);
+        modelMap.addAttribute(UserConstant.USER_DETAIL, user);
         modelMap.addAttribute("orderList", orderList);
         return "orderList";
     }

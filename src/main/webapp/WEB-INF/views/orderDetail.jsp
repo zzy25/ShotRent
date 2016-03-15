@@ -1,3 +1,18 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="order" scope="page" type="edu.xiyou.shortrent.model.Order"/>
+<%--
+  Created by IntelliJ IDEA.
+  User: zhuoxiong
+  Date: 2016/3/15
+  Time: 21:49
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -12,7 +27,7 @@
 
     <meta charset="utf-8" />
 
-    <title>短租网 | 租赁管理 - 订单管理</title>
+    <title>短租网 | 租赁管理 - 订单详情</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -42,9 +57,11 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
+    <link href="media/css/bootstrap-fileupload.css" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link href="media/css/chosen.css" rel="stylesheet" type="text/css" />
+
+    <link href="media/css/profile.css" rel="stylesheet" type="text/css" />
 
     <!-- END PAGE LEVEL STYLES -->
 
@@ -966,7 +983,7 @@
 
             </li>
 
-            <li class="">
+            <li class="active ">
 
                 <a href="javascript:;">
 
@@ -974,13 +991,15 @@
 
                     <span class="title">Extra</span>
 
-                    <span class="arrow "></span>
+                    <span class="selected"></span>
+
+                    <span class="arrow open"></span>
 
                 </a>
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li class="active">
 
                         <a href="extra_profile.html">
 
@@ -1296,7 +1315,7 @@
 
             </li>
 
-            <li class="active ">
+            <li class="">
 
                 <a href="javascript:;">
 
@@ -1304,9 +1323,7 @@
 
                     <span class="title">Data Tables</span>
 
-                    <span class="selected"></span>
-
-                    <span class="arrow open"></span>
+                    <span class="arrow "></span>
 
                 </a>
 
@@ -1328,7 +1345,7 @@
 
                     </li>
 
-                    <li class="active">
+                    <li >
 
                         <a href="table_managed.html">
 
@@ -1574,7 +1591,7 @@
 
                     <h3 class="page-title">
 
-                        订单管理 <small></small>
+                        订单详情 <small></small>
 
                     </h3>
 
@@ -1598,7 +1615,7 @@
 
                         </li>
 
-                        <li><a href="#">订单管理</a></li>
+                        <li><a href="#">订单详情</a></li>
 
                     </ul>
 
@@ -1612,119 +1629,137 @@
 
             <!-- BEGIN PAGE CONTENT-->
 
-            <div class="row-fluid">
+            <div class="row-fluid profile">
 
                 <div class="span12">
 
-                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                    <!--BEGIN TABS-->
 
-                    <div class="portlet box light-grey">
+                    <div class="tabbable tabbable-custom tabbable-full-width">
 
-                        <div class="portlet-title">
 
-                            <div class="caption"><i class="icon-globe"></i>订单列表</div>
+                        <!--end tab-pane-->
 
-                            <div class="tools">
+                        <div class="tab-pane profile-classic row-fluid" id="">
 
-                                <a href="javascript:;" class="collapse"></a>
+                            <div class="span8">
+                                <div id="myCarousel" class="carousel slide">
 
-                                <a href="#portlet-config" data-toggle="modal" class="config"></a>
+                                    <!-- Carousel indicators
 
-                                <a href="javascript:;" class="reload"></a>
+                                        <ol class="carousel-indicators">
 
-                                <a href="javascript:;" class="remove"></a>
+                                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 
-                            </div>
+                                         <li data-target="#myCarousel" data-slide-to="1"></li>
 
-                        </div>
+                                         <li data-target="#myCarousel" data-slide-to="2"></li>
 
-                        <div class="portlet-body">
+                                        </ol>
 
-                            <div class="clearfix">
+                                        -->
 
-                                <div class="btn-group">
+                                    <!-- Carousel items -->
 
-                                    <button id="sample_editable_1_new" class="btn green">
+                                    <div class="carousel-inner">
 
-                                        Add New <i class="icon-plus"></i>
+                                        <div class="active item">
 
-                                    </button>
+                                            <img src="media/image/item_img1.jpg" alt="">
+
+                                            <div class="carousel-caption">
+
+                                                <!--<h4><a href="page_news_item.html">First Thumbnail label</a></h4>-->
+
+                                                <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor.</p>-->
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="item">
+
+                                            <img src="media/image/item_img.jpg" alt="">
+
+                                            <div class="carousel-caption">
+
+                                                <!--<h4><a href="page_news_item.html">Second Thumbnail label</a></h4>
+
+                                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor.</p>-->
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="item">
+
+                                            <img src="media/image/item_img1.jpg" alt="">
+
+                                            <div class="carousel-caption">
+
+                                                <!--<h4><a href="page_news_item.html">Third Thumbnail label</a></h4>
+
+                                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor.</p>-->
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Carousel nav -->
+
+                                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+
+                                        <i class="m-icon-big-swapleft m-icon-white"></i>
+
+                                    </a>
+
+                                    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+
+                                        <i class="m-icon-big-swapright m-icon-white"></i>
+
+                                    </a>
 
                                 </div>
-
                             </div>
 
-                            <table class="table table-striped table-bordered table-hover" id="">
+                            <ul class="unstyled span8">
 
-                                <thead>
+                                <li><span>订单编号:</span> ${order.id}</li>
 
-                                <tr>
+                                <li><span>业主:</span> ${order.owerName}</li>
 
-                                    <!--<th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>-->
+                                <li><span>业主联系电话:</span> ${order.owerMobile}</li>
 
-                                    <th class="hidden-480">订单标号</th>
+                                <li><span>租客:</span> ${order.customerName}</li>
 
-                                    <th class="hidden-480">房屋编号</th>
+                                <li><span>租客:</span> ${order.customerMobile}</li>
 
-                                    <th class="hidden-480">业主</th>
+                                <li><span>地址:</span> ${order.address}</li>
 
-                                    <th class="hidden-480">租客</th>
+                                <li><span>租住开始时间:</span> <fmt:formatDate value="${order.begintime}" pattern="yyyy年MM月dd日"/> </li>
 
-                                    <th class="hidden-480">租住开始时间</th>
+                                <li><span>租住结束时间:</span> <fmt:formatDate value="${order.endtime}" pattern="yyyy年MM月dd日"/> </li>
 
-                                    <th class="hidden-480">租住结束时间</th>
+                                <li><span>租金:</span> ${order.amount}</li>
 
-                                    <th class="hidden-480">租金</th>
+                                <li><span>订单描述:</span><c:if test="${order.terminate == 0}">正常中</c:if><c:if test="${order.terminate == 1}">已终止</c:if> </li>
 
-                                    <th class="hidden-480">订单状态</th>
-
-                                    <th class="hidden-480">操作订单</th>
-
-                                    <!--<th ></th>-->
-
-                                </tr>
-
-                                </thead>
-
-                                <tbody>
-
-                                <tr class="odd gradeX">
-
-                                    <!--<td><input type="checkbox" class="checkboxes" value="1" /></td>-->
-
-                                    <td class="hidden-480">0110123</td>
-
-                                    <td class="hidden-480">shuxer</td>
-
-                                    <td class="hidden-480"><a href="mailto:shuxer@gmail.com">shuxer@gmail.com</a></td>
-
-                                    <td class="hidden-480">120</td>
-
-                                    <td class="hidden-480">2015-01-01</td>
-
-                                    <td class="hidden-480">2015-02-03</td>
-
-                                    <td class="center hidden-480">12 Jan 2012</td>
-
-                                    <td class="hidden-480"><span class="label label-success label-mini">正常</span> </td>
-
-                                    <td class="hidden-480"><a class="btn red mini" >终止</a> </td>
-
-                                </tr>
-
-                                </tbody>
-
-                            </table>
+                            </ul>
 
                         </div>
+
+                        <!--end tab-pane-->
 
                     </div>
 
-                    <!-- END EXAMPLE TABLE PORTLET-->
+                    <!--END TABS-->
 
                 </div>
 
             </div>
+
             <!-- END PAGE CONTENT-->
 
         </div>
@@ -1797,11 +1832,9 @@
 
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 
-<script type="text/javascript" src="media/js/select2.min.js"></script>
+<script type="text/javascript" src="media/js/bootstrap-fileupload.js"></script>
 
-<script type="text/javascript" src="media/js/jquery.dataTables.js"></script>
-
-<script type="text/javascript" src="media/js/DT_bootstrap.js"></script>
+<script type="text/javascript" src="media/js/chosen.jquery.min.js"></script>
 
 <!-- END PAGE LEVEL PLUGINS -->
 
@@ -1809,19 +1842,21 @@
 
 <script src="media/js/app.js"></script>
 
-<script src="media/js/table-managed.js"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
 
 <script>
 
     jQuery(document).ready(function() {
 
-        App.init();
+        // initiate layout and plugins
 
-        TableManaged.init();
+        App.init();
 
     });
 
 </script>
+
+<!-- END JAVASCRIPTS -->
 
 <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
 

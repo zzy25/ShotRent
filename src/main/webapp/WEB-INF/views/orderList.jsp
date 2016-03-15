@@ -1,54 +1,71 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: zhuoxiong
+  Date: 2016/3/15
+  Time: 20:31
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
+<jsp:useBean id="user" scope="page" type="edu.xiyou.shortrent.model.User"/>
+<jsp:useBean id="orderList" scope="page" type="java.util.List"/>
 <!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>短租网 | 租赁管理 - 订单管理</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
-    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="<%=basePath%>assets/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 
-    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/select2_metro.css"/>
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" href="<%=basePath%>assets/media/css/DT_bootstrap.css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="<%=basePath%>assets/media/image/favicon.ico"/>
 
 </head>
 
@@ -72,7 +89,7 @@
 
             <a class="brand" href="index.html">
 
-                <img src="media/image/logo.png" alt="logo" />
+                <img src="<%=basePath%>assets/media/image/logo.png" alt="logo"/>
 
             </a>
 
@@ -82,7 +99,7 @@
 
             <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
 
-                <img src="media/image/menu-toggler.png" alt="" />
+                <img src="<%=basePath%>assets/media/image/menu-toggler.png" alt=""/>
 
             </a>
 
@@ -232,7 +249,8 @@
 
                             <a href="inbox.html?a=view">
 
-                                <span class="photo"><img src="media/image/avatar2.jpg" alt="" /></span>
+                                <span class="photo"><img src="<%=basePath%>assets/media/image/avatar2.jpg"
+                                                         alt=""/></span>
 
 								<span class="subject">
 
@@ -258,7 +276,8 @@
 
                             <a href="inbox.html?a=view">
 
-                                <span class="photo"><img src="media/image/avatar3.jpg" alt="" /></span>
+                                <span class="photo"><img src="<%=basePath%>assets/media/image/avatar3.jpg"
+                                                         alt=""/></span>
 
 								<span class="subject">
 
@@ -284,7 +303,8 @@
 
                             <a href="inbox.html?a=view">
 
-                                <span class="photo"><img src="media/image/avatar1.jpg" alt="" /></span>
+                                <span class="photo"><img src="<%=basePath%>assets/media/image/avatar1.jpg"
+                                                         alt=""/></span>
 
 								<span class="subject">
 
@@ -488,7 +508,7 @@
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                        <img alt="" src="media/image/avatar1_small.jpg" />
+                        <img alt="" src="<%=basePath%>assets/media/image/avatar1_small.jpg"/>
 
                         <span class="username">Bob Nilson</span>
 
@@ -564,9 +584,9 @@
 
                         <a href="javascript:;" class="remove"></a>
 
-                        <input type="text" placeholder="Search..." />
+                        <input type="text" placeholder="Search..."/>
 
-                        <input type="button" class="submit" value=" " />
+                        <input type="button" class="submit" value=" "/>
 
                     </div>
 
@@ -602,7 +622,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="layout_horizontal_sidebar_menu.html">
 
@@ -610,7 +630,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_horizontal_menu1.html">
 
@@ -618,7 +638,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_horizontal_menu2.html">
 
@@ -626,7 +646,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_promo.html">
 
@@ -634,7 +654,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_email.html">
 
@@ -642,7 +662,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_ajax.html">
 
@@ -650,7 +670,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_sidebar_closed.html">
 
@@ -658,7 +678,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_blank_page.html">
 
@@ -666,7 +686,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_boxed_page.html">
 
@@ -674,7 +694,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_boxed_not_responsive.html">
 
@@ -700,7 +720,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="ui_general.html">
 
@@ -708,7 +728,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_buttons.html">
 
@@ -716,7 +736,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_modals.html">
 
@@ -724,7 +744,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_tabs_accordions.html">
 
@@ -732,7 +752,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_jqueryui.html">
 
@@ -740,7 +760,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_sliders.html">
 
@@ -748,7 +768,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_tiles.html">
 
@@ -756,7 +776,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_typography.html">
 
@@ -764,7 +784,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_tree.html">
 
@@ -772,7 +792,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_nestable.html">
 
@@ -798,7 +818,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="form_layout.html">
 
@@ -806,7 +826,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="form_samples.html">
 
@@ -814,7 +834,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="form_component.html">
 
@@ -822,7 +842,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="form_wizard.html">
 
@@ -830,7 +850,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="form_validation.html">
 
@@ -838,7 +858,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="form_fileupload.html">
 
@@ -846,7 +866,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="form_dropzone.html">
 
@@ -872,7 +892,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="page_timeline.html">
 
@@ -882,7 +902,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_coming_soon.html">
 
@@ -892,7 +912,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_blog.html">
 
@@ -902,7 +922,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_blog_item.html">
 
@@ -912,7 +932,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_news.html">
 
@@ -922,7 +942,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_news_item.html">
 
@@ -932,7 +952,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_about.html">
 
@@ -942,7 +962,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_contact.html">
 
@@ -952,7 +972,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_calendar.html">
 
@@ -980,7 +1000,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="extra_profile.html">
 
@@ -988,7 +1008,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_lock.html">
 
@@ -996,7 +1016,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_faq.html">
 
@@ -1004,7 +1024,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="inbox.html">
 
@@ -1012,7 +1032,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_search.html">
 
@@ -1020,7 +1040,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_invoice.html">
 
@@ -1028,7 +1048,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_pricing_table.html">
 
@@ -1036,7 +1056,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_image_manager.html">
 
@@ -1044,7 +1064,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_404_option1.html">
 
@@ -1052,7 +1072,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_404_option2.html">
 
@@ -1060,7 +1080,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_404_option3.html">
 
@@ -1068,7 +1088,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_500_option1.html">
 
@@ -1076,7 +1096,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_500_option2.html">
 
@@ -1212,11 +1232,11 @@
 
                             </li>
 
-                            <li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
+                            <li><a href="#"><i class="icon-user"></i> Sample Link 1</a></li>
 
-                            <li><a href="#"><i class="icon-external-link"></i>  Sample Link 2</a></li>
+                            <li><a href="#"><i class="icon-external-link"></i> Sample Link 2</a></li>
 
-                            <li><a href="#"><i class="icon-bell"></i>  Sample Link 3</a></li>
+                            <li><a href="#"><i class="icon-bell"></i> Sample Link 3</a></li>
 
                         </ul>
 
@@ -1236,11 +1256,11 @@
 
                         <ul class="sub-menu">
 
-                            <li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
+                            <li><a href="#"><i class="icon-user"></i> Sample Link 1</a></li>
 
-                            <li><a href="#"><i class="icon-external-link"></i>  Sample Link 1</a></li>
+                            <li><a href="#"><i class="icon-external-link"></i> Sample Link 1</a></li>
 
-                            <li><a href="#"><i class="icon-bell"></i>  Sample Link 1</a></li>
+                            <li><a href="#"><i class="icon-bell"></i> Sample Link 1</a></li>
 
                         </ul>
 
@@ -1276,7 +1296,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="login.html">
 
@@ -1284,7 +1304,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="login_soft.html">
 
@@ -1312,7 +1332,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="table_basic.html">
 
@@ -1320,7 +1340,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="table_responsive.html">
 
@@ -1336,7 +1356,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="table_editable.html">
 
@@ -1344,7 +1364,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="table_advanced.html">
 
@@ -1370,7 +1390,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="portlet_general.html">
 
@@ -1378,7 +1398,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="portlet_draggable.html">
 
@@ -1404,7 +1424,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="maps_google.html">
 
@@ -1412,7 +1432,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="maps_vector.html">
 
@@ -1574,7 +1594,8 @@
 
                     <h3 class="page-title">
 
-                        订单管理 <small></small>
+                        订单管理
+                        <small></small>
 
                     </h3>
 
@@ -1687,6 +1708,55 @@
                                 </thead>
 
                                 <tbody>
+                                <c:choose>
+                                    <c:when test="${orderList != null and orderList.size() > 0}">
+                                        <c:forEach items="orderList" var="item" varStatus="status">
+
+                                            <tr class="odd gradeX">
+
+                                                <!--<td><input type="checkbox" class="checkboxes" value="1" /></td>-->
+
+                                                <td class="hidden-480">${item.id}</td>
+
+                                                <td class="hidden-480">${item.hourseid}</td>
+
+                                                <td class="hidden-480">${item.owerName}</td>
+
+                                                <td class="hidden-480">${item.customerName}</td>
+
+                                                <td class="hidden-480"><fmt:formatDate value="${item.begintime}"
+                                                                                       pattern="yyyy年MM月dd日"/></td>
+
+                                                <td class="hidden-480"><fmt:formatDate value="${item.endtime}"
+                                                                                       pattern="yyyy年MM月dd日"/></td>
+
+                                                <td class="center hidden-480">${item.amount}</td>
+
+                                                <td class="hidden-480">
+                                                    <c:if test="${item.terminate == 0}">
+                                                        <span class="label label-success label-mini">正常</span>
+                                                    </c:if>
+                                                    <c:if test="${item.terminate == 1}">
+                                                        <span class="label label-important label-mini">终止</span>
+                                                    </c:if>
+                                                </td>
+                                                <td class="hidden-480">
+                                                    <c:if test="${item.terminate == 0}">
+                                                        <a class="btn red mini" onclick="">终止</a>
+                                                    </c:if>
+                                                    <c:if test="${item.terminate == 1}">
+                                                        <a class="btn red mini disabled">终止</a>
+                                                    </c:if>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </c:when>
+                                    <c:when test="${orderList == null || orderList.size() == 0}">
+                                        <tr>
+                                            <td colspan="12" align="center">暂无数据！</td>
+                                        </tr>
+                                    </c:when>
+                                </c:choose>
 
                                 <tr class="odd gradeX">
 
@@ -1706,9 +1776,9 @@
 
                                     <td class="center hidden-480">12 Jan 2012</td>
 
-                                    <td class="hidden-480"><span class="label label-success label-mini">正常</span> </td>
+                                    <td class="hidden-480"><span class="label label-success label-mini">正常</span></td>
 
-                                    <td class="hidden-480"><a class="btn red mini" >终止</a> </td>
+                                    <td class="hidden-480"><a class="btn red mini">终止</a></td>
 
                                 </tr>
 
@@ -1767,53 +1837,53 @@
 
 <!-- BEGIN CORE PLUGINS -->
 
-<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
 <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 
-<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 
-<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!--[if lt IE 9]>
 
-<script src="media/js/excanvas.min.js"></script>
+<script src="<%=basePath%>assets/media/js/excanvas.min.js"></script>
 
-<script src="media/js/respond.min.js"></script>
+<script src="<%=basePath%>assets/media/js/respond.min.js"></script>
 
 <![endif]-->
 
-<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.blockui.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="<%=basePath%>assets/media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 
-<script type="text/javascript" src="media/js/select2.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>assets/media/js/select2.min.js"></script>
 
-<script type="text/javascript" src="media/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="<%=basePath%>assets/media/js/jquery.dataTables.js"></script>
 
-<script type="text/javascript" src="media/js/DT_bootstrap.js"></script>
+<script type="text/javascript" src="<%=basePath%>assets/media/js/DT_bootstrap.js"></script>
 
 <!-- END PAGE LEVEL PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 
-<script src="media/js/app.js"></script>
+<script src="<%=basePath%>assets/media/js/app.js"></script>
 
-<script src="media/js/table-managed.js"></script>
+<script src="<%=basePath%>assets/media/js/table-managed.js"></script>
 
 <script>
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         App.init();
 
@@ -1823,7 +1893,20 @@
 
 </script>
 
-<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
+<script type="text/javascript">  var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37564768-1']);
+_gaq.push(['_setDomainName', 'keenthemes.com']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+(function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();</script>
+</body>
 
 <!-- END BODY -->
 
