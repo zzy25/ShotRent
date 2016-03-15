@@ -3,14 +3,14 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.xiyou</groupId>
-    <artifactId>ShotRent</artifactId>
+    <artifactId>ShortRent</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>ShotRent</name>
-    <url>http://git.oschina.net/andrew-wang/ShotRent</url>
+    <name>ShortRent</name>
+    <url>http://git.oschina.net/andrew-wang/ShortRent</url>
 
     <build>
-        <finalName>ShotRent</finalName>
+        <finalName>ShortRent</finalName>
 
         <plugins>
             <plugin>

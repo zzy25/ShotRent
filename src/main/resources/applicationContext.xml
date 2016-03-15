@@ -20,7 +20,9 @@
     http://www.springframework.org/schema/util
     http://www.springframework.org/schema/util/spring-util.xsd">
 	<!--注解类自动扫描-->
-	<context:component-scan base-package="edu.xiyou.shotrent"/>
+	<context:component-scan base-package="edu.xiyou.shortrent"/>
+
+	<tx:annotation-driven/>
 
 	<!--导入配置文件-->
 	<bean id="propertyConfiger" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -69,12 +71,12 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>
-		<property name="mapperLocations" value="classpath*:edu/xiyou/shotrent/dao/xml/*.xml"/>
+		<property name="mapperLocations" value="classpath*:edu/xiyou/shortrent/dao/xml/*.xml"/>
 	</bean>
 
 	<!--spring 和 mybatis 整合，扫描所有dao-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="edu.xiyou.shotrent.dao"/>
+		<property name="basePackage" value="edu.xiyou.shortrent.dao"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>
 
@@ -100,7 +102,7 @@
 
 	<!--事务aop配置-->
 	<aop:config>
-		<aop:pointcut id="serviceMethods" expression="execution(* edu.xiyou.shotrent.service..*(..))"/>
+		<aop:pointcut id="serviceMethods" expression="execution(* edu.xiyou.shortrent.service..*(..))"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
 	</aop:config>
 

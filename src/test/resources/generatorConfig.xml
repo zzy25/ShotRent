@@ -24,18 +24,18 @@
         </jdbcConnection>
 
         <!--生成的model 包路径 -->
-        <javaModelGenerator targetPackage="edu.xiyou.shotrent.model" targetProject="${target.project}">
+        <javaModelGenerator targetPackage="edu.xiyou.shortrent.model" targetProject="${target.project}">
             <property name="enableSubPackages" value="ture"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!--生成xml mapper文件 路径 -->
-        <sqlMapGenerator targetPackage="edu.xiyou.shotrent.dao.xml" targetProject="${target.project}">
+        <sqlMapGenerator targetPackage="edu.xiyou.shortrent.dao.xml" targetProject="${target.project}">
             <property name="enableSubPackages" value="ture"/>
         </sqlMapGenerator>
 
         <!-- 生成的Dao接口 的包路径 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="edu.xiyou.shotrent.dao" targetProject="${target.project}">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="edu.xiyou.shortrent.dao" targetProject="${target.project}">
             <property name="enableSubPackages" value="ture"/>
         </javaClientGenerator>
 

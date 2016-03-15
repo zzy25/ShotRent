@@ -1,8 +1,7 @@
 package edu.xiyou.shortrent.service;
 
+import edu.xiyou.shortrent.model.House;
 import edu.xiyou.shortrent.test.BaseTest;
-import edu.xiyou.shotrent.model.House;
-import edu.xiyou.shotrent.service.HouseService;
 import org.junit.Test;
 
 import javax.annotation.Resource;
@@ -31,13 +30,22 @@ public class HouseServiceTest extends BaseTest{
         }
     }
 
-    @Test
+//    @Test
     public void testUpdate(){
         House house = new House();
         house.setId(10005);
         house.setContent("刚子是头猪");
         try {
             houseService.updateHouse(house);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void listOwerHousert(){
+        try {
+            System.out.println(houseService.selectHouseByOweId(10004));
         } catch (Exception e) {
             e.printStackTrace();
         }

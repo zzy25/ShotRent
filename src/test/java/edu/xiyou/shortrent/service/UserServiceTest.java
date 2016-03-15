@@ -1,8 +1,8 @@
 package edu.xiyou.shortrent.service;
 
 import edu.xiyou.shortrent.test.BaseTest;
-import edu.xiyou.shotrent.model.User;
-import edu.xiyou.shotrent.service.UserService;
+import edu.xiyou.shortrent.model.User;
+import edu.xiyou.shortrent.service.UserService;
 import org.junit.Test;
 
 import javax.annotation.Resource;

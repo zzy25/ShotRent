@@ -1,6 +1,5 @@
 package edu.xiyou.shortrent.utils;
 
-import edu.xiyou.shotrent.utils.ArguUtils;
 import org.junit.Test;
 
 /**
@@ -33,6 +32,6 @@ public class ArguUtilsTest {
     public void testFiedldAllNull(){
         ModelA modelA = new ModelA();
         modelA.setA("a");
-        System.out.println(ArguUtils.fiedldAllNull(modelA, ModelA.class, "a", "b"));
+        System.out.println(ArguUtils.fieldAllNull(modelA, ModelA.class));
     }
 }
