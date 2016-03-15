@@ -62,9 +62,6 @@ public class RentServiceImpl implements RentService {
     public List<House> selectByHouseVo(HouseVo houseVo) throws Exception {
         List<House> houseList = null;
         try {
-            if (ArguUtils.fieldAllNull(houseVo, HouseVo.class)) {
-                return houseMapper.selectBySelective(new House());
-            }
 
             houseList = houseMapper.selectByHouseVo(houseVo);
         }catch (Exception e){

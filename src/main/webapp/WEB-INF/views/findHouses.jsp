@@ -1,54 +1,74 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: andrew
+  Date: 16-3-9
+  Time: 上午11:40
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
+
 <!DOCTYPE html>
 
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
 
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
-    <title>短租网 | 租赁管理 - 订单管理</title>
+    <title>短租网 - 搜索房屋</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
-    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="<%=basePath%>assets/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 
-    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/datepicker.css"/>
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link href="<%=basePath%>assets/media/css/jquery.fancybox.css" rel="stylesheet"/>
+
+    <link href="<%=basePath%>assets/media/css/search.css" rel="stylesheet" type="text/css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="<%=basePath%>assets/media/image/favicon.ico"/>
 
 </head>
 
@@ -72,7 +92,7 @@
 
             <a class="brand" href="index.html">
 
-                <img src="media/image/logo.png" alt="logo" />
+                <img src="<%=basePath%>assets/media/image/logo.png" alt="logo"/>
 
             </a>
 
@@ -82,7 +102,7 @@
 
             <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
 
-                <img src="media/image/menu-toggler.png" alt="" />
+                <img src="<%=basePath%>assets/media/image/menu-toggler.png" alt=""/>
 
             </a>
 
@@ -232,7 +252,8 @@
 
                             <a href="inbox.html?a=view">
 
-                                <span class="photo"><img src="media/image/avatar2.jpg" alt="" /></span>
+                                <span class="photo"><img src="<%=basePath%>assets/media/image/avatar2.jpg"
+                                                         alt=""/></span>
 
 								<span class="subject">
 
@@ -258,7 +279,7 @@
 
                             <a href="inbox.html?a=view">
 
-                                <span class="photo"><img src="media/image/avatar3.jpg" alt="" /></span>
+                                <span class="photo"><img src="./media/image/avatar3.jpg" alt=""/></span>
 
 								<span class="subject">
 
@@ -284,7 +305,7 @@
 
                             <a href="inbox.html?a=view">
 
-                                <span class="photo"><img src="media/image/avatar1.jpg" alt="" /></span>
+                                <span class="photo"><img src="./media/image/avatar1.jpg" alt=""/></span>
 
 								<span class="subject">
 
@@ -488,7 +509,7 @@
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                        <img alt="" src="media/image/avatar1_small.jpg" />
+                        <img alt="" src="<%=basePath%>assets/media/image/avatar1_small.jpg"/>
 
                         <span class="username">Bob Nilson</span>
 
@@ -564,9 +585,9 @@
 
                         <a href="javascript:;" class="remove"></a>
 
-                        <input type="text" placeholder="Search..." />
+                        <input type="text" placeholder="Search..."/>
 
-                        <input type="button" class="submit" value=" " />
+                        <input type="button" class="submit" value=" "/>
 
                     </div>
 
@@ -602,7 +623,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="layout_horizontal_sidebar_menu.html">
 
@@ -610,7 +631,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_horizontal_menu1.html">
 
@@ -618,7 +639,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_horizontal_menu2.html">
 
@@ -626,7 +647,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_promo.html">
 
@@ -634,7 +655,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_email.html">
 
@@ -642,7 +663,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_ajax.html">
 
@@ -650,7 +671,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_sidebar_closed.html">
 
@@ -658,7 +679,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_blank_page.html">
 
@@ -666,7 +687,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_boxed_page.html">
 
@@ -674,7 +695,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="layout_boxed_not_responsive.html">
 
@@ -700,7 +721,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="ui_general.html">
 
@@ -708,7 +729,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_buttons.html">
 
@@ -716,7 +737,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_modals.html">
 
@@ -724,7 +745,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_tabs_accordions.html">
 
@@ -732,7 +753,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_jqueryui.html">
 
@@ -740,7 +761,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_sliders.html">
 
@@ -748,7 +769,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_tiles.html">
 
@@ -756,7 +777,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_typography.html">
 
@@ -764,7 +785,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_tree.html">
 
@@ -772,7 +793,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="ui_nestable.html">
 
@@ -798,7 +819,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="form_layout.html">
 
@@ -806,7 +827,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="form_samples.html">
 
@@ -814,7 +835,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="form_component.html">
 
@@ -822,7 +843,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="form_wizard.html">
 
@@ -830,7 +851,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="form_validation.html">
 
@@ -838,7 +859,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="form_fileupload.html">
 
@@ -846,7 +867,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="form_dropzone.html">
 
@@ -872,7 +893,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="page_timeline.html">
 
@@ -882,7 +903,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_coming_soon.html">
 
@@ -892,7 +913,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_blog.html">
 
@@ -902,7 +923,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_blog_item.html">
 
@@ -912,7 +933,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_news.html">
 
@@ -922,7 +943,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_news_item.html">
 
@@ -932,7 +953,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_about.html">
 
@@ -942,7 +963,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_contact.html">
 
@@ -952,7 +973,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="page_calendar.html">
 
@@ -966,7 +987,7 @@
 
             </li>
 
-            <li class="">
+            <li class="active ">
 
                 <a href="javascript:;">
 
@@ -974,13 +995,15 @@
 
                     <span class="title">Extra</span>
 
-                    <span class="arrow "></span>
+                    <span class="selected"></span>
+
+                    <span class="arrow open"></span>
 
                 </a>
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="extra_profile.html">
 
@@ -988,7 +1011,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_lock.html">
 
@@ -996,7 +1019,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_faq.html">
 
@@ -1004,7 +1027,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="inbox.html">
 
@@ -1012,7 +1035,7 @@
 
                     </li>
 
-                    <li >
+                    <li class="active">
 
                         <a href="extra_search.html">
 
@@ -1020,7 +1043,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_invoice.html">
 
@@ -1028,7 +1051,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_pricing_table.html">
 
@@ -1036,7 +1059,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_image_manager.html">
 
@@ -1044,7 +1067,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_404_option1.html">
 
@@ -1052,7 +1075,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_404_option2.html">
 
@@ -1060,7 +1083,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_404_option3.html">
 
@@ -1068,7 +1091,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_500_option1.html">
 
@@ -1076,7 +1099,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="extra_500_option2.html">
 
@@ -1212,11 +1235,11 @@
 
                             </li>
 
-                            <li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
+                            <li><a href="#"><i class="icon-user"></i> Sample Link 1</a></li>
 
-                            <li><a href="#"><i class="icon-external-link"></i>  Sample Link 2</a></li>
+                            <li><a href="#"><i class="icon-external-link"></i> Sample Link 2</a></li>
 
-                            <li><a href="#"><i class="icon-bell"></i>  Sample Link 3</a></li>
+                            <li><a href="#"><i class="icon-bell"></i> Sample Link 3</a></li>
 
                         </ul>
 
@@ -1236,11 +1259,11 @@
 
                         <ul class="sub-menu">
 
-                            <li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
+                            <li><a href="#"><i class="icon-user"></i> Sample Link 1</a></li>
 
-                            <li><a href="#"><i class="icon-external-link"></i>  Sample Link 1</a></li>
+                            <li><a href="#"><i class="icon-external-link"></i> Sample Link 1</a></li>
 
-                            <li><a href="#"><i class="icon-bell"></i>  Sample Link 1</a></li>
+                            <li><a href="#"><i class="icon-bell"></i> Sample Link 1</a></li>
 
                         </ul>
 
@@ -1276,7 +1299,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="login.html">
 
@@ -1284,7 +1307,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="login_soft.html">
 
@@ -1296,7 +1319,7 @@
 
             </li>
 
-            <li class="active ">
+            <li class="">
 
                 <a href="javascript:;">
 
@@ -1304,15 +1327,13 @@
 
                     <span class="title">Data Tables</span>
 
-                    <span class="selected"></span>
-
-                    <span class="arrow open"></span>
+                    <span class="arrow "></span>
 
                 </a>
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="table_basic.html">
 
@@ -1320,7 +1341,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="table_responsive.html">
 
@@ -1328,7 +1349,7 @@
 
                     </li>
 
-                    <li class="active">
+                    <li>
 
                         <a href="table_managed.html">
 
@@ -1336,7 +1357,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="table_editable.html">
 
@@ -1344,7 +1365,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="table_advanced.html">
 
@@ -1370,7 +1391,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="portlet_general.html">
 
@@ -1378,7 +1399,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="portlet_draggable.html">
 
@@ -1404,7 +1425,7 @@
 
                 <ul class="sub-menu">
 
-                    <li >
+                    <li>
 
                         <a href="maps_google.html">
 
@@ -1412,7 +1433,7 @@
 
                     </li>
 
-                    <li >
+                    <li>
 
                         <a href="maps_vector.html">
 
@@ -1480,101 +1501,12 @@
 
                 <div class="span12">
 
-                    <!-- BEGIN STYLE CUSTOMIZER -->
-
-                    <div class="color-panel hidden-phone">
-
-                        <div class="color-mode-icons icon-color"></div>
-
-                        <div class="color-mode-icons icon-color-close"></div>
-
-                        <div class="color-mode">
-
-                            <p>THEME COLOR</p>
-
-                            <ul class="inline">
-
-                                <li class="color-black current color-default" data-style="default"></li>
-
-                                <li class="color-blue" data-style="blue"></li>
-
-                                <li class="color-brown" data-style="brown"></li>
-
-                                <li class="color-purple" data-style="purple"></li>
-
-                                <li class="color-grey" data-style="grey"></li>
-
-                                <li class="color-white color-light" data-style="light"></li>
-
-                            </ul>
-
-                            <label>
-
-                                <span>Layout</span>
-
-                                <select class="layout-option m-wrap small">
-
-                                    <option value="fluid" selected>Fluid</option>
-
-                                    <option value="boxed">Boxed</option>
-
-                                </select>
-
-                            </label>
-
-                            <label>
-
-                                <span>Header</span>
-
-                                <select class="header-option m-wrap small">
-
-                                    <option value="fixed" selected>Fixed</option>
-
-                                    <option value="default">Default</option>
-
-                                </select>
-
-                            </label>
-
-                            <label>
-
-                                <span>Sidebar</span>
-
-                                <select class="sidebar-option m-wrap small">
-
-                                    <option value="fixed">Fixed</option>
-
-                                    <option value="default" selected>Default</option>
-
-                                </select>
-
-                            </label>
-
-                            <label>
-
-                                <span>Footer</span>
-
-                                <select class="footer-option m-wrap small">
-
-                                    <option value="fixed">Fixed</option>
-
-                                    <option value="default" selected>Default</option>
-
-                                </select>
-
-                            </label>
-
-                        </div>
-
-                    </div>
-
-                    <!-- END BEGIN STYLE CUSTOMIZER -->
-
                     <!-- BEGIN PAGE TITLE & BREADCRUMB-->
 
                     <h3 class="page-title">
 
-                        订单管理 <small></small>
+                        搜索结果
+                        <small>搜索结果</small>
 
                     </h3>
 
@@ -1598,7 +1530,7 @@
 
                         </li>
 
-                        <li><a href="#">订单管理</a></li>
+                        <li><a href="#">搜索結果</a></li>
 
                     </ul>
 
@@ -1614,131 +1546,266 @@
 
             <div class="row-fluid">
 
-                <div class="span12">
+                <div class="tabbable tabbable-custom tabbable-full-width">
 
-                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                    <!-- <ul class="nav nav-tabs">
 
-                    <div class="portlet box light-grey">
+                         <li class="active"><a data-toggle="tab" href="#tab_2_2">Booking Search 1</a></li>
 
-                        <div class="portlet-title">
+                     </ul>-->
 
-                            <div class="caption"><i class="icon-globe"></i>订单列表</div>
+                    <div class="tab-content">
 
-                            <div class="tools">
+                        <div id="tab_2_2" class="tab-pane active">
 
-                                <a href="javascript:;" class="collapse"></a>
+                            <div class="row-fluid">
 
-                                <a href="#portlet-config" data-toggle="modal" class="config"></a>
+                                <div class="span8 booking-search">
 
-                                <a href="javascript:;" class="reload"></a>
+                                    <form action="<%=basePath%>rent/findHouses.action" method="post" id="conditionForm">
 
-                                <a href="javascript:;" class="remove"></a>
+                                        <div class="clearfix margin-bottom-10">
 
-                            </div>
+                                            <label>地点</label>
 
-                        </div>
+                                            <div class="input-icon left">
 
-                        <div class="portlet-body">
+                                                <i class="icon-map-marker"></i>
 
-                            <div class="clearfix">
+                                                <input class="m-wrap span12" type="text"
+                                                       placeholder="请输入地点" name="addressContain">
 
-                                <div class="btn-group">
+                                            </div>
 
-                                    <button id="sample_editable_1_new" class="btn green">
+                                        </div>
 
-                                        Add New <i class="icon-plus"></i>
+                                        <div class="clearfix margin-bottom-20">
 
-                                    </button>
+
+                                            <div class="span6">
+                                                <div class="control-group pull-left margin-right-20">
+
+                                                    <label class="control-label">房屋面积：</label>
+
+                                                    <div class="controls">
+
+                                                        <input type="text" id="minArea" name="minArea"
+                                                               class="m-wrap span6" placeholder="请输入最小面积">
+                                                        <input type="text" id="maxArea" name="maxArea"
+                                                               class="m-wrap span6" placeholder="请输入最大面积">
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="span6">
+                                                <div class="control-group pull-left">
+
+                                                    <label class="control-label">房屋价格：</label>
+
+                                                    <div class="controls">
+
+                                                        <input type="text" id="mixPrice" name="minArea"
+                                                               class="m-wrap span6" placeholder="请输入最低价格">
+                                                        <input type="text" id="maxPrice" name="maxArea"
+                                                               class="m-wrap span6" placeholder="请输入最高价格">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <%--<div class="clearfix margin-bottom-10">
+
+                                            <div class="pull-left margin-right-20">
+
+                                                <div class="control-group booking-option">
+
+                                                    <label class="control-label">允许最低租金</label>
+
+                                                    <div class="controls controls-uniform">
+
+                                                        <label class="input-info">
+
+                                                            <input type="text" name="optionsRadios2" value=""/>
+
+                                                        </label>
+
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="pull-left">
+
+                                                <div class="control-group booking-option">
+
+                                                    <label class="control-label"><span>允许最高租金</span></label>
+
+                                                    <div class="controls controls-uniform">
+
+                                                        <label class="input-info">
+
+                                                            <input type="text" name="optionsRadios2" value=""/>
+
+                                                        </label>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>--%>
+
+                                        <input type="submit" class="btn blue btn-block" value="查找"><%--查找--%> <i
+                                            class="m-icon-swapright m-icon-white"></i></input>
+
+                                    </form>
 
                                 </div>
 
-                                <div class="btn-group pull-right">
-
-                                    <button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="icon-angle-down"></i>
-
-                                    </button>
-
-                                    <ul class="dropdown-menu pull-right">
-
-                                        <li><a href="#">Print</a></li>
-
-                                        <li><a href="#">Save as PDF</a></li>
-
-                                        <li><a href="#">Export to Excel</a></li>
-
-                                    </ul>
-
-                                </div>
+                                <!--end booking-search-->
 
                             </div>
 
-                            <table class="table table-striped table-bordered table-hover" id="">
+                            <!--end row-fluid-->
 
-                                <thead>
+                            <div class="space40"></div>
 
-                                <tr>
+                            <div class="row-fluid" id="houstList">
+                                <c:choose>
+                                    <c:when test="${houseList != null && houseList.size() > 0}">
+                                        <c:forEach items="${houseList}" var="item" step="2" varStatus="status">
+                                            <div class="row-fluid margin-bottom-20">
 
-                                    <!--<th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>-->
+                                                <div class="span6 booking-blocks">
 
-                                    <th class="hidden-480">订单标号</th>
+                                                    <div class="pull-left booking-img">
 
-                                    <th class="hidden-480">房屋编号</th>
+                                                        <img src="<%=basePath%>assets/media/image/image4.jpg" alt="">
 
-                                    <th class="hidden-480">业主</th>
+                                                        <ul class="unstyled">
 
-                                    <th class="hidden-480">租客</th>
+                                                            <li><i class="icon-money"></i> ￥${item.price}</li>
 
-                                    <th class="hidden-480">租住开始时间</th>
+                                                            <li>
+                                                                <i class="icon-map-marker"></i>${fn:substring(item.address,0, 10)}
+                                                            </li>
 
-                                    <th class="hidden-480">租住结束时间</th>
+                                                        </ul>
 
-                                    <th class="hidden-480">租金</th>
+                                                    </div>
 
-                                    <th class="hidden-480">操作订单</th>
+                                                    <div style="overflow:hidden;">
 
-                                    <!--<th ></th>-->
+                                                        <ul class="unstyled inline">
 
-                                </tr>
+                                                            <li><i class="icon-star"></i></li>
 
-                                </thead>
+                                                            <li><i class="icon-star"></i></li>
 
-                                <tbody>
+                                                            <li><i class="icon-star"></i></li>
 
-                                <tr class="odd gradeX">
+                                                            <li><i class="icon-star"></i></li>
 
-                                    <!--<td><input type="checkbox" class="checkboxes" value="1" /></td>-->
+                                                            <li><i class="icon-star-empty"></i></li>
 
-                                    <td class="hidden-480">0110123</td>
+                                                        </ul>
 
-                                    <td class="hidden-480">shuxer</td>
+                                                        <p>${fn:substring(item.content,0, 30)}. <a
+                                                                href="<%=basePath%>rent/${item.id}.action">查看更多</a></p>
 
-                                    <td class="hidden-480"><a href="mailto:shuxer@gmail.com">shuxer@gmail.com</a></td>
+                                                    </div>
 
-                                    <td class="hidden-480">120</td>
+                                                </div>
+                                                <c:if test="${status.index + 1 < houseList.size()}">
+                                                    <div class="span6 booking-blocks">
 
-                                    <td class="hidden-480">2015-01-01</td>
+                                                        <div class="pull-left booking-img">
 
-                                    <td class="hidden-480">2015-02-03</td>
+                                                            <img src="<%=basePath%>assets/media/image/image5.jpg"
+                                                                 alt="">
 
-                                    <td class="center hidden-480">12 Jan 2012</td>
+                                                            <ul class="unstyled">
 
-                                    <td class="hidden-480">12 Jan 2012</td>
+                                                                <li><i class="icon-money"></i>
+                                                                    ￥${houseList[status.index+1].price}</li>
 
-                                </tr>
+                                                                <li>
+                                                                    <i class="icon-map-marker"></i>${fn:substring(houseList[status.index+1].address,0, 10)}
+                                                                </li>
 
-                                </tbody>
+                                                            </ul>
 
-                            </table>
+                                                        </div>
+
+                                                        <div style="overflow:hidden;">
+
+
+                                                            <ul class="unstyled inline">
+
+                                                                <li><i class="icon-star"></i></li>
+
+                                                                <li><i class="icon-star"></i></li>
+
+                                                                <li><i class="icon-star"></i></li>
+
+                                                                <li><i class="icon-star"></i></li>
+
+                                                                <li><i class="icon-star"></i></li>
+
+                                                            </ul>
+
+                                                            <p>${fn:substring(houseList[status.index+1].content,0, 30)}.
+                                                                <a
+                                                                        href="<%=basePath%>rent/${houseList[status.index+1].id}.action/">查看更多</a></p>
+
+                                                        </div>
+
+                                                    </div>
+                                                </c:if>
+
+                                            </div>
+                                        </c:forEach>
+                                    </c:when>
+                                    <c:when test="${houseList == null || houseList.size() == 0 }">
+                                        <tr><td colspan="12" align="center" >暂无数据！</td></tr>
+                                    </c:when>
+
+                                </c:choose>
+
+                            </div>
+
+                            <div class="spac40"></div>
+
+                            <div class="pagination pagination-centered">
+
+                                <ul>
+
+                                    <li><a href="#">上一页</a></li>
+
+                                    <li class="active"><a href="#">1</a></li>
+
+                                    <li><a href="#">下一页</a></li>
+
+                                </ul>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                    <!-- END EXAMPLE TABLE PORTLET-->
-
                 </div>
 
+                <!--end tabbable-->
+
             </div>
+
             <!-- END PAGE CONTENT-->
 
         </div>
@@ -1781,63 +1848,70 @@
 
 <!-- BEGIN CORE PLUGINS -->
 
-<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
 <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 
-<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 
-<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!--[if lt IE 9]>
 
-<script src="media/js/excanvas.min.js"></script>
+<script src="<%=basePath%>assets/media/js/excanvas.min.js"></script>
 
-<script src="media/js/respond.min.js"></script>
+<script src="<%=basePath%>assets/media/js/respond.min.js"></script>
 
 <![endif]-->
 
-<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.blockui.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="<%=basePath%>assets/media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
-<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="<%=basePath%>assets/media/js/bootstrap-datepicker.js"></script>
 
-<script type="text/javascript" src="media/js/select2.min.js"></script>
+<script src="<%=basePath%>assets/media/js/jquery.fancybox.pack.js"></script>
 
-<script type="text/javascript" src="media/js/jquery.dataTables.js"></script>
+<script src="<%=basePath%>assets/media/js/app.js"></script>
 
-<script type="text/javascript" src="media/js/DT_bootstrap.js"></script>
-
-<!-- END PAGE LEVEL PLUGINS -->
-
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-
-<script src="media/js/app.js"></script>
-
-<script src="media/js/table-managed.js"></script>
+<script src="<%=basePath%>assets/media/js/search.js"></script>
 
 <script>
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         App.init();
 
-        TableManaged.init();
+        Search.init();
 
     });
 
 </script>
 
-<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
+<!-- END JAVASCRIPTS -->
+
+<script type="text/javascript">  var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37564768-1']);
+_gaq.push(['_setDomainName', 'keenthemes.com']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+(function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();</script>
+</body>
 
 <!-- END BODY -->
 
