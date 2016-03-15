@@ -13,7 +13,7 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!--扫描controller -->
-    <context:component-scan base-package="edu.xiyou.shotrent.controller"/>
+    <context:component-scan base-package="edu.xiyou.shortrent.controller"/>
 
     <!--静态资源导入-->
     <!--<mvc:resources mapping="/upload/**" location="/upload/"/>-->

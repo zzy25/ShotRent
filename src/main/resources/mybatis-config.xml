@@ -54,7 +54,7 @@
     </settings>
 
     <typeAliases>
-        <package name="edu.xiyou.shotrent.model"/>
+        <package name="edu.xiyou.shortrent.model"/>
     </typeAliases>
 
 </configuration>

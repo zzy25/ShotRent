@@ -1,10 +1,10 @@
-#ShotRent
+#ShortRent
 
 ##本项目为校内实习项目
 
 ###环境搭建
 * IntelliJ IDEA Ultimate 作为开发IDE
-* git 作为版本控制工具，远程服务器地址:https://git.oschina.net/andrew-wang/ShotRent.git
+* git 作为版本控制工具，远程服务器地址:https://git.oschina.net/andrew-wang/ShortRent.git
 
 ###成员信息
 

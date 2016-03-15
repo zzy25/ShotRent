@@ -18,7 +18,7 @@
                             /app/** = anon
                             /assets/** = anon
                             <!--登陆页面允许访问-->
-                            /ShotRent/login.action = anon
+                            /ShortRent/login.action = anon
                             /index.action = anon
                             <!--其他资源需要验证-->
                             /**  = anon
