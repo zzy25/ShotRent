@@ -1762,7 +1762,7 @@
 
                                                             <p>${fn:substring(houseList[status.index+1].content,0, 30)}.
                                                                 <a
-                                                                        href="<%=basePath%>rent/${houseList[status.index+1].id}.action/">查看更多</a></p>
+                                                                        href="<%=basePath%>rent/${houseList[status.index+1].id}.action">查看更多</a></p>
 
                                                         </div>
 
