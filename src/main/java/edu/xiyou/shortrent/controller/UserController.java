@@ -10,6 +10,8 @@ import edu.xiyou.shortrent.utils.HttpUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -32,11 +34,11 @@ public class UserController extends BaseController {
         return "redirect:" + HttpUtils.getBasePath(request);
     }
 
-//    @ResponseBody
+    @ResponseBody
     @RequestMapping(value = "/loginData.action", method = RequestMethod.POST)
-    public String loginCheck(@RequestParam(value = "username") String username,
-                                       @RequestParam(value = "password") String password,
-                                       HttpServletRequest request, ModelMap modelMap) {
+    public ResultVo<String> loginCheck(@RequestParam(value = "username") String username,
+                                   @RequestParam(value = "password") String password,
+                                   HttpServletRequest request, ModelMap modelMap) {
         ResultVo<String> resultVo = new ResultVo<>();
 
         try {
@@ -49,7 +51,6 @@ public class UserController extends BaseController {
             request.getSession().setAttribute(UserConstant.USER_DETAIL, user);
             resultVo.setMsg("登陆成功");
             resultVo.setApproved(true);
-
         } catch (ArguException e) {
             resultVo.setMsg(e.getMessage());
             resultVo.setApproved(false);
@@ -59,12 +60,8 @@ public class UserController extends BaseController {
             resultVo.setApproved(false);
         }
 
-        modelMap.addAttribute("result", resultVo);
-        if (resultVo.isApproved()){
-            return "redirect:index";
-        }
-
-        return "login";
+        modelMap.addAttribute("result", resultVo.getMsg());
+        return resultVo;
     }
 
     @RequestMapping(value = "/addUser.action")

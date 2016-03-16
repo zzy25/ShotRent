@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -11,7 +12,6 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
@@ -85,15 +85,14 @@
 <div class="content">
 
     <!-- BEGIN LOGIN FORM -->
+    <%--<jsp:useBean id="result" scope="page" type="edu.xiyou.shortrent.model.vo.ResultVo"/>--%>
     <c:if test="${result != null and !result.approved}">
         <script>
-
             alert(${result.msg});
-
         </script>
     </c:if>
 
-    <form class="form-vertical login-form" method="post" action="<%=basePath%>user/loginData.action">
+    <form class="form-vertical login-form" >
 
         <h3 class="form-title">登录您的账户</h3>
 
@@ -151,7 +150,7 @@
 
             </label>
 
-            <button type="submit" class="btn green pull-right">
+            <button type="button" class="btn green pull-right" id="loginSubmit">
 
                 登录<i class="m-icon-swapright m-icon-white"></i>
 
@@ -231,6 +230,7 @@
     <script src="<%=basePath%>assets/media/js/app.js" type="text/javascript"></script>
 
     <script src="<%=basePath%>assets/media/js/login.js" type="text/javascript"></script>
+    <script src="<%=basePath%>assets/media/js/app-script.js" type="text/javascript"></script>
 
     <!-- END PAGE LEVEL SCRIPTS -->
 
