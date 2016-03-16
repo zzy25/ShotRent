@@ -50,7 +50,7 @@ public class RentController extends BaseController {
         houseVo.setMaxArea(maxArea);
         houseVo.setMinArea(minArea);
         houseVo.setMaxPrice(maxPrice);
-        houseVo.setMinArea(minArea);
+        houseVo.setMinArea(minPrice);
         houseVo.setAddressContain(addressContain);
         houseVo.setHouseType(houseType);
 

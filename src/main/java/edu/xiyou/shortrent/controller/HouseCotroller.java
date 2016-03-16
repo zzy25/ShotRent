@@ -1,5 +1,6 @@
 package edu.xiyou.shortrent.controller;
 
+import edu.xiyou.shortrent.constant.HouseConstant;
 import edu.xiyou.shortrent.constant.UserConstant;
 import edu.xiyou.shortrent.exception.ArguException;
 import edu.xiyou.shortrent.model.House;
@@ -132,6 +133,48 @@ public class HouseCotroller extends BaseController{
         }catch (Exception e){
             resultVo.setMsg("输入信息有误");
             resultVo.setApproved(false);
+        }
+        return resultVo;
+    }
+
+    @RequestMapping(value = "/checkHouse.action")
+    public String checkHouseList(HttpServletRequest request, ModelMap modelMap){
+        List<House> houseList = null;
+        House house = new House();
+
+        try {
+            house.setChecked(HouseConstant.HOUSE_CHECKED);
+            house.setOnline(HouseConstant.HOUSE_ONLINE);
+            houseList = houseService.selectBySelective(house);
+        }catch (Exception e){
+            logger.error("checkHouseList record={}, exception={}", house, e);
+        }
+        modelMap.addAttribute("houseList", houseList);
+        return "houseCheck";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/check/${houseId}.action", method = RequestMethod.POST)
+    public ResultVo<House> checkHouse(@PathVariable Integer houseId,@RequestParam("checked") Short checked,
+                                      HttpServletRequest request, ModelMap modelMap){
+        ResultVo<House> resultVo = new ResultVo<>();
+        House house = new House();
+        house.setId(houseId);
+        house.setChecked(checked);
+        resultVo.setElement(house);
+        try {
+            ArguUtils.notNull(houseId, "房子信息");
+            ArguUtils.notNull(checked, "审核信息");
+            houseService.updateHouse(house);
+            resultVo.setApproved(true);
+            resultVo.setMsg("更新信息成功");
+        } catch (ArguException e) {
+            resultVo.setApproved(false);
+            resultVo.setMsg(e.getMessage());
+            logger.error("checkHouse houseId={}, exception={}", houseId, e);
+        } catch (Exception e){
+            resultVo.setApproved(false);
+            resultVo.setMsg("更新信息失败");
         }
         return resultVo;
     }

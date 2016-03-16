@@ -17,4 +17,6 @@ public interface HouseService {
     void updateHouse(House house) throws Exception;
 
     House selectHouseByHouseId(Integer houseId) throws Exception;
+
+    List<House> selectBySelective(House house) throws Exception;
 }
