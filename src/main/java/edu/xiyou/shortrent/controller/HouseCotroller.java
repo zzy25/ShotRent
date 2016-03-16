@@ -23,7 +23,8 @@ import java.util.List;
 public class HouseCotroller extends BaseController{
 
     @RequestMapping("/create.action")
-    public String createHouse() {
+    public String createHouse(ModelMap modelMap) {
+        modelMap.addAttribute("action", "<%=basePath%>house/createData.action");
         return "publishHoure";
     }
 
@@ -100,12 +101,13 @@ public class HouseCotroller extends BaseController{
             logger.error("getHouse houseId={}, exception={}", houseId, e);
         }
         modelMap.addAttribute("house", house);
-        return "updateHouse";
+        modelMap.addAttribute("action", "<%=basePath%>house/updateData.action");
+        return "publishHoure";
     }
 
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping(value = "/updateData.action", method = RequestMethod.POST)
-    public ResultVo<House> updateHouseData(@RequestParam("houseId")Integer houseId,
+    public String updateHouseData(@RequestParam("houseId")Integer houseId,
                                        @RequestParam(value = "mobile", required = false)String mobile,
                                        @RequestParam(value = "tel", required = false)String tel,
                                        @RequestParam(value = "price", required = false)Integer price,
@@ -139,7 +141,9 @@ public class HouseCotroller extends BaseController{
             resultVo.setMsg("输入信息有误");
             resultVo.setApproved(false);
         }
-        return resultVo;
+        modelMap.addAttribute("house", house);
+        modelMap.addAttribute("result", resultVo);
+        return "";
     }
 
     @RequestMapping(value = "/checkHouse.action")

@@ -1,3 +1,6 @@
+<jsp:useBean id="house" scope="request" type="edu.xiyou.shortrent.model.House"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="action" scope="page" type="java.lang.String"/>
 <%--
   Created by IntelliJ IDEA.
   User: andrew
@@ -7,8 +10,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-  String path = request.getContextPath();
-  String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 
@@ -16,77 +19,78 @@
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-  <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
-  <title>短租网 | 房屋管理 - 房屋信息发布</title>
+    <title>短租网 | 房屋管理 - 房屋信息发布</title>
 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-  <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-  <meta content="" name="author" />
+    <meta content="" name="author"/>
 
-  <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
-  <link href="<%=basePath%>assets/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
-  <link href="<%=basePath%>assets/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
 
-  <link href="<%=basePath%>assets/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
-  <link href="<%=basePath%>assets/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
 
-  <link href="<%=basePath%>assets/media/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style.css" rel="stylesheet" type="text/css"/>
 
-  <link href="<%=basePath%>assets/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
 
-  <link href="<%=basePath%>assets/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="<%=basePath%>assets/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 
-  <link href="<%=basePath%>assets/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 
-  <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- END GLOBAL MANDATORY STYLES -->
 
-  <!-- BEGIN PAGE LEVEL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/bootstrap-fileupload.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/bootstrap-fileupload.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/jquery.gritter.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/chosen.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/select2_metro.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/select2_metro.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/jquery.tagsinput.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/jquery.tagsinput.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/clockface.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/clockface.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/bootstrap-wysihtml5.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/datepicker.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/timepicker.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/colorpicker.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/bootstrap-toggle-buttons.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/bootstrap-toggle-buttons.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/daterangepicker.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/datetimepicker.css"/>
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/multi-select-metro.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/multi-select-metro.css"/>
 
-  <link href="<%=basePath%>assets/media/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
 
-  <!-- END PAGE LEVEL STYLES -->
+    <!-- END PAGE LEVEL STYLES -->
 
-  <link rel="shortcut icon" href="<%=basePath%>assets/media/image/favicon.ico" />
+    <link rel="shortcut icon" href="<%=basePath%>assets/media/image/favicon.ico"/>
 
 </head>
 
@@ -100,177 +104,178 @@
 
 <div class="header navbar navbar-inverse navbar-fixed-top">
 
-  <!-- BEGIN TOP NAVIGATION BAR -->
+    <!-- BEGIN TOP NAVIGATION BAR -->
 
-  <div class="navbar-inner">
+    <div class="navbar-inner">
 
-    <div class="container-fluid">
+        <div class="container-fluid">
 
-      <!-- BEGIN LOGO -->
+            <!-- BEGIN LOGO -->
 
-      <a class="brand" href="<%=basePath%>index.action">
+            <a class="brand" href="<%=basePath%>index.action">
 
-        <img src="<%=basePath%>assets/media/image/logo.png" alt="logo" />
+                <img src="<%=basePath%>assets/media/image/logo.png" alt="logo"/>
 
-      </a>
+            </a>
 
-      <!-- END LOGO -->
+            <!-- END LOGO -->
 
-      <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
 
-      <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+            <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
 
-        <img src="<%=basePath%>assets/media/image/menu-toggler.png" alt="" />
+                <img src="<%=basePath%>assets/media/image/menu-toggler.png" alt=""/>
 
-      </a>
+            </a>
 
-      <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- END RESPONSIVE MENU TOGGLER -->
 
-      <!-- BEGIN TOP NAVIGATION MENU -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
 
-      <ul class="nav pull-right">
+            <ul class="nav pull-right">
 
-        <!-- BEGIN NOTIFICATION DROPDOWN -->
+                <!-- BEGIN NOTIFICATION DROPDOWN -->
 
-        <li class="dropdown" id="header_notification_bar">
+                <li class="dropdown" id="header_notification_bar">
 
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-            <i class="icon-warning-sign"></i>
+                        <i class="icon-warning-sign"></i>
 
-            <span class="badge">6</span>
+                        <span class="badge">6</span>
 
-          </a>
+                    </a>
 
-          <ul class="dropdown-menu extended notification">
+                    <ul class="dropdown-menu extended notification">
 
-            <li>
+                        <li>
 
-              <p>You have 14 new notifications</p>
+                            <p>You have 14 new notifications</p>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="#">
+                            <a href="#">
 
-                <span class="label label-success"><i class="icon-plus"></i></span>
+                                <span class="label label-success"><i class="icon-plus"></i></span>
 
-                New user registered.
+                                New user registered.
 
-                <span class="time">Just now</span>
+                                <span class="time">Just now</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="#">
+                            <a href="#">
 
-                <span class="label label-important"><i class="icon-bolt"></i></span>
+                                <span class="label label-important"><i class="icon-bolt"></i></span>
 
-                Server #12 overloaded.
+                                Server #12 overloaded.
 
-                <span class="time">15 mins</span>
+                                <span class="time">15 mins</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="#">
+                            <a href="#">
 
-                <span class="label label-warning"><i class="icon-bell"></i></span>
+                                <span class="label label-warning"><i class="icon-bell"></i></span>
 
-                Server #2 not respoding.
+                                Server #2 not respoding.
 
-                <span class="time">22 mins</span>
+                                <span class="time">22 mins</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="#">
+                            <a href="#">
 
-                <span class="label label-info"><i class="icon-bullhorn"></i></span>
+                                <span class="label label-info"><i class="icon-bullhorn"></i></span>
 
-                Application error.
+                                Application error.
 
-                <span class="time">40 mins</span>
+                                <span class="time">40 mins</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="#">
+                            <a href="#">
 
-                <span class="label label-important"><i class="icon-bolt"></i></span>
+                                <span class="label label-important"><i class="icon-bolt"></i></span>
 
-                Database overloaded 68%.
+                                Database overloaded 68%.
 
-                <span class="time">2 hrs</span>
+                                <span class="time">2 hrs</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="#">
+                            <a href="#">
 
-                <span class="label label-important"><i class="icon-bolt"></i></span>
+                                <span class="label label-important"><i class="icon-bolt"></i></span>
 
-                2 user IP blocked.
+                                2 user IP blocked.
 
-                <span class="time">5 hrs</span>
+                                <span class="time">5 hrs</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li class="external">
+                        <li class="external">
 
-              <a href="#">See all notifications <i class="m-icon-swapright"></i></a>
+                            <a href="#">See all notifications <i class="m-icon-swapright"></i></a>
 
-            </li>
+                        </li>
 
-          </ul>
+                    </ul>
 
-        </li>
+                </li>
 
-        <!-- END NOTIFICATION DROPDOWN -->
+                <!-- END NOTIFICATION DROPDOWN -->
 
-        <!-- BEGIN INBOX DROPDOWN -->
+                <!-- BEGIN INBOX DROPDOWN -->
 
-        <li class="dropdown" id="header_inbox_bar">
+                <li class="dropdown" id="header_inbox_bar">
 
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-            <i class="icon-envelope"></i>
+                        <i class="icon-envelope"></i>
 
-            <span class="badge">5</span>
+                        <span class="badge">5</span>
 
-          </a>
+                    </a>
 
-          <ul class="dropdown-menu extended inbox">
+                    <ul class="dropdown-menu extended inbox">
 
-            <li>
+                        <li>
 
-              <p>You have 12 new messages</p>
+                            <p>You have 12 new messages</p>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="../../metronic/inbox.html?a=view">
+                            <a href="../../metronic/inbox.html?a=view">
 
-                <span class="photo"><img src="<%=basePath%>assets/media/image/avatar2.jpg" alt="" /></span>
+                                <span class="photo"><img src="<%=basePath%>assets/media/image/avatar2.jpg"
+                                                         alt=""/></span>
 
 								<span class="subject">
 
@@ -288,15 +293,16 @@
 
 								</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="../../metronic/inbox.html?a=view">
+                            <a href="../../metronic/inbox.html?a=view">
 
-                <span class="photo"><img src="<%=basePath%>assets/media/image/avatar3.jpg" alt="" /></span>
+                                <span class="photo"><img src="<%=basePath%>assets/media/image/avatar3.jpg"
+                                                         alt=""/></span>
 
 								<span class="subject">
 
@@ -314,15 +320,16 @@
 
 								</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="../../metronic/inbox.html?a=view">
+                            <a href="../../metronic/inbox.html?a=view">
 
-                <span class="photo"><img src="<%=basePath%>assets/media/image/avatar1.jpg" alt="" /></span>
+                                <span class="photo"><img src="<%=basePath%>assets/media/image/avatar1.jpg"
+                                                         alt=""/></span>
 
 								<span class="subject">
 
@@ -340,45 +347,45 @@
 
 								</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li class="external">
+                        <li class="external">
 
-              <a href="../../metronic/inbox.html">See all messages <i class="m-icon-swapright"></i></a>
+                            <a href="../../metronic/inbox.html">See all messages <i class="m-icon-swapright"></i></a>
 
-            </li>
+                        </li>
 
-          </ul>
+                    </ul>
 
-        </li>
+                </li>
 
-        <!-- END INBOX DROPDOWN -->
+                <!-- END INBOX DROPDOWN -->
 
-        <!-- BEGIN TODO DROPDOWN -->
+                <!-- BEGIN TODO DROPDOWN -->
 
-        <li class="dropdown" id="header_task_bar">
+                <li class="dropdown" id="header_task_bar">
 
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-            <i class="icon-tasks"></i>
+                        <i class="icon-tasks"></i>
 
-            <span class="badge">5</span>
+                        <span class="badge">5</span>
 
-          </a>
+                    </a>
 
-          <ul class="dropdown-menu extended tasks">
+                    <ul class="dropdown-menu extended tasks">
 
-            <li>
+                        <li>
 
-              <p>You have 12 pending tasks</p>
+                            <p>You have 12 pending tasks</p>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="#">
+                            <a href="#">
 
 								<span class="task">
 
@@ -394,13 +401,13 @@
 
 								</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="#">
+                            <a href="#">
 
 								<span class="task">
 
@@ -416,13 +423,13 @@
 
 								</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="#">
+                            <a href="#">
 
 								<span class="task">
 
@@ -438,13 +445,13 @@
 
 								</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="#">
+                            <a href="#">
 
 								<span class="task">
 
@@ -460,13 +467,13 @@
 
 								</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="#">
+                            <a href="#">
 
 								<span class="task">
 
@@ -482,13 +489,13 @@
 
 								</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li>
+                        <li>
 
-              <a href="#">
+                            <a href="#">
 
 								<span class="task">
 
@@ -504,67 +511,67 @@
 
 								</span>
 
-              </a>
+                            </a>
 
-            </li>
+                        </li>
 
-            <li class="external">
+                        <li class="external">
 
-              <a href="#">See all tasks <i class="m-icon-swapright"></i></a>
+                            <a href="#">See all tasks <i class="m-icon-swapright"></i></a>
 
-            </li>
+                        </li>
 
-          </ul>
+                    </ul>
 
-        </li>
+                </li>
 
-        <!-- END TODO DROPDOWN -->
+                <!-- END TODO DROPDOWN -->
 
-        <!-- BEGIN USER LOGIN DROPDOWN -->
+                <!-- BEGIN USER LOGIN DROPDOWN -->
 
-        <li class="dropdown user">
+                <li class="dropdown user">
 
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-            <img alt="" src="<%=basePath%>assets/media/image/avatar1_small.jpg" />
+                        <img alt="" src="<%=basePath%>assets/media/image/avatar1_small.jpg"/>
 
-            <span class="username">岳超刚</span>
+                        <span class="username">岳超刚</span>
 
-            <i class="icon-angle-down"></i>
+                        <i class="icon-angle-down"></i>
 
-          </a>
+                    </a>
 
-          <ul class="dropdown-menu">
+                    <ul class="dropdown-menu">
 
-            <li><a href="extra_profile.html"><i class="icon-user"></i> 我的信息</a></li>
+                        <li><a href="extra_profile.html"><i class="icon-user"></i> 我的信息</a></li>
 
-            <li><a href="../../metronic/page_calendar.html"><i class="icon-calendar"></i> 我的日程表</a></li>
+                        <li><a href="../../metronic/page_calendar.html"><i class="icon-calendar"></i> 我的日程表</a></li>
 
-            <li><a href="../../metronic/inbox.html"><i class="icon-envelope"></i> 我的收件箱(3)</a></li>
+                        <li><a href="../../metronic/inbox.html"><i class="icon-envelope"></i> 我的收件箱(3)</a></li>
 
-            <li><a href="#"><i class="icon-tasks"></i> 我的任务</a></li>
+                        <li><a href="#"><i class="icon-tasks"></i> 我的任务</a></li>
 
-            <li class="divider"></li>
+                        <li class="divider"></li>
 
-            <li><a href="../../metronic/extra_lock.html"><i class="icon-lock"></i> 锁定</a></li>
+                        <li><a href="../../metronic/extra_lock.html"><i class="icon-lock"></i> 锁定</a></li>
 
-            <li><a href="../../metronic/login.html"><i class="icon-key"></i> 登出</a></li>
+                        <li><a href="../../metronic/login.html"><i class="icon-key"></i> 登出</a></li>
 
-          </ul>
+                    </ul>
 
-        </li>
+                </li>
 
-        <!-- END USER LOGIN DROPDOWN -->
+                <!-- END USER LOGIN DROPDOWN -->
 
-      </ul>
+            </ul>
 
-      <!-- END TOP NAVIGATION MENU -->
+            <!-- END TOP NAVIGATION MENU -->
+
+        </div>
 
     </div>
 
-  </div>
-
-  <!-- END TOP NAVIGATION BAR -->
+    <!-- END TOP NAVIGATION BAR -->
 
 </div>
 
@@ -574,1308 +581,1321 @@
 
 <div class="page-container row-fluid">
 
-  <!-- BEGIN SIDEBAR -->
+    <!-- BEGIN SIDEBAR -->
 
-  <div class="page-sidebar nav-collapse collapse">
+    <div class="page-sidebar nav-collapse collapse">
 
-    <!-- BEGIN SIDEBAR MENU -->
+        <!-- BEGIN SIDEBAR MENU -->
 
-    <ul class="page-sidebar-menu">
+        <ul class="page-sidebar-menu">
 
-      <li>
+            <li>
 
-        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 
-        <div class="sidebar-toggler hidden-phone"></div>
+                <div class="sidebar-toggler hidden-phone"></div>
 
-        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 
-      </li>
+            </li>
 
-      <li>
+            <li>
 
-        <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+                <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
 
-        <form class="sidebar-search">
+                <form class="sidebar-search">
 
-          <div class="input-box">
+                    <div class="input-box">
 
-            <a href="javascript:;" class="remove"></a>
+                        <a href="javascript:;" class="remove"></a>
 
-            <input type="text" placeholder="Search..." />
+                        <input type="text" placeholder="Search..."/>
 
-            <input type="button" class="submit" value=" " />
+                        <input type="button" class="submit" value=" "/>
 
-          </div>
+                    </div>
 
-        </form>
+                </form>
 
-        <!-- END RESPONSIVE QUICK SEARCH FORM -->
+                <!-- END RESPONSIVE QUICK SEARCH FORM -->
 
-      </li>
+            </li>
 
-      <li class="start ">
+            <li class="start ">
 
-        <a href="../../metronic/index.html">
+                <a href="../../metronic/index.html">
 
-          <i class="icon-home"></i>
+                    <i class="icon-home"></i>
 
-          <span class="title">Dashboard</span>
+                    <span class="title">Dashboard</span>
 
-        </a>
+                </a>
 
-      </li>
+            </li>
 
-      <li class="">
-
-        <a href="javascript:;">
-
-          <i class="icon-cogs"></i>
-
-          <span class="title">Layouts</span>
-
-          <span class="arrow "></span>
-
-        </a>
-
-        <ul class="sub-menu">
-
-          <li >
-
-            <a href="../../metronic/layout_horizontal_sidebar_menu.html">
-
-              Horzontal & Sidebar Menu</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/layout_horizontal_menu1.html">
-
-              Horzontal Menu 1</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/layout_horizontal_menu2.html">
-
-              Horzontal Menu 2</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/layout_promo.html">
-
-              Promo Page</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/layout_email.html">
-
-              Email Templates</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/layout_ajax.html">
-
-              Content Loading via Ajax</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/layout_sidebar_closed.html">
-
-              Sidebar Closed Page</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/layout_blank_page.html">
-
-              Blank Page</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/layout_boxed_page.html">
-
-              Boxed Page</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/layout_boxed_not_responsive.html">
-
-              Non-Responsive Boxed Layout</a>
-
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li class="">
-
-        <a href="javascript:;">
-
-          <i class="icon-bookmark-empty"></i>
-
-          <span class="title">UI Features</span>
-
-          <span class="arrow "></span>
-
-        </a>
-
-        <ul class="sub-menu">
-
-          <li >
-
-            <a href="../../metronic/ui_general.html">
-
-              General</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/ui_buttons.html">
-
-              Buttons</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/ui_modals.html">
-
-              Enhanced Modals</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/ui_tabs_accordions.html">
-
-              Tabs & Accordions</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/ui_jqueryui.html">
-
-              jQuery UI Components</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/ui_sliders.html">
-
-              Sliders</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/ui_tiles.html">
-
-              Tiles</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/ui_typography.html">
-
-              Typography</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/ui_tree.html">
-
-              Tree View</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/ui_nestable.html">
-
-              Nestable List</a>
-
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li class="active ">
-
-        <a href="javascript:;">
-
-          <i class="icon-table"></i>
-
-          <span class="title">Form Stuff</span>
-
-          <span class="selected"></span>
-
-          <span class="arrow open"></span>
-
-        </a>
-
-        <ul class="sub-menu">
-
-          <li >
-
-            <a href="../../metronic/form_layout.html">
-
-              Form Layouts</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/form_samples.html">
-
-              Advance Form Samples</a>
-
-          </li>
-
-          <li class="active">
-
-            <a href="form_component.html">
-
-              房屋信息发布</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/form_wizard.html">
-
-              Form Wizard</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/form_validation.html">
-
-              Form Validation</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/form_fileupload.html">
-
-              Multiple File Upload</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/form_dropzone.html">
-
-              Dropzone File Upload</a>
-
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li class="">
-
-        <a href="javascript:;">
-
-          <i class="icon-briefcase"></i>
-
-          <span class="title">Pages</span>
-
-          <span class="arrow "></span>
-
-        </a>
-
-        <ul class="sub-menu">
-
-          <li >
-
-            <a href="../../metronic/page_timeline.html">
-
-              <i class="icon-time"></i>
-
-              Timeline</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/page_coming_soon.html">
-
-              <i class="icon-cogs"></i>
-
-              Coming Soon</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/page_blog.html">
-
-              <i class="icon-comments"></i>
-
-              Blog</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/page_blog_item.html">
-
-              <i class="icon-font"></i>
-
-              Blog Post</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/page_news.html">
-
-              <i class="icon-coffee"></i>
-
-              News</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/page_news_item.html">
-
-              <i class="icon-bell"></i>
-
-              News View</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/page_about.html">
-
-              <i class="icon-group"></i>
-
-              About Us</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/page_contact.html">
-
-              <i class="icon-envelope-alt"></i>
-
-              Contact Us</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/page_calendar.html">
-
-              <i class="icon-calendar"></i>
-
-              Calendar</a>
-
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li class="">
-
-        <a href="javascript:;">
-
-          <i class="icon-gift"></i>
-
-          <span class="title">Extra</span>
-
-          <span class="arrow "></span>
-
-        </a>
-
-        <ul class="sub-menu">
-
-          <li >
-
-            <a href="extra_profile.html">
-
-              User Profile</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/extra_lock.html">
-
-              Lock Screen</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/extra_faq.html">
-
-              FAQ</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/inbox.html">
-
-              Inbox</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/extra_search.html">
-
-              Search Results</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/extra_invoice.html">
-
-              Invoice</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/extra_pricing_table.html">
-
-              Pricing Tables</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/extra_image_manager.html">
-
-              Image Manager</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/extra_404_option1.html">
-
-              404 Page Option 1</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/extra_404_option2.html">
-
-              404 Page Option 2</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/extra_404_option3.html">
-
-              404 Page Option 3</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/extra_500_option1.html">
-
-              500 Page Option 1</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/extra_500_option2.html">
-
-              500 Page Option 2</a>
-
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li>
-
-        <a class="active" href="javascript:;">
-
-          <i class="icon-sitemap"></i>
-
-          <span class="title">3 Level Menu</span>
-
-          <span class="arrow "></span>
-
-        </a>
-
-        <ul class="sub-menu">
-
-          <li>
-
-            <a href="javascript:;">
-
-              Item 1
-
-              <span class="arrow"></span>
-
-            </a>
-
-            <ul class="sub-menu">
-
-              <li><a href="#">Sample Link 1</a></li>
-
-              <li><a href="#">Sample Link 2</a></li>
-
-              <li><a href="#">Sample Link 3</a></li>
-
-            </ul>
-
-          </li>
-
-          <li>
-
-            <a href="javascript:;">
-
-              Item 1
-
-              <span class="arrow"></span>
-
-            </a>
-
-            <ul class="sub-menu">
-
-              <li><a href="#">Sample Link 1</a></li>
-
-              <li><a href="#">Sample Link 1</a></li>
-
-              <li><a href="#">Sample Link 1</a></li>
-
-            </ul>
-
-          </li>
-
-          <li>
-
-            <a href="#">
-
-              Item 3
-
-            </a>
-
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li>
-
-        <a href="javascript:;">
-
-          <i class="icon-folder-open"></i>
-
-          <span class="title">4 Level Menu</span>
-
-          <span class="arrow "></span>
-
-        </a>
-
-        <ul class="sub-menu">
-
-          <li>
-
-            <a href="javascript:;">
-
-              <i class="icon-cogs"></i>
-
-              Item 1
-
-              <span class="arrow"></span>
-
-            </a>
-
-            <ul class="sub-menu">
-
-              <li>
+            <li class="">
 
                 <a href="javascript:;">
 
-                  <i class="icon-user"></i>
+                    <i class="icon-cogs"></i>
 
-                  Sample Link 1
+                    <span class="title">Layouts</span>
 
-                  <span class="arrow"></span>
+                    <span class="arrow "></span>
 
                 </a>
 
                 <ul class="sub-menu">
 
-                  <li><a href="#"><i class="icon-remove"></i> Sample Link 1</a></li>
+                    <li>
 
-                  <li><a href="#"><i class="icon-pencil"></i> Sample Link 1</a></li>
+                        <a href="../../metronic/layout_horizontal_sidebar_menu.html">
 
-                  <li><a href="#"><i class="icon-edit"></i> Sample Link 1</a></li>
+                            Horzontal & Sidebar Menu</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/layout_horizontal_menu1.html">
+
+                            Horzontal Menu 1</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/layout_horizontal_menu2.html">
+
+                            Horzontal Menu 2</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/layout_promo.html">
+
+                            Promo Page</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/layout_email.html">
+
+                            Email Templates</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/layout_ajax.html">
+
+                            Content Loading via Ajax</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/layout_sidebar_closed.html">
+
+                            Sidebar Closed Page</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/layout_blank_page.html">
+
+                            Blank Page</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/layout_boxed_page.html">
+
+                            Boxed Page</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/layout_boxed_not_responsive.html">
+
+                            Non-Responsive Boxed Layout</a>
+
+                    </li>
 
                 </ul>
 
-              </li>
+            </li>
 
-              <li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
+            <li class="">
 
-              <li><a href="#"><i class="icon-external-link"></i>  Sample Link 2</a></li>
+                <a href="javascript:;">
 
-              <li><a href="#"><i class="icon-bell"></i>  Sample Link 3</a></li>
+                    <i class="icon-bookmark-empty"></i>
 
-            </ul>
+                    <span class="title">UI Features</span>
 
-          </li>
+                    <span class="arrow "></span>
 
-          <li>
+                </a>
 
-            <a href="javascript:;">
+                <ul class="sub-menu">
 
-              <i class="icon-globe"></i>
+                    <li>
 
-              Item 2
+                        <a href="../../metronic/ui_general.html">
 
-              <span class="arrow"></span>
+                            General</a>
 
-            </a>
+                    </li>
 
-            <ul class="sub-menu">
+                    <li>
 
-              <li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
+                        <a href="../../metronic/ui_buttons.html">
 
-              <li><a href="#"><i class="icon-external-link"></i>  Sample Link 1</a></li>
+                            Buttons</a>
 
-              <li><a href="#"><i class="icon-bell"></i>  Sample Link 1</a></li>
+                    </li>
 
-            </ul>
+                    <li>
 
-          </li>
+                        <a href="../../metronic/ui_modals.html">
 
-          <li>
+                            Enhanced Modals</a>
 
-            <a href="#">
+                    </li>
 
-              <i class="icon-folder-open"></i>
+                    <li>
 
-              Item 3
+                        <a href="../../metronic/ui_tabs_accordions.html">
 
-            </a>
+                            Tabs & Accordions</a>
 
-          </li>
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/ui_jqueryui.html">
+
+                            jQuery UI Components</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/ui_sliders.html">
+
+                            Sliders</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/ui_tiles.html">
+
+                            Tiles</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/ui_typography.html">
+
+                            Typography</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/ui_tree.html">
+
+                            Tree View</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/ui_nestable.html">
+
+                            Nestable List</a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li class="active ">
+
+                <a href="javascript:;">
+
+                    <i class="icon-table"></i>
+
+                    <span class="title">Form Stuff</span>
+
+                    <span class="selected"></span>
+
+                    <span class="arrow open"></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li>
+
+                        <a href="../../metronic/form_layout.html">
+
+                            Form Layouts</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/form_samples.html">
+
+                            Advance Form Samples</a>
+
+                    </li>
+
+                    <li class="active">
+
+                        <a href="form_component.html">
+
+                            房屋信息发布</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/form_wizard.html">
+
+                            Form Wizard</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/form_validation.html">
+
+                            Form Validation</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/form_fileupload.html">
+
+                            Multiple File Upload</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/form_dropzone.html">
+
+                            Dropzone File Upload</a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li class="">
+
+                <a href="javascript:;">
+
+                    <i class="icon-briefcase"></i>
+
+                    <span class="title">Pages</span>
+
+                    <span class="arrow "></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li>
+
+                        <a href="../../metronic/page_timeline.html">
+
+                            <i class="icon-time"></i>
+
+                            Timeline</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/page_coming_soon.html">
+
+                            <i class="icon-cogs"></i>
+
+                            Coming Soon</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/page_blog.html">
+
+                            <i class="icon-comments"></i>
+
+                            Blog</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/page_blog_item.html">
+
+                            <i class="icon-font"></i>
+
+                            Blog Post</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/page_news.html">
+
+                            <i class="icon-coffee"></i>
+
+                            News</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/page_news_item.html">
+
+                            <i class="icon-bell"></i>
+
+                            News View</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/page_about.html">
+
+                            <i class="icon-group"></i>
+
+                            About Us</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/page_contact.html">
+
+                            <i class="icon-envelope-alt"></i>
+
+                            Contact Us</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/page_calendar.html">
+
+                            <i class="icon-calendar"></i>
+
+                            Calendar</a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li class="">
+
+                <a href="javascript:;">
+
+                    <i class="icon-gift"></i>
+
+                    <span class="title">Extra</span>
+
+                    <span class="arrow "></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li>
+
+                        <a href="extra_profile.html">
+
+                            User Profile</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/extra_lock.html">
+
+                            Lock Screen</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/extra_faq.html">
+
+                            FAQ</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/inbox.html">
+
+                            Inbox</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/extra_search.html">
+
+                            Search Results</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/extra_invoice.html">
+
+                            Invoice</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/extra_pricing_table.html">
+
+                            Pricing Tables</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/extra_image_manager.html">
+
+                            Image Manager</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/extra_404_option1.html">
+
+                            404 Page Option 1</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/extra_404_option2.html">
+
+                            404 Page Option 2</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/extra_404_option3.html">
+
+                            404 Page Option 3</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/extra_500_option1.html">
+
+                            500 Page Option 1</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/extra_500_option2.html">
+
+                            500 Page Option 2</a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li>
+
+                <a class="active" href="javascript:;">
+
+                    <i class="icon-sitemap"></i>
+
+                    <span class="title">3 Level Menu</span>
+
+                    <span class="arrow "></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li>
+
+                        <a href="javascript:;">
+
+                            Item 1
+
+                            <span class="arrow"></span>
+
+                        </a>
+
+                        <ul class="sub-menu">
+
+                            <li><a href="#">Sample Link 1</a></li>
+
+                            <li><a href="#">Sample Link 2</a></li>
+
+                            <li><a href="#">Sample Link 3</a></li>
+
+                        </ul>
+
+                    </li>
+
+                    <li>
+
+                        <a href="javascript:;">
+
+                            Item 1
+
+                            <span class="arrow"></span>
+
+                        </a>
+
+                        <ul class="sub-menu">
+
+                            <li><a href="#">Sample Link 1</a></li>
+
+                            <li><a href="#">Sample Link 1</a></li>
+
+                            <li><a href="#">Sample Link 1</a></li>
+
+                        </ul>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#">
+
+                            Item 3
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li>
+
+                <a href="javascript:;">
+
+                    <i class="icon-folder-open"></i>
+
+                    <span class="title">4 Level Menu</span>
+
+                    <span class="arrow "></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li>
+
+                        <a href="javascript:;">
+
+                            <i class="icon-cogs"></i>
+
+                            Item 1
+
+                            <span class="arrow"></span>
+
+                        </a>
+
+                        <ul class="sub-menu">
+
+                            <li>
+
+                                <a href="javascript:;">
+
+                                    <i class="icon-user"></i>
+
+                                    Sample Link 1
+
+                                    <span class="arrow"></span>
+
+                                </a>
+
+                                <ul class="sub-menu">
+
+                                    <li><a href="#"><i class="icon-remove"></i> Sample Link 1</a></li>
+
+                                    <li><a href="#"><i class="icon-pencil"></i> Sample Link 1</a></li>
+
+                                    <li><a href="#"><i class="icon-edit"></i> Sample Link 1</a></li>
+
+                                </ul>
+
+                            </li>
+
+                            <li><a href="#"><i class="icon-user"></i> Sample Link 1</a></li>
+
+                            <li><a href="#"><i class="icon-external-link"></i> Sample Link 2</a></li>
+
+                            <li><a href="#"><i class="icon-bell"></i> Sample Link 3</a></li>
+
+                        </ul>
+
+                    </li>
+
+                    <li>
+
+                        <a href="javascript:;">
+
+                            <i class="icon-globe"></i>
+
+                            Item 2
+
+                            <span class="arrow"></span>
+
+                        </a>
+
+                        <ul class="sub-menu">
+
+                            <li><a href="#"><i class="icon-user"></i> Sample Link 1</a></li>
+
+                            <li><a href="#"><i class="icon-external-link"></i> Sample Link 1</a></li>
+
+                            <li><a href="#"><i class="icon-bell"></i> Sample Link 1</a></li>
+
+                        </ul>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#">
+
+                            <i class="icon-folder-open"></i>
+
+                            Item 3
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li class="">
+
+                <a href="javascript:;">
+
+                    <i class="icon-user"></i>
+
+                    <span class="title">Login Options</span>
+
+                    <span class="arrow "></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li>
+
+                        <a href="../../metronic/login.html">
+
+                            Login Form 1</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/login_soft.html">
+
+                            Login Form 2</a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li class="">
+
+                <a href="javascript:;">
+
+                    <i class="icon-th"></i>
+
+                    <span class="title">Data Tables</span>
+
+                    <span class="arrow "></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li>
+
+                        <a href="../../metronic/table_basic.html">
+
+                            Basic Tables</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/table_responsive.html">
+
+                            Responsive Tables</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/table_managed.html">
+
+                            Managed Tables</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/table_editable.html">
+
+                            Editable Tables</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/table_advanced.html">
+
+                            Advanced Tables</a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li class="">
+
+                <a href="javascript:;">
+
+                    <i class="icon-file-text"></i>
+
+                    <span class="title">Portlets</span>
+
+                    <span class="arrow "></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li>
+
+                        <a href="../../metronic/portlet_general.html">
+
+                            General Portlets</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/portlet_draggable.html">
+
+                            Draggable Portlets</a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li class="">
+
+                <a href="javascript:;">
+
+                    <i class="icon-map-marker"></i>
+
+                    <span class="title">Maps</span>
+
+                    <span class="arrow "></span>
+
+                </a>
+
+                <ul class="sub-menu">
+
+                    <li>
+
+                        <a href="../../metronic/maps_google.html">
+
+                            Google Maps</a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../../metronic/maps_vector.html">
+
+                            Vector Maps</a>
+
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li class="last ">
+
+                <a href="../../metronic/charts.html">
+
+                    <i class="icon-bar-chart"></i>
+
+                    <span class="title">Visual Charts</span>
+
+                </a>
+
+            </li>
 
         </ul>
 
-      </li>
-
-      <li class="">
-
-        <a href="javascript:;">
-
-          <i class="icon-user"></i>
-
-          <span class="title">Login Options</span>
-
-          <span class="arrow "></span>
-
-        </a>
-
-        <ul class="sub-menu">
-
-          <li >
-
-            <a href="../../metronic/login.html">
-
-              Login Form 1</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/login_soft.html">
-
-              Login Form 2</a>
-
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li class="">
-
-        <a href="javascript:;">
-
-          <i class="icon-th"></i>
-
-          <span class="title">Data Tables</span>
-
-          <span class="arrow "></span>
-
-        </a>
-
-        <ul class="sub-menu">
-
-          <li >
-
-            <a href="../../metronic/table_basic.html">
-
-              Basic Tables</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/table_responsive.html">
-
-              Responsive Tables</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/table_managed.html">
-
-              Managed Tables</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/table_editable.html">
-
-              Editable Tables</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/table_advanced.html">
-
-              Advanced Tables</a>
-
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li class="">
-
-        <a href="javascript:;">
-
-          <i class="icon-file-text"></i>
-
-          <span class="title">Portlets</span>
-
-          <span class="arrow "></span>
-
-        </a>
-
-        <ul class="sub-menu">
-
-          <li >
-
-            <a href="../../metronic/portlet_general.html">
-
-              General Portlets</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/portlet_draggable.html">
-
-              Draggable Portlets</a>
-
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li class="">
-
-        <a href="javascript:;">
-
-          <i class="icon-map-marker"></i>
-
-          <span class="title">Maps</span>
-
-          <span class="arrow "></span>
-
-        </a>
-
-        <ul class="sub-menu">
-
-          <li >
-
-            <a href="../../metronic/maps_google.html">
-
-              Google Maps</a>
-
-          </li>
-
-          <li >
-
-            <a href="../../metronic/maps_vector.html">
-
-              Vector Maps</a>
-
-          </li>
-
-        </ul>
-
-      </li>
-
-      <li class="last ">
-
-        <a href="../../metronic/charts.html">
-
-          <i class="icon-bar-chart"></i>
-
-          <span class="title">Visual Charts</span>
-
-        </a>
-
-      </li>
-
-    </ul>
-
-    <!-- END SIDEBAR MENU -->
-
-  </div>
-
-  <!-- END SIDEBAR -->
-
-  <!-- BEGIN PAGE -->
-
-  <div class="page-content">
-
-    <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-
-    <div id="portlet-config" class="modal hide">
-
-      <div class="modal-header">
-
-        <button data-dismiss="modal" class="close" type="button"></button>
-
-        <h3>portlet Settings</h3>
-
-      </div>
-
-      <div class="modal-body">
-
-        <p>Here will be a configuration form</p>
-
-      </div>
+        <!-- END SIDEBAR MENU -->
 
     </div>
 
-    <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+    <!-- END SIDEBAR -->
 
-    <!-- BEGIN PAGE CONTAINER-->
+    <!-- BEGIN PAGE -->
 
-    <div class="container-fluid">
+    <div class="page-content">
 
-      <!-- BEGIN PAGE HEADER-->
+        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
-      <div class="row-fluid">
+        <div id="portlet-config" class="modal hide">
 
-        <div class="span12">
+            <div class="modal-header">
 
-          <!-- BEGIN STYLE CUSTOMIZER -->
+                <button data-dismiss="modal" class="close" type="button"></button>
 
-          <div class="color-panel hidden-phone">
-
-            <div class="color-mode-icons icon-color"></div>
-
-            <div class="color-mode-icons icon-color-close"></div>
-
-            <div class="color-mode">
-
-              <p>THEME COLOR</p>
-
-              <ul class="inline">
-
-                <li class="color-black current color-default" data-style="default"></li>
-
-                <li class="color-blue" data-style="blue"></li>
-
-                <li class="color-brown" data-style="brown"></li>
-
-                <li class="color-purple" data-style="purple"></li>
-
-                <li class="color-grey" data-style="grey"></li>
-
-                <li class="color-white color-light" data-style="light"></li>
-
-              </ul>
-
-              <label>
-
-                <span>Layout</span>
-
-                <select class="layout-option m-wrap small">
-
-                  <option value="fluid" selected>Fluid</option>
-
-                  <option value="boxed">Boxed</option>
-
-                </select>
-
-              </label>
-
-              <label>
-
-                <span>Header</span>
-
-                <select class="header-option m-wrap small">
-
-                  <option value="fixed" selected>Fixed</option>
-
-                  <option value="default">Default</option>
-
-                </select>
-
-              </label>
-
-              <label>
-
-                <span>Sidebar</span>
-
-                <select class="sidebar-option m-wrap small">
-
-                  <option value="fixed">Fixed</option>
-
-                  <option value="default" selected>Default</option>
-
-                </select>
-
-              </label>
-
-              <label>
-
-                <span>Footer</span>
-
-                <select class="footer-option m-wrap small">
-
-                  <option value="fixed">Fixed</option>
-
-                  <option value="default" selected>Default</option>
-
-                </select>
-
-              </label>
+                <h3>portlet Settings</h3>
 
             </div>
 
-          </div>
+            <div class="modal-body">
 
-          <!-- END BEGIN STYLE CUSTOMIZER -->
+                <p>Here will be a configuration form</p>
 
-          <h3 class="page-title">
-
-            房屋信息发布
-
-            <small>房屋详情登记</small>
-
-          </h3>
-
-          <ul class="breadcrumb">
-
-            <li>
-
-              <i class="icon-home"></i>
-
-              <a href="../../metronic/index.html">短租网</a>
-
-              <span class="icon-angle-right"></span>
-
-            </li>
-
-            <li>
-
-              <a href="#">房屋管理</a>
-
-              <span class="icon-angle-right"></span>
-
-            </li>
-
-            <li><a href="#">房屋信息发布</a></li>
-
-          </ul>
+            </div>
 
         </div>
 
-      </div>
+        <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
-      <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTAINER-->
 
-      <!-- BEGIN PAGE CONTENT-->
+        <div class="container-fluid">
 
-      <div class="row-fluid">
+            <!-- BEGIN PAGE HEADER-->
 
-        <div class="span12">
+            <div class="row-fluid">
 
-          <!-- BEGIN SAMPLE FORM PORTLET-->
+                <div class="span12">
 
-          <div class="portlet box blue">
+                    <!-- BEGIN STYLE CUSTOMIZER -->
 
-            <div class="portlet-title">
+                    <div class="color-panel hidden-phone">
 
-              <div class="caption"><i class="icon-reorder"></i>信息填写表</div>
+                        <div class="color-mode-icons icon-color"></div>
+
+                        <div class="color-mode-icons icon-color-close"></div>
+
+                        <div class="color-mode">
+
+                            <p>THEME COLOR</p>
+
+                            <ul class="inline">
+
+                                <li class="color-black current color-default" data-style="default"></li>
+
+                                <li class="color-blue" data-style="blue"></li>
+
+                                <li class="color-brown" data-style="brown"></li>
+
+                                <li class="color-purple" data-style="purple"></li>
+
+                                <li class="color-grey" data-style="grey"></li>
+
+                                <li class="color-white color-light" data-style="light"></li>
+
+                            </ul>
+
+                            <label>
+
+                                <span>Layout</span>
+
+                                <select class="layout-option m-wrap small">
+
+                                    <option value="fluid" selected>Fluid</option>
+
+                                    <option value="boxed">Boxed</option>
+
+                                </select>
+
+                            </label>
+
+                            <label>
+
+                                <span>Header</span>
+
+                                <select class="header-option m-wrap small">
+
+                                    <option value="fixed" selected>Fixed</option>
+
+                                    <option value="default">Default</option>
+
+                                </select>
+
+                            </label>
+
+                            <label>
+
+                                <span>Sidebar</span>
+
+                                <select class="sidebar-option m-wrap small">
+
+                                    <option value="fixed">Fixed</option>
+
+                                    <option value="default" selected>Default</option>
+
+                                </select>
+
+                            </label>
+
+                            <label>
+
+                                <span>Footer</span>
+
+                                <select class="footer-option m-wrap small">
+
+                                    <option value="fixed">Fixed</option>
+
+                                    <option value="default" selected>Default</option>
+
+                                </select>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <!-- END BEGIN STYLE CUSTOMIZER -->
+
+                    <h3 class="page-title">
+
+                        房屋信息发布
+
+                        <small>房屋详情登记</small>
+
+                    </h3>
+
+                    <ul class="breadcrumb">
+
+                        <li>
+
+                            <i class="icon-home"></i>
+
+                            <a href="../../metronic/index.html">短租网</a>
+
+                            <span class="icon-angle-right"></span>
+
+                        </li>
+
+                        <li>
+
+                            <a href="#">房屋管理</a>
+
+                            <span class="icon-angle-right"></span>
+
+                        </li>
+
+                        <li><a href="#">房屋信息发布</a></li>
+
+                    </ul>
+
+                </div>
 
             </div>
 
+            <!-- END PAGE HEADER-->
+
+            <!-- BEGIN PAGE CONTENT-->
+
+            <div class="row-fluid">
+
+                <div class="span12">
+
+                    <!-- BEGIN SAMPLE FORM PORTLET-->
+
+                    <div class="portlet box blue">
+
+                        <div class="portlet-title">
+
+                            <div class="caption"><i class="icon-reorder"></i>信息填写表</div>
+
+                        </div>
 
 
-            <div class="portlet-body form">
+                        <div class="portlet-body form">
 
-              <!-- BEGIN FORM-->
+                            <!-- BEGIN FORM-->
+                            <jsp:useBean id="result" scope="page" type="edu.xiyou.shortrent.model.vo.ResultVo"/>
+                            <c:if test="${result != null}">
+                                <script>
+                                    alert(result.msg);
+                                </script>
+                            </c:if>
 
-              <form action="<%=basePath%>house/createData.action" class="form-horizontal" method="post">
+                            <form action="${action}" class="form-horizontal" method="post">
+                                <div class="control-group">
 
-                <div class="control-group">
+                                    <label class="control-label">房屋简介</label>
 
-                  <label class="control-label">房屋简介</label>
+                                    <div class="controls">
 
-                  <div class="controls">
+                                            <textarea class="span6 m-wrap" rows="3"
+                                                      name="content">${house.content}</textarea>
 
-                    <textarea class="span6 m-wrap" rows="3" name="content">${house.content}</textarea>
+                                        <span class="help-inline">介绍您要出租的房屋</span>
 
-                    <span class="help-inline">介绍您要出租的房屋</span>
+                                    </div>
 
-                  </div>
-
-                </div>
-
-
-                <div class="control-group">
-
-                  <label class="control-label">联系方式</label>
-
-                  <div class="controls">
-
-                    <input type="text" name="mobile" value="${house.mobile}" class="span6 m-wrap popovers" data-trigger="hover" data-content="方便我们向您核实房屋信息，以及租房者跟您联系" data-original-title="重要~" />
-
-                    <span class="help-inline">填写手机号</span>
-                  </div>
-
-                </div>
-
-                <div class="control-group">
-
-                  <label class="control-label">固话</label>
-
-                  <div class="controls">
-
-                    <input type="text" class="span6 m-wrap tooltips" name="tel" value="${house.tel}" data-trigger="hover" data-original-title="请填写紧急联系人保证我们可以找到您" />
-
-                    <span class="help-inline">填写座机号</span>
-                  </div>
-
-                </div>
+                                </div>
 
 
-                <div class="control-group">
+                                <div class="control-group">
 
-                  <label class="control-label">房屋面积</label>
+                                    <label class="control-label">联系方式</label>
 
-                  <div class="controls">
+                                    <div class="controls">
 
-                    <div class="input-icon left">
+                                        <input type="text" name="mobile" value="${house.mobile}"
+                                               class="span6 m-wrap popovers" data-trigger="hover"
+                                               data-content="方便我们向您核实房屋信息，以及租房者跟您联系" data-original-title="重要~"/>
 
-                      <i class="icon-envelope"></i>
+                                        <span class="help-inline">填写手机号</span>
+                                    </div>
+
+                                </div>
+
+                                <div class="control-group">
+
+                                    <label class="control-label">固话</label>
+
+                                    <div class="controls">
+
+                                        <input type="text" class="span6 m-wrap tooltips" name="tel"
+                                               value="${house.tel}" data-trigger="hover"
+                                               data-original-title="请填写紧急联系人保证我们可以找到您"/>
+
+                                        <span class="help-inline">填写座机号</span>
+                                    </div>
+
+                                </div>
 
 
-                      <input class="m-wrap " type="text" placeholder="请填写房屋面积" value="${house.area}" name="area"/>
+                                <div class="control-group">
+
+                                    <label class="control-label">房屋面积</label>
+
+                                    <div class="controls">
+
+                                        <div class="input-icon left">
+
+                                            <i class="icon-envelope"></i>
+
+
+                                            <input class="m-wrap " type="text" placeholder="请填写房屋面积"
+                                                   value="${house.area}" name="area"/>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="control-group">
+
+                                    <label class="control-label">租金</label>
+
+                                    <div class="controls">
+
+                                        <div class="input-prepend">
+
+                                            <span class="add-on">元</span><input name="price" class="m-wrap "
+                                                                                value="${house.price}" type="text"/>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="control-group">
+
+                                    <label class="control-label">备选房型</label>
+
+                                    <div class="controls">
+
+                                        <select class="span6 m-wrap" data-placeholder="Choose a Category"
+                                                tabindex="1" name="houseType">
+
+                                            <option value="0">选择</option>
+
+                                            <option value="0" selected>普通</option>
+
+                                            <option value="1">高层</option>
+
+                                            <option value="2">别墅</option>
+
+                                            <option value="3">跃层</option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="control-group">
+
+                                    <label class="control-label">屋内家具</label>
+
+                                    <div class="controls">
+
+                                        <div class="row-fluid">
+
+                                            <div class="span3">
+
+                                                <label class="checkbox line">
+
+                                                    <input type="checkbox" value=""/> 冰箱
+
+                                                </label>
+
+                                                <label class="checkbox line">
+
+                                                    <input type="checkbox" value=""/> 洗衣机
+
+                                                </label>
+
+                                                <label class="checkbox line">
+
+                                                    <input type="checkbox" value=""/> 空调
+
+                                                </label>
+
+                                                <label class="checkbox line">
+
+                                                    <input type="checkbox" value=""/> 电视
+
+                                                </label>
+
+                                            </div>
+
+                                            <div class="span3">
+
+                                                <label class="checkbox line">
+
+                                                    <input type="checkbox" value=""/> 单人床
+
+                                                </label>
+
+                                                <label class="checkbox line">
+
+                                                    <input type="checkbox" value=""/> 双人床
+
+                                                </label>
+
+                                                <label class="checkbox line">
+
+                                                    <input type="checkbox" value=""/> 沙发
+
+                                                </label>
+
+                                                <label class="checkbox line">
+
+                                                    <input type="checkbox" value=""/> 餐桌
+
+                                                </label>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="control-group">
+
+                                    <label class="control-label">房屋地址</label>
+
+                                    <div class="controls">
+
+                                        <input class="span6 m-wrap" rows="3" name="address"
+                                               value="${house.address}"/>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-actions">
+
+                                    <button type="submit" class="btn blue">发布~快来住！</button>
+
+                                    <button type="button" class="btn">登记。先不租...</button>
+
+                                </div>
+
+                            </form>
+
+                            <!-- END FORM-->
+
+                        </div>
 
                     </div>
 
-                  </div>
+                    <!-- END SAMPLE FORM PORTLET-->
 
                 </div>
-
-                <div class="control-group">
-
-                  <label class="control-label">租金</label>
-
-                  <div class="controls">
-
-                    <div class="input-prepend">
-
-                      <span class="add-on">元</span><input name="price" class="m-wrap " value="${house.price}" type="text" />
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="control-group">
-
-                  <label class="control-label">备选房型</label>
-
-                  <div class="controls">
-
-                    <select class="span6 m-wrap" data-placeholder="Choose a Category" tabindex="1" name="houseType">
-
-                      <option value="0">选择</option>
-
-                      <option value="0" selected>普通</option>
-
-                      <option value="1">高层</option>
-
-                      <option value="2">别墅</option>
-
-                      <option value="3">跃层</option>
-
-                    </select>
-
-                  </div>
-
-                </div>
-
-                <div class="control-group">
-
-                  <label class="control-label">屋内家具</label>
-
-                  <div class="controls">
-
-                    <div class="row-fluid">
-
-                      <div class="span3">
-
-                        <label class="checkbox line">
-
-                          <input type="checkbox" value="" /> 冰箱
-
-                        </label>
-
-                        <label class="checkbox line">
-
-                          <input type="checkbox" value="" /> 洗衣机
-
-                        </label>
-
-                        <label class="checkbox line">
-
-                          <input type="checkbox" value="" /> 空调
-
-                        </label>
-
-                        <label class="checkbox line">
-
-                          <input type="checkbox" value="" /> 电视
-
-                        </label>
-
-                      </div>
-
-                      <div class="span3">
-
-                        <label class="checkbox line">
-
-                          <input type="checkbox" value="" /> 单人床
-
-                        </label>
-
-                        <label class="checkbox line">
-
-                          <input type="checkbox" value="" /> 双人床
-
-                        </label>
-
-                        <label class="checkbox line">
-
-                          <input type="checkbox" value="" /> 沙发
-
-                        </label>
-
-                        <label class="checkbox line">
-
-                          <input type="checkbox" value="" /> 餐桌
-
-                        </label>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="control-group">
-
-                  <label class="control-label">房屋地址</label>
-
-                  <div class="controls">
-
-                    <input class="span6 m-wrap" rows="3" name="address" value="${house.address}"/>
-
-                  </div>
-
-                </div>
-
-                <div class="form-actions">
-
-                  <button type="submit" class="btn blue">发布~快来住！</button>
-
-                  <button type="button" class="btn">登记。先不租...</button>
-
-                </div>
-
-              </form>
-
-              <!-- END FORM-->
 
             </div>
 
-          </div>
-
-          <!-- END SAMPLE FORM PORTLET-->
-
-        </div>
-
-      </div>
-
-      <!--<div class="row-fluid">
+            <!--<div class="row-fluid">
 
           <div class="span12">
 
@@ -4419,15 +4439,15 @@
 
                           </div>-->
 
-      </form>
+            </form>
 
-      <!-- END FORM-->
+            <!-- END FORM-->
+
+        </div>
 
     </div>
 
-  </div>
-
-  <!-- END EXTRAS PORTLET-->
+    <!-- END EXTRAS PORTLET-->
 
 </div>
 
@@ -4451,13 +4471,13 @@
 
 <div class="footer">
 
-  <div class="footer-inner">
+    <div class="footer-inner">
 
-    2013 &copy; Metronic by keenthemes.
+        2013 &copy; Metronic by keenthemes.
 
-  </div>
+    </div>
 
-  <div class="footer-tools">
+    <div class="footer-tools">
 
 			<span class="go-top">
 
@@ -4465,7 +4485,7 @@
 
 			</span>
 
-  </div>
+    </div>
 
 </div>
 
@@ -4499,7 +4519,7 @@
 
 <script src="<%=basePath%>assets/media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="<%=basePath%>assets/media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="<%=basePath%>assets/media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -4541,9 +4561,9 @@
 
 <script type="text/javascript" src="<%=basePath%>assets/media/js/jquery.multi-select.js"></script>
 
-<script src="<%=basePath%>assets/media/js/bootstrap-modal.js" type="text/javascript" ></script>
+<script src="<%=basePath%>assets/media/js/bootstrap-modal.js" type="text/javascript"></script>
 
-<script src="<%=basePath%>assets/media/js/bootstrap-modalmanager.js" type="text/javascript" ></script>
+<script src="<%=basePath%>assets/media/js/bootstrap-modalmanager.js" type="text/javascript"></script>
 
 <!-- END PAGE LEVEL PLUGINS -->
 
@@ -4557,21 +4577,34 @@
 
 <script>
 
-  jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
-    // initiate layout and plugins
+        // initiate layout and plugins
 
-    App.init();
+        App.init();
 
-    FormComponents.init();
+        FormComponents.init();
 
-  });
+    });
 
 </script>
 
 <!-- END JAVASCRIPTS -->
 
-<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
+<script type="text/javascript">  var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37564768-1']);
+_gaq.push(['_setDomainName', 'keenthemes.com']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+(function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();</script>
+</body>
 
 <!-- END BODY -->
 
