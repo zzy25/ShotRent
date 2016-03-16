@@ -23,16 +23,18 @@ import java.util.List;
 public class HouseCotroller extends BaseController{
 
     @RequestMapping("/create.action")
-    public String createHouse() {
+    public String createHouse(ModelMap modelMap) {
+        modelMap.addAttribute("action", "<%=basePath%>house/createData.action");
         return "publishHoure";
     }
 
-    @RequestMapping("/createData.action")
-    public ResultVo<String> createData(@RequestParam("mobile") String mobile, @RequestParam("tel") String tel,
+    @RequestMapping(value = "/createData.action", method = RequestMethod.POST)
+    public String createData(@RequestParam("mobile") String mobile, @RequestParam("tel") String tel,
                                         @RequestParam("houseType") Short houseType, @RequestParam("address") String address,
                                         @RequestParam("area") Integer area, @RequestParam("price") Integer price,
-                                        @RequestParam("content") String content, @RequestParam("furniture") String furniture,
-                                        @RequestParam("online") Short online, HttpServletRequest request, ModelMap modelMap) {
+                                        @RequestParam("content") String content,
+                                       @RequestParam(value = "furniture", defaultValue = "") String furniture,
+                                        @RequestParam(value = "online", defaultValue = "1") Short online, HttpServletRequest request, ModelMap modelMap) {
         ResultVo<String> resultVo = new ResultVo<>();
         House house = new House();
         try {
@@ -51,6 +53,8 @@ public class HouseCotroller extends BaseController{
             house.setCreatetime(new Date());
             house.setUpdatetime(new Date());
             houseService.addHouse(house);
+            resultVo.setApproved(true);
+            resultVo.setMsg("添加成功");
         } catch (ArguException e) {
             resultVo.setMsg(e.getMessage());
             resultVo.setApproved(false);
@@ -59,7 +63,9 @@ public class HouseCotroller extends BaseController{
             resultVo.setApproved(false);
             resultVo.setMsg("输入信息有误，请重新输入");
         }
-        return resultVo;
+        modelMap.addAttribute("result", resultVo);
+        modelMap.addAttribute("house", house);
+        return "publishHoure";
     }
 
     @RequestMapping(value = "/ower/{owerId}.action")
@@ -95,12 +101,13 @@ public class HouseCotroller extends BaseController{
             logger.error("getHouse houseId={}, exception={}", houseId, e);
         }
         modelMap.addAttribute("house", house);
-        return "updateHouse";
+        modelMap.addAttribute("action", "<%=basePath%>house/updateData.action");
+        return "publishHoure";
     }
 
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping(value = "/updateData.action", method = RequestMethod.POST)
-    public ResultVo<House> updateHouseData(@RequestParam("houseId")Integer houseId,
+    public String updateHouseData(@RequestParam("houseId")Integer houseId,
                                        @RequestParam(value = "mobile", required = false)String mobile,
                                        @RequestParam(value = "tel", required = false)String tel,
                                        @RequestParam(value = "price", required = false)Integer price,
@@ -134,7 +141,9 @@ public class HouseCotroller extends BaseController{
             resultVo.setMsg("输入信息有误");
             resultVo.setApproved(false);
         }
-        return resultVo;
+        modelMap.addAttribute("house", house);
+        modelMap.addAttribute("result", resultVo);
+        return "";
     }
 
     @RequestMapping(value = "/checkHouse.action")

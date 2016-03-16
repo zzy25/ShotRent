@@ -91,7 +91,7 @@ public class HouseServiceImpl implements HouseService {
 
     @Override
     public List<House> selectBySelective(House house) throws Exception {
-        List<House> houseList = null;
+        List<House> houseList;
         try {
             houseList = houseMapper.selectBySelective(house);
         }catch (Exception e){
