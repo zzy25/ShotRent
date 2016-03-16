@@ -1723,7 +1723,7 @@
                   </c:when>
                 </c:choose>
 
-                <tr class="odd gradeX">
+                <%--<tr class="odd gradeX">
 
                   <td>岳超刚</td>
 
@@ -1739,7 +1739,7 @@
                   <td><button type="button" class="btn green">通过</button>
                     <button type="button" class="btn red " >驳回</button></td>
 
-                </tr>
+                </tr>--%>
 
 
 

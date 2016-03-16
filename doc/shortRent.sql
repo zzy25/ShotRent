@@ -88,3 +88,41 @@ INSERT INTO `users` VALUES ('10001', '汪曙生', 'e10adc3949ba59abbe56e057f20f8
 INSERT INTO `users` VALUES ('10002', '黄志文', 'e10adc3949ba59abbe56e057f20f883e', '234567891@qq.com', '0', '4565412364', null, null);
 INSERT INTO `users` VALUES ('10003', '王铎雄', 'e10adc3949ba59abbe56e057f20f883e', '741258963@qq.com', '1', '7418529630', null, null);
 INSERT INTO `users` VALUES ('10004', '汪胜钧', 'e10adc3949ba59abbe56e057f20f883e', '653560991@qq.com', '1', '13902067295', null, null);
+
+
+DROP TABLE IF EXISTS `permission`;
+
+create table `permission`(
+  id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '权限id',
+  name VARCHAR(32) NOT NULL COMMENT '权限名',
+  sign VARCHAR(128) NOT NULL COMMENT '权限标识，程序判断使用，如: user:create',
+  description VARCHAR(256) DEFAULT null COMMENT '权限描述,用于ui的显示界面'
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT '权限表';
+
+DROP TABLE IF EXISTS `role`;
+
+CREATE TABLE `role` (
+  id INT(10) NOT NULL AUTO_INCREMENT COMMENT '角色id',
+  name VARCHAR(32) NOT NULL COMMENT '角色名',
+  sign VARCHAR(128) NOT NULL COMMENT '角色标识，如: admin',
+  description VARCHAR(256) NOT NULL COMMENT '角色描述，用于ui界面的使用',
+  PRIMARY KEY (id)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT '角色表';
+
+DROP TABLE IF EXISTS `rolePermission`;
+
+CREATE TABLE `rolePermission` (
+  id INT(10) NOT NULL AUTO_INCREMENT COMMENT '角色权限表主键',
+  roleId INT(10) NOT NULL COMMENT '角色表主键',
+  permissionId INT(10) NOT NULL COMMENT '权限id',
+  PRIMARY KEY (id)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT '角色权限表';
+
+DROP TABLE IF EXISTS `userRole`;
+
+CREATE TABLE `userRole`(
+  id INT(10) NOT NULL AUTO_INCREMENT COMMENT '用户角色表主键',
+  userId INT(10) NOT NULL COMMENT '用户表主键',
+  roleId INT(10) NOT NULL COMMENT '角色表主键',
+  PRIMARY KEY (id)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT '用户角色表';
