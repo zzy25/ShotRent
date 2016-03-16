@@ -89,6 +89,18 @@ public class HouseServiceImpl implements HouseService {
         return house;
     }
 
+    @Override
+    public List<House> selectBySelective(House house) throws Exception {
+        List<House> houseList = null;
+        try {
+            houseList = houseMapper.selectBySelective(house);
+        }catch (Exception e){
+            logger.error("selectBySelective record={}, exception={}", house, e);
+            throw new Exception("selectBySelective error");
+        }
+        return houseList;
+    }
+
     public HouseMapper getHouseMapper() {
         return houseMapper;
     }

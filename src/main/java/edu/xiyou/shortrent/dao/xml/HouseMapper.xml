@@ -264,8 +264,8 @@
       <if test="minPrice != null">
         price <![CDATA[>=]]> #{minPrice,jdbcType=INTEGER}
       </if>
-      <if test="addressContain != null">
-        location(address,#{addressContain,jdbcType=VARCHAR} <![CDATA[>]]> 0
+      <if test="addressContain != null and addressContain != ''">
+        locate(address,#{addressContain,jdbcType=VARCHAR}) <![CDATA[>]]> 0
       </if>
       <if test="houseType != null">
         houseType = #{houseType,jdbcType=SMALLINT}

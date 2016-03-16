@@ -1,3 +1,18 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: andrew
+  Date: 16-3-9
+  Time: 上午11:40
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
+
 <!DOCTYPE html>
 
 <!--[if IE 8]>
@@ -25,35 +40,35 @@
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
-    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="<%=basePath%>assets/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 
-    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" type="text/css" href="media/css/datepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/datepicker.css"/>
 
-    <link href="media/css/jquery.fancybox.css" rel="stylesheet"/>
+    <link href="<%=basePath%>assets/media/css/jquery.fancybox.css" rel="stylesheet"/>
 
-    <link href="media/css/search.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/search.css" rel="stylesheet" type="text/css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+    <link rel="shortcut icon" href="<%=basePath%>assets/media/image/favicon.ico"/>
 
 </head>
 
@@ -77,7 +92,7 @@
 
             <a class="brand" href="index.html">
 
-                <img src="media/image/logo.png" alt="logo"/>
+                <img src="<%=basePath%>assets/media/image/logo.png" alt="logo"/>
 
             </a>
 
@@ -87,7 +102,7 @@
 
             <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
 
-                <img src="media/image/menu-toggler.png" alt=""/>
+                <img src="<%=basePath%>assets/media/image/menu-toggler.png" alt=""/>
 
             </a>
 
@@ -237,7 +252,8 @@
 
                             <a href="inbox.html?a=view">
 
-                                <span class="photo"><img src="media/image/avatar2.jpg" alt=""/></span>
+                                <span class="photo"><img src="<%=basePath%>assets/media/image/avatar2.jpg"
+                                                         alt=""/></span>
 
 								<span class="subject">
 
@@ -493,7 +509,7 @@
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                        <img alt="" src="media/image/avatar1_small.jpg"/>
+                        <img alt="" src="<%=basePath%>assets/media/image/avatar1_small.jpg"/>
 
                         <span class="username">Bob Nilson</span>
 
@@ -1532,11 +1548,11 @@
 
                 <div class="tabbable tabbable-custom tabbable-full-width">
 
-                   <!-- <ul class="nav nav-tabs">
+                    <!-- <ul class="nav nav-tabs">
 
-                        <li class="active"><a data-toggle="tab" href="#tab_2_2">Booking Search 1</a></li>
+                         <li class="active"><a data-toggle="tab" href="#tab_2_2">Booking Search 1</a></li>
 
-                    </ul>-->
+                     </ul>-->
 
                     <div class="tab-content">
 
@@ -1546,18 +1562,18 @@
 
                                 <div class="span8 booking-search">
 
-                                    <form action="#">
+                                    <form action="<%=basePath%>rent/findHouses.action" method="post" id="conditionForm">
 
                                         <div class="clearfix margin-bottom-10">
 
-                                            <label>Distanation</label>
+                                            <label>地点</label>
 
                                             <div class="input-icon left">
 
                                                 <i class="icon-map-marker"></i>
 
                                                 <input class="m-wrap span12" type="text"
-                                                       placeholder="Canada, Malaysia, Russia ...">
+                                                       placeholder="请输入地点" name="addressContain">
 
                                             </div>
 
@@ -1565,48 +1581,42 @@
 
                                         <div class="clearfix margin-bottom-20">
 
-                                            <div class="control-group pull-left margin-right-20">
 
-                                                <label class="control-label">Check-in:</label>
+                                            <div class="span6">
+                                                <div class="control-group pull-left margin-right-20">
 
-                                                <div class="controls">
+                                                    <label class="control-label">房屋面积：</label>
 
-                                                    <div class="input-append date date-picker" data-date="12-02-2012"
-                                                         data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+                                                    <div class="controls">
 
-                                                        <input class="m-wrap m-ctrl-medium date-picker" size="16"
-                                                               type="text" value="12-02-2012"/><span class="add-on"><i
-                                                            class="icon-calendar"></i></span>
+                                                        <input type="text" id="minArea" name="minArea"
+                                                               class="m-wrap span6" placeholder="请输入最小面积">
+                                                        <input type="text" id="maxArea" name="maxArea"
+                                                               class="m-wrap span6" placeholder="请输入最大面积">
 
                                                     </div>
-
                                                 </div>
 
                                             </div>
+                                            <div class="span6">
+                                                <div class="control-group pull-left">
 
-                                            <div class="control-group pull-left">
+                                                    <label class="control-label">房屋价格：</label>
 
-                                                <label class="control-label">Check-out:</label>
+                                                    <div class="controls">
 
-                                                <div class="controls">
-
-                                                    <div class="input-append date date-picker" data-date="102/2012"
-                                                         data-date-format="mm/yyyy" data-date-viewmode="years"
-                                                         data-date-minviewmode="months">
-
-                                                        <input class="m-wrap m-ctrl-medium date-picker" size="16"
-                                                               type="text" value="02/2012"/><span class="add-on"><i
-                                                            class="icon-calendar"></i></span>
-
+                                                        <input type="text" id="mixPrice" name="minArea"
+                                                               class="m-wrap span6" placeholder="请输入最低价格">
+                                                        <input type="text" id="maxPrice" name="maxArea"
+                                                               class="m-wrap span6" placeholder="请输入最高价格">
                                                     </div>
 
                                                 </div>
-
                                             </div>
 
                                         </div>
 
-                                        <div class="clearfix margin-bottom-10">
+                                        <%--<div class="clearfix margin-bottom-10">
 
                                             <div class="pull-left margin-right-20">
 
@@ -1649,10 +1659,10 @@
 
                                             </div>
 
-                                        </div>
+                                        </div>--%>
 
-                                        <button class="btn blue btn-block">查找 <i
-                                                class="m-icon-swapright m-icon-white"></i></button>
+                                        <input type="submit" class="btn blue btn-block" value="查找"><%--查找--%> <i
+                                            class="m-icon-swapright m-icon-white"></i></input>
 
                                     </form>
 
@@ -1666,375 +1676,107 @@
 
                             <div class="space40"></div>
 
-                            <div class="row-fluid">
+                            <div class="row-fluid" id="houstList">
+                                <c:choose>
+                                    <c:when test="${houseList != null && houseList.size() > 0}">
+                                        <c:forEach items="${houseList}" var="item" step="2" varStatus="status">
+                                            <div class="row-fluid margin-bottom-20">
 
-                                <div class="row-fluid margin-bottom-20">
+                                                <div class="span6 booking-blocks">
 
-                                    <div class="span6 booking-blocks">
+                                                    <div class="pull-left booking-img">
 
-                                        <div class="pull-left booking-img">
+                                                        <img src="<%=basePath%>assets/media/image/image4.jpg" alt="">
 
-                                            <img src="media/image/image4.jpg" alt="">
+                                                        <ul class="unstyled">
 
-                                            <ul class="unstyled">
+                                                            <li><i class="icon-money"></i> ￥${item.price}</li>
 
-                                                <li><i class="icon-money"></i> From $126</li>
+                                                            <li>
+                                                                <i class="icon-map-marker"></i>${fn:substring(item.address,0, 10)}
+                                                            </li>
 
-                                                <li><i class="icon-map-marker"></i> Tioman, Malaysia</li>
+                                                        </ul>
 
-                                            </ul>
+                                                    </div>
 
-                                        </div>
+                                                    <div style="overflow:hidden;">
 
-                                        <div style="overflow:hidden;">
+                                                        <ul class="unstyled inline">
 
-                                            <!--<h2><a href="#">Here Any Title</a></h2>-->
+                                                            <li><i class="icon-star"></i></li>
 
-                                            <ul class="unstyled inline">
+                                                            <li><i class="icon-star"></i></li>
 
-                                                <li><i class="icon-star"></i></li>
+                                                            <li><i class="icon-star"></i></li>
 
-                                                <li><i class="icon-star"></i></li>
+                                                            <li><i class="icon-star"></i></li>
 
-                                                <li><i class="icon-star"></i></li>
+                                                            <li><i class="icon-star-empty"></i></li>
 
-                                                <li><i class="icon-star"></i></li>
+                                                        </ul>
 
-                                                <li><i class="icon-star-empty"></i></li>
+                                                        <p>${fn:substring(item.content,0, 30)}. <a
+                                                                href="<%=basePath%>rent/${item.id}.action">查看更多</a></p>
 
-                                            </ul>
+                                                    </div>
 
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                molestias excepturi sint occaecati cupiditate non provident, similique
-                                                sunt in culpa qui officia deserunt mollitia animi, id est laborum. <a
-                                                        href="#">read more</a></p>
+                                                </div>
+                                                <c:if test="${status.index + 1 < houseList.size()}">
+                                                    <div class="span6 booking-blocks">
 
-                                        </div>
+                                                        <div class="pull-left booking-img">
 
-                                    </div>
+                                                            <img src="<%=basePath%>assets/media/image/image5.jpg"
+                                                                 alt="">
 
-                                    <div class="span6 booking-blocks">
+                                                            <ul class="unstyled">
 
-                                        <div class="pull-left booking-img">
+                                                                <li><i class="icon-money"></i>
+                                                                    ￥${houseList[status.index+1].price}</li>
 
-                                            <img src="media/image/image5.jpg" alt="">
+                                                                <li>
+                                                                    <i class="icon-map-marker"></i>${fn:substring(houseList[status.index+1].address,0, 10)}
+                                                                </li>
 
-                                            <ul class="unstyled">
+                                                            </ul>
 
-                                                <li><i class="icon-money"></i> From $157</li>
+                                                        </div>
 
-                                                <li><i class="icon-map-marker"></i> London, UK</li>
+                                                        <div style="overflow:hidden;">
 
-                                            </ul>
 
-                                        </div>
+                                                            <ul class="unstyled inline">
 
-                                        <div style="overflow:hidden;">
+                                                                <li><i class="icon-star"></i></li>
 
-                                            <h2><a href="#">Here Any Title</a></h2>
+                                                                <li><i class="icon-star"></i></li>
 
-                                            <ul class="unstyled inline">
+                                                                <li><i class="icon-star"></i></li>
 
-                                                <li><i class="icon-star"></i></li>
+                                                                <li><i class="icon-star"></i></li>
 
-                                                <li><i class="icon-star"></i></li>
+                                                                <li><i class="icon-star"></i></li>
 
-                                                <li><i class="icon-star"></i></li>
+                                                            </ul>
 
-                                                <li><i class="icon-star"></i></li>
+                                                            <p>${fn:substring(houseList[status.index+1].content,0, 30)}.
+                                                                <a
+                                                                        href="<%=basePath%>rent/${houseList[status.index+1].id}.action">查看更多</a></p>
 
-                                                <li><i class="icon-star"></i></li>
+                                                        </div>
 
-                                            </ul>
+                                                    </div>
+                                                </c:if>
 
-                                            <p>Lorem ipsum dolor sit eos et accusamus et iusto odio amet, consectetur
-                                                adipiscing elit. Ut non libero magna. Sed et quam lacus usce condimentum
-                                                eleifend enim a sunt in culpa qui officia feugiat. Pellentesque dolores
-                                                et quas molestias viverra vehicula sem ut volutpat. Integer sed arcu. <a
-                                                        href="#">read more</a></p>
+                                            </div>
+                                        </c:forEach>
+                                    </c:when>
+                                    <c:when test="${houseList == null || houseList.size() == 0 }">
+                                        <tr><td colspan="12" align="center" >暂无数据！</td></tr>
+                                    </c:when>
 
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="row-fluid margin-bottom-20">
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image2.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $126</li>
-
-                                                <li><i class="icon-map-marker"></i> Tioman, Malaysia</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star-empty"></i></li>
-
-                                            </ul>
-
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                molestias excepturi sint occaecati cupiditate non provident, similique
-                                                sunt in culpa qui officia deserunt mollitia animi, id est laborum. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image3.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $157</li>
-
-                                                <li><i class="icon-map-marker"></i> London, UK</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                            </ul>
-
-                                            <p>Lorem ipsum dolor sit eos et accusamus et iusto odio amet, consectetur
-                                                adipiscing elit. Ut non libero magna. Sed et quam lacus usce condimentum
-                                                eleifend enim a sunt in culpa qui officia feugiat. Pellentesque dolores
-                                                et quas molestias viverra vehicula sem ut volutpat. Integer sed arcu. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="row-fluid margin-bottom-20">
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image5.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $126</li>
-
-                                                <li><i class="icon-map-marker"></i> Tioman, Malaysia</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star-empty"></i></li>
-
-                                            </ul>
-
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                molestias excepturi sint occaecati cupiditate non provident, similique
-                                                sunt in culpa qui officia deserunt mollitia animi, id est laborum. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image4.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $157</li>
-
-                                                <li><i class="icon-map-marker"></i> London, UK</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                            </ul>
-
-                                            <p>Lorem ipsum dolor sit eos et accusamus et iusto odio amet, consectetur
-                                                adipiscing elit. Ut non libero magna. Sed et quam lacus usce condimentum
-                                                eleifend enim a sunt in culpa qui officia feugiat. Pellentesque dolores
-                                                et quas molestias viverra vehicula sem ut volutpat. Integer sed arcu. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="row-fluid margin-bottom-20">
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image4.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $126</li>
-
-                                                <li><i class="icon-map-marker"></i> Tioman, Malaysia</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star-empty"></i></li>
-
-                                            </ul>
-
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                molestias excepturi sint occaecati cupiditate non provident, similique
-                                                sunt in culpa qui officia deserunt mollitia animi, id est laborum. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image5.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $157</li>
-
-                                                <li><i class="icon-map-marker"></i> London, UK</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                            </ul>
-
-                                            <p>Lorem ipsum dolor sit eos et accusamus et iusto odio amet, consectetur
-                                                adipiscing elit. Ut non libero magna. Sed et quam lacus usce condimentum
-                                                eleifend enim a sunt in culpa qui officia feugiat. Pellentesque dolores
-                                                et quas molestias viverra vehicula sem ut volutpat. Integer sed arcu. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
+                                </c:choose>
 
                             </div>
 
@@ -2044,19 +1786,11 @@
 
                                 <ul>
 
-                                    <li><a href="#">Prev</a></li>
+                                    <li><a href="#">上一页</a></li>
 
-                                    <li><a href="#">1</a></li>
+                                    <li class="active"><a href="#">1</a></li>
 
-                                    <li><a href="#">2</a></li>
-
-                                    <li class="active"><a href="#">3</a></li>
-
-                                    <li><a href="#">4</a></li>
-
-                                    <li><a href="#">5</a></li>
-
-                                    <li><a href="#">Next</a></li>
+                                    <li><a href="#">下一页</a></li>
 
                                 </ul>
 
@@ -2114,41 +1848,41 @@
 
 <!-- BEGIN CORE PLUGINS -->
 
-<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
 <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 
-<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 
-<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!--[if lt IE 9]>
 
-<script src="media/js/excanvas.min.js"></script>
+<script src="<%=basePath%>assets/media/js/excanvas.min.js"></script>
 
-<script src="media/js/respond.min.js"></script>
+<script src="<%=basePath%>assets/media/js/respond.min.js"></script>
 
 <![endif]-->
 
-<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.blockui.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
-<script type="text/javascript" src="media/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="<%=basePath%>assets/media/js/bootstrap-datepicker.js"></script>
 
-<script src="media/js/jquery.fancybox.pack.js"></script>
+<script src="<%=basePath%>assets/media/js/jquery.fancybox.pack.js"></script>
 
-<script src="media/js/app.js"></script>
+<script src="<%=basePath%>assets/media/js/app.js"></script>
 
-<script src="media/js/search.js"></script>
+<script src="<%=basePath%>assets/media/js/search.js"></script>
 
 <script>
 

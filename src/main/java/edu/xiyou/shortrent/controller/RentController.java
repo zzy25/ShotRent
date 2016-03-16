@@ -31,13 +31,13 @@ public class RentController extends BaseController {
         }catch (Exception e){
             logger.error("findHouses exception={}", e);
         }
+        logger.info("listHouses record={}", houseList);
         modelMap.addAttribute("houseList", houseList);
         return "findHouses";
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/findHouses.action", method = RequestMethod.POST)
-    public ResultVo<List<House>> findHouses(@RequestParam(value = "maxArea", required = false)Integer maxArea,
+    @RequestMapping(value = "findHouses.action", method = RequestMethod.POST)
+    public String findHouses(@RequestParam(value = "maxArea", required = false)Integer maxArea,
                                             @RequestParam(value = "minArea", required = false)Integer minArea,
                                             @RequestParam(value = "maxPrice", required = false)Integer maxPrice,
                                             @RequestParam(value = "minPrice", required = false)Integer minPrice,
@@ -50,12 +50,13 @@ public class RentController extends BaseController {
         houseVo.setMaxArea(maxArea);
         houseVo.setMinArea(minArea);
         houseVo.setMaxPrice(maxPrice);
-        houseVo.setMinArea(minArea);
+        houseVo.setMinArea(minPrice);
         houseVo.setAddressContain(addressContain);
         houseVo.setHouseType(houseType);
 
         try {
             houseList = rentService.selectByHouseVo(houseVo);
+            resultVo.setElement(houseList);
             resultVo.setApproved(true);
             resultVo.setMsg("获取成功");
         }catch (ArguException e){
@@ -65,8 +66,9 @@ public class RentController extends BaseController {
             resultVo.setApproved(false);
             resultVo.setMsg("获取信息失败");
         }
+        modelMap.addAttribute("houseList", houseList);
         resultVo.setElement(houseList);
-        return resultVo;
+        return "findHouses";
     }
 
     @RequestMapping(value = "/{houseId}.action")
@@ -110,6 +112,8 @@ public class RentController extends BaseController {
         }catch (Exception e){
             logger.error("orderList owerId={}, exception={}", owerId, e);
         }
+        User user = (User) request.getSession().getAttribute(UserConstant.USER_DETAIL);
+        modelMap.addAttribute(UserConstant.USER_DETAIL, user);
         modelMap.addAttribute("orderList", orderList);
         return "orderList";
     }

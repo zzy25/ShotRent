@@ -1,27 +1,39 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="order" scope="page" type="edu.xiyou.shortrent.model.Order"/>
+<%--
+  Created by IntelliJ IDEA.
+  User: zhuoxiong
+  Date: 2016/3/15
+  Time: 21:49
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 
-<!--[if IE 8]>
-<html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
-<!--[if IE 9]>
-<html lang="en" class="ie9"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!-->
-<html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
 
-    <title>短租网 - 搜索房屋</title>
+    <title>短租网 | 租赁管理 - 订单详情</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <meta content="" name="description"/>
+    <meta content="" name="description" />
 
-    <meta content="" name="author"/>
+    <meta content="" name="author" />
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -29,7 +41,7 @@
 
     <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
     <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
 
@@ -45,15 +57,15 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" type="text/css" href="media/css/datepicker.css"/>
+    <link href="media/css/bootstrap-fileupload.css" rel="stylesheet" type="text/css" />
 
-    <link href="media/css/jquery.fancybox.css" rel="stylesheet"/>
+    <link href="media/css/chosen.css" rel="stylesheet" type="text/css" />
 
-    <link href="media/css/search.css" rel="stylesheet" type="text/css"/>
+    <link href="media/css/profile.css" rel="stylesheet" type="text/css" />
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+    <link rel="shortcut icon" href="media/image/favicon.ico" />
 
 </head>
 
@@ -77,7 +89,7 @@
 
             <a class="brand" href="index.html">
 
-                <img src="media/image/logo.png" alt="logo"/>
+                <img src="media/image/logo.png" alt="logo" />
 
             </a>
 
@@ -87,7 +99,7 @@
 
             <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
 
-                <img src="media/image/menu-toggler.png" alt=""/>
+                <img src="media/image/menu-toggler.png" alt="" />
 
             </a>
 
@@ -237,7 +249,7 @@
 
                             <a href="inbox.html?a=view">
 
-                                <span class="photo"><img src="media/image/avatar2.jpg" alt=""/></span>
+                                <span class="photo"><img src="media/image/avatar2.jpg" alt="" /></span>
 
 								<span class="subject">
 
@@ -263,7 +275,7 @@
 
                             <a href="inbox.html?a=view">
 
-                                <span class="photo"><img src="./media/image/avatar3.jpg" alt=""/></span>
+                                <span class="photo"><img src="media/image/avatar3.jpg" alt="" /></span>
 
 								<span class="subject">
 
@@ -289,7 +301,7 @@
 
                             <a href="inbox.html?a=view">
 
-                                <span class="photo"><img src="./media/image/avatar1.jpg" alt=""/></span>
+                                <span class="photo"><img src="media/image/avatar1.jpg" alt="" /></span>
 
 								<span class="subject">
 
@@ -493,7 +505,7 @@
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                        <img alt="" src="media/image/avatar1_small.jpg"/>
+                        <img alt="" src="media/image/avatar1_small.jpg" />
 
                         <span class="username">Bob Nilson</span>
 
@@ -569,9 +581,9 @@
 
                         <a href="javascript:;" class="remove"></a>
 
-                        <input type="text" placeholder="Search..."/>
+                        <input type="text" placeholder="Search..." />
 
-                        <input type="button" class="submit" value=" "/>
+                        <input type="button" class="submit" value=" " />
 
                     </div>
 
@@ -607,7 +619,7 @@
 
                 <ul class="sub-menu">
 
-                    <li>
+                    <li >
 
                         <a href="layout_horizontal_sidebar_menu.html">
 
@@ -615,7 +627,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="layout_horizontal_menu1.html">
 
@@ -623,7 +635,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="layout_horizontal_menu2.html">
 
@@ -631,7 +643,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="layout_promo.html">
 
@@ -639,7 +651,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="layout_email.html">
 
@@ -647,7 +659,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="layout_ajax.html">
 
@@ -655,7 +667,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="layout_sidebar_closed.html">
 
@@ -663,7 +675,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="layout_blank_page.html">
 
@@ -671,7 +683,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="layout_boxed_page.html">
 
@@ -679,7 +691,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="layout_boxed_not_responsive.html">
 
@@ -705,7 +717,7 @@
 
                 <ul class="sub-menu">
 
-                    <li>
+                    <li >
 
                         <a href="ui_general.html">
 
@@ -713,7 +725,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="ui_buttons.html">
 
@@ -721,7 +733,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="ui_modals.html">
 
@@ -729,7 +741,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="ui_tabs_accordions.html">
 
@@ -737,7 +749,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="ui_jqueryui.html">
 
@@ -745,7 +757,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="ui_sliders.html">
 
@@ -753,7 +765,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="ui_tiles.html">
 
@@ -761,7 +773,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="ui_typography.html">
 
@@ -769,7 +781,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="ui_tree.html">
 
@@ -777,7 +789,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="ui_nestable.html">
 
@@ -803,7 +815,7 @@
 
                 <ul class="sub-menu">
 
-                    <li>
+                    <li >
 
                         <a href="form_layout.html">
 
@@ -811,7 +823,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="form_samples.html">
 
@@ -819,7 +831,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="form_component.html">
 
@@ -827,7 +839,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="form_wizard.html">
 
@@ -835,7 +847,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="form_validation.html">
 
@@ -843,7 +855,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="form_fileupload.html">
 
@@ -851,7 +863,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="form_dropzone.html">
 
@@ -877,7 +889,7 @@
 
                 <ul class="sub-menu">
 
-                    <li>
+                    <li >
 
                         <a href="page_timeline.html">
 
@@ -887,7 +899,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="page_coming_soon.html">
 
@@ -897,7 +909,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="page_blog.html">
 
@@ -907,7 +919,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="page_blog_item.html">
 
@@ -917,7 +929,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="page_news.html">
 
@@ -927,7 +939,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="page_news_item.html">
 
@@ -937,7 +949,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="page_about.html">
 
@@ -947,7 +959,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="page_contact.html">
 
@@ -957,7 +969,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="page_calendar.html">
 
@@ -987,7 +999,7 @@
 
                 <ul class="sub-menu">
 
-                    <li>
+                    <li class="active">
 
                         <a href="extra_profile.html">
 
@@ -995,7 +1007,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="extra_lock.html">
 
@@ -1003,7 +1015,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="extra_faq.html">
 
@@ -1011,7 +1023,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="inbox.html">
 
@@ -1019,7 +1031,7 @@
 
                     </li>
 
-                    <li class="active">
+                    <li >
 
                         <a href="extra_search.html">
 
@@ -1027,7 +1039,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="extra_invoice.html">
 
@@ -1035,7 +1047,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="extra_pricing_table.html">
 
@@ -1043,7 +1055,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="extra_image_manager.html">
 
@@ -1051,7 +1063,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="extra_404_option1.html">
 
@@ -1059,7 +1071,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="extra_404_option2.html">
 
@@ -1067,7 +1079,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="extra_404_option3.html">
 
@@ -1075,7 +1087,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="extra_500_option1.html">
 
@@ -1083,7 +1095,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="extra_500_option2.html">
 
@@ -1219,11 +1231,11 @@
 
                             </li>
 
-                            <li><a href="#"><i class="icon-user"></i> Sample Link 1</a></li>
+                            <li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
 
-                            <li><a href="#"><i class="icon-external-link"></i> Sample Link 2</a></li>
+                            <li><a href="#"><i class="icon-external-link"></i>  Sample Link 2</a></li>
 
-                            <li><a href="#"><i class="icon-bell"></i> Sample Link 3</a></li>
+                            <li><a href="#"><i class="icon-bell"></i>  Sample Link 3</a></li>
 
                         </ul>
 
@@ -1243,11 +1255,11 @@
 
                         <ul class="sub-menu">
 
-                            <li><a href="#"><i class="icon-user"></i> Sample Link 1</a></li>
+                            <li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
 
-                            <li><a href="#"><i class="icon-external-link"></i> Sample Link 1</a></li>
+                            <li><a href="#"><i class="icon-external-link"></i>  Sample Link 1</a></li>
 
-                            <li><a href="#"><i class="icon-bell"></i> Sample Link 1</a></li>
+                            <li><a href="#"><i class="icon-bell"></i>  Sample Link 1</a></li>
 
                         </ul>
 
@@ -1283,7 +1295,7 @@
 
                 <ul class="sub-menu">
 
-                    <li>
+                    <li >
 
                         <a href="login.html">
 
@@ -1291,7 +1303,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="login_soft.html">
 
@@ -1317,7 +1329,7 @@
 
                 <ul class="sub-menu">
 
-                    <li>
+                    <li >
 
                         <a href="table_basic.html">
 
@@ -1325,7 +1337,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="table_responsive.html">
 
@@ -1333,7 +1345,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="table_managed.html">
 
@@ -1341,7 +1353,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="table_editable.html">
 
@@ -1349,7 +1361,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="table_advanced.html">
 
@@ -1375,7 +1387,7 @@
 
                 <ul class="sub-menu">
 
-                    <li>
+                    <li >
 
                         <a href="portlet_general.html">
 
@@ -1383,7 +1395,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="portlet_draggable.html">
 
@@ -1409,7 +1421,7 @@
 
                 <ul class="sub-menu">
 
-                    <li>
+                    <li >
 
                         <a href="maps_google.html">
 
@@ -1417,7 +1429,7 @@
 
                     </li>
 
-                    <li>
+                    <li >
 
                         <a href="maps_vector.html">
 
@@ -1485,12 +1497,101 @@
 
                 <div class="span12">
 
+                    <!-- BEGIN STYLE CUSTOMIZER -->
+
+                    <div class="color-panel hidden-phone">
+
+                        <div class="color-mode-icons icon-color"></div>
+
+                        <div class="color-mode-icons icon-color-close"></div>
+
+                        <div class="color-mode">
+
+                            <p>THEME COLOR</p>
+
+                            <ul class="inline">
+
+                                <li class="color-black current color-default" data-style="default"></li>
+
+                                <li class="color-blue" data-style="blue"></li>
+
+                                <li class="color-brown" data-style="brown"></li>
+
+                                <li class="color-purple" data-style="purple"></li>
+
+                                <li class="color-grey" data-style="grey"></li>
+
+                                <li class="color-white color-light" data-style="light"></li>
+
+                            </ul>
+
+                            <label>
+
+                                <span>Layout</span>
+
+                                <select class="layout-option m-wrap small">
+
+                                    <option value="fluid" selected>Fluid</option>
+
+                                    <option value="boxed">Boxed</option>
+
+                                </select>
+
+                            </label>
+
+                            <label>
+
+                                <span>Header</span>
+
+                                <select class="header-option m-wrap small">
+
+                                    <option value="fixed" selected>Fixed</option>
+
+                                    <option value="default">Default</option>
+
+                                </select>
+
+                            </label>
+
+                            <label>
+
+                                <span>Sidebar</span>
+
+                                <select class="sidebar-option m-wrap small">
+
+                                    <option value="fixed">Fixed</option>
+
+                                    <option value="default" selected>Default</option>
+
+                                </select>
+
+                            </label>
+
+                            <label>
+
+                                <span>Footer</span>
+
+                                <select class="footer-option m-wrap small">
+
+                                    <option value="fixed">Fixed</option>
+
+                                    <option value="default" selected>Default</option>
+
+                                </select>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <!-- END BEGIN STYLE CUSTOMIZER -->
+
                     <!-- BEGIN PAGE TITLE & BREADCRUMB-->
 
                     <h3 class="page-title">
 
-                        搜索结果
-                        <small>搜索结果</small>
+                        订单详情 <small></small>
 
                     </h3>
 
@@ -1514,7 +1615,7 @@
 
                         </li>
 
-                        <li><a href="#">搜索結果</a></li>
+                        <li><a href="#">订单详情</a></li>
 
                     </ul>
 
@@ -1528,547 +1629,134 @@
 
             <!-- BEGIN PAGE CONTENT-->
 
-            <div class="row-fluid">
+            <div class="row-fluid profile">
 
-                <div class="tabbable tabbable-custom tabbable-full-width">
+                <div class="span12">
 
-                   <!-- <ul class="nav nav-tabs">
+                    <!--BEGIN TABS-->
 
-                        <li class="active"><a data-toggle="tab" href="#tab_2_2">Booking Search 1</a></li>
+                    <div class="tabbable tabbable-custom tabbable-full-width">
 
-                    </ul>-->
 
-                    <div class="tab-content">
+                        <!--end tab-pane-->
 
-                        <div id="tab_2_2" class="tab-pane active">
+                        <div class="tab-pane profile-classic row-fluid" id="">
 
-                            <div class="row-fluid">
+                            <div class="span8">
+                                <div id="myCarousel" class="carousel slide">
 
-                                <div class="span8 booking-search">
+                                    <!-- Carousel indicators
 
-                                    <form action="#">
+                                        <ol class="carousel-indicators">
 
-                                        <div class="clearfix margin-bottom-10">
+                                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 
-                                            <label>Distanation</label>
+                                         <li data-target="#myCarousel" data-slide-to="1"></li>
 
-                                            <div class="input-icon left">
+                                         <li data-target="#myCarousel" data-slide-to="2"></li>
 
-                                                <i class="icon-map-marker"></i>
+                                        </ol>
 
-                                                <input class="m-wrap span12" type="text"
-                                                       placeholder="Canada, Malaysia, Russia ...">
+                                        -->
 
-                                            </div>
+                                    <!-- Carousel items -->
 
-                                        </div>
+                                    <div class="carousel-inner">
 
-                                        <div class="clearfix margin-bottom-20">
+                                        <div class="active item">
 
-                                            <div class="control-group pull-left margin-right-20">
+                                            <img src="media/image/item_img1.jpg" alt="">
 
-                                                <label class="control-label">Check-in:</label>
+                                            <div class="carousel-caption">
 
-                                                <div class="controls">
+                                                <!--<h4><a href="page_news_item.html">First Thumbnail label</a></h4>-->
 
-                                                    <div class="input-append date date-picker" data-date="12-02-2012"
-                                                         data-date-format="dd-mm-yyyy" data-date-viewmode="years">
-
-                                                        <input class="m-wrap m-ctrl-medium date-picker" size="16"
-                                                               type="text" value="12-02-2012"/><span class="add-on"><i
-                                                            class="icon-calendar"></i></span>
-
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="control-group pull-left">
-
-                                                <label class="control-label">Check-out:</label>
-
-                                                <div class="controls">
-
-                                                    <div class="input-append date date-picker" data-date="102/2012"
-                                                         data-date-format="mm/yyyy" data-date-viewmode="years"
-                                                         data-date-minviewmode="months">
-
-                                                        <input class="m-wrap m-ctrl-medium date-picker" size="16"
-                                                               type="text" value="02/2012"/><span class="add-on"><i
-                                                            class="icon-calendar"></i></span>
-
-                                                    </div>
-
-                                                </div>
+                                                <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor.</p>-->
 
                                             </div>
 
                                         </div>
 
-                                        <div class="clearfix margin-bottom-10">
+                                        <div class="item">
 
-                                            <div class="pull-left margin-right-20">
+                                            <img src="media/image/item_img.jpg" alt="">
 
-                                                <div class="control-group booking-option">
+                                            <div class="carousel-caption">
 
-                                                    <label class="control-label">允许最低租金</label>
+                                                <!--<h4><a href="page_news_item.html">Second Thumbnail label</a></h4>
 
-                                                    <div class="controls controls-uniform">
-
-                                                        <label class="input-info">
-
-                                                            <input type="text" name="optionsRadios2" value=""/>
-
-                                                        </label>
-
-
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="pull-left">
-
-                                                <div class="control-group booking-option">
-
-                                                    <label class="control-label"><span>允许最高租金</span></label>
-
-                                                    <div class="controls controls-uniform">
-
-                                                        <label class="input-info">
-
-                                                            <input type="text" name="optionsRadios2" value=""/>
-
-                                                        </label>
-
-                                                    </div>
-
-                                                </div>
+                                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor.</p>-->
 
                                             </div>
 
                                         </div>
 
-                                        <button class="btn blue btn-block">查找 <i
-                                                class="m-icon-swapright m-icon-white"></i></button>
+                                        <div class="item">
 
-                                    </form>
+                                            <img src="media/image/item_img1.jpg" alt="">
+
+                                            <div class="carousel-caption">
+
+                                                <!--<h4><a href="page_news_item.html">Third Thumbnail label</a></h4>
+
+                                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor.</p>-->
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Carousel nav -->
+
+                                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+
+                                        <i class="m-icon-big-swapleft m-icon-white"></i>
+
+                                    </a>
+
+                                    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+
+                                        <i class="m-icon-big-swapright m-icon-white"></i>
+
+                                    </a>
 
                                 </div>
-
-                                <!--end booking-search-->
-
                             </div>
 
-                            <!--end row-fluid-->
+                            <ul class="unstyled span8">
 
-                            <div class="space40"></div>
+                                <li><span>订单编号:</span> ${order.id}</li>
 
-                            <div class="row-fluid">
+                                <li><span>业主:</span> ${order.owerName}</li>
 
-                                <div class="row-fluid margin-bottom-20">
+                                <li><span>业主联系电话:</span> ${order.owerMobile}</li>
 
-                                    <div class="span6 booking-blocks">
+                                <li><span>租客:</span> ${order.customerName}</li>
 
-                                        <div class="pull-left booking-img">
+                                <li><span>租客:</span> ${order.customerMobile}</li>
 
-                                            <img src="media/image/image4.jpg" alt="">
+                                <li><span>地址:</span> ${order.address}</li>
 
-                                            <ul class="unstyled">
+                                <li><span>租住开始时间:</span> <fmt:formatDate value="${order.begintime}" pattern="yyyy年MM月dd日"/> </li>
 
-                                                <li><i class="icon-money"></i> From $126</li>
+                                <li><span>租住结束时间:</span> <fmt:formatDate value="${order.endtime}" pattern="yyyy年MM月dd日"/> </li>
 
-                                                <li><i class="icon-map-marker"></i> Tioman, Malaysia</li>
+                                <li><span>租金:</span> ${order.amount}</li>
 
-                                            </ul>
+                                <li><span>订单描述:</span><c:if test="${order.terminate == 0}">正常中</c:if><c:if test="${order.terminate == 1}">已终止</c:if> </li>
 
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <!--<h2><a href="#">Here Any Title</a></h2>-->
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star-empty"></i></li>
-
-                                            </ul>
-
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                molestias excepturi sint occaecati cupiditate non provident, similique
-                                                sunt in culpa qui officia deserunt mollitia animi, id est laborum. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image5.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $157</li>
-
-                                                <li><i class="icon-map-marker"></i> London, UK</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                            </ul>
-
-                                            <p>Lorem ipsum dolor sit eos et accusamus et iusto odio amet, consectetur
-                                                adipiscing elit. Ut non libero magna. Sed et quam lacus usce condimentum
-                                                eleifend enim a sunt in culpa qui officia feugiat. Pellentesque dolores
-                                                et quas molestias viverra vehicula sem ut volutpat. Integer sed arcu. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="row-fluid margin-bottom-20">
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image2.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $126</li>
-
-                                                <li><i class="icon-map-marker"></i> Tioman, Malaysia</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star-empty"></i></li>
-
-                                            </ul>
-
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                molestias excepturi sint occaecati cupiditate non provident, similique
-                                                sunt in culpa qui officia deserunt mollitia animi, id est laborum. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image3.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $157</li>
-
-                                                <li><i class="icon-map-marker"></i> London, UK</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                            </ul>
-
-                                            <p>Lorem ipsum dolor sit eos et accusamus et iusto odio amet, consectetur
-                                                adipiscing elit. Ut non libero magna. Sed et quam lacus usce condimentum
-                                                eleifend enim a sunt in culpa qui officia feugiat. Pellentesque dolores
-                                                et quas molestias viverra vehicula sem ut volutpat. Integer sed arcu. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="row-fluid margin-bottom-20">
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image5.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $126</li>
-
-                                                <li><i class="icon-map-marker"></i> Tioman, Malaysia</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star-empty"></i></li>
-
-                                            </ul>
-
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                molestias excepturi sint occaecati cupiditate non provident, similique
-                                                sunt in culpa qui officia deserunt mollitia animi, id est laborum. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image4.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $157</li>
-
-                                                <li><i class="icon-map-marker"></i> London, UK</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                            </ul>
-
-                                            <p>Lorem ipsum dolor sit eos et accusamus et iusto odio amet, consectetur
-                                                adipiscing elit. Ut non libero magna. Sed et quam lacus usce condimentum
-                                                eleifend enim a sunt in culpa qui officia feugiat. Pellentesque dolores
-                                                et quas molestias viverra vehicula sem ut volutpat. Integer sed arcu. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="row-fluid margin-bottom-20">
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image4.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $126</li>
-
-                                                <li><i class="icon-map-marker"></i> Tioman, Malaysia</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star-empty"></i></li>
-
-                                            </ul>
-
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                molestias excepturi sint occaecati cupiditate non provident, similique
-                                                sunt in culpa qui officia deserunt mollitia animi, id est laborum. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="span6 booking-blocks">
-
-                                        <div class="pull-left booking-img">
-
-                                            <img src="media/image/image5.jpg" alt="">
-
-                                            <ul class="unstyled">
-
-                                                <li><i class="icon-money"></i> From $157</li>
-
-                                                <li><i class="icon-map-marker"></i> London, UK</li>
-
-                                            </ul>
-
-                                        </div>
-
-                                        <div style="overflow:hidden;">
-
-                                            <h2><a href="#">Here Any Title</a></h2>
-
-                                            <ul class="unstyled inline">
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                                <li><i class="icon-star"></i></li>
-
-                                            </ul>
-
-                                            <p>Lorem ipsum dolor sit eos et accusamus et iusto odio amet, consectetur
-                                                adipiscing elit. Ut non libero magna. Sed et quam lacus usce condimentum
-                                                eleifend enim a sunt in culpa qui officia feugiat. Pellentesque dolores
-                                                et quas molestias viverra vehicula sem ut volutpat. Integer sed arcu. <a
-                                                        href="#">read more</a></p>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="spac40"></div>
-
-                            <div class="pagination pagination-centered">
-
-                                <ul>
-
-                                    <li><a href="#">Prev</a></li>
-
-                                    <li><a href="#">1</a></li>
-
-                                    <li><a href="#">2</a></li>
-
-                                    <li class="active"><a href="#">3</a></li>
-
-                                    <li><a href="#">4</a></li>
-
-                                    <li><a href="#">5</a></li>
-
-                                    <li><a href="#">Next</a></li>
-
-                                </ul>
-
-                            </div>
+                            </ul>
 
                         </div>
 
+                        <!--end tab-pane-->
+
                     </div>
 
-                </div>
+                    <!--END TABS-->
 
-                <!--end tabbable-->
+                </div>
 
             </div>
 
@@ -2138,25 +1826,31 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
 
 <!-- END CORE PLUGINS -->
 
-<script type="text/javascript" src="media/js/bootstrap-datepicker.js"></script>
+<!-- BEGIN PAGE LEVEL PLUGINS -->
 
-<script src="media/js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="media/js/bootstrap-fileupload.js"></script>
+
+<script type="text/javascript" src="media/js/chosen.jquery.min.js"></script>
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
 
 <script src="media/js/app.js"></script>
 
-<script src="media/js/search.js"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
 
 <script>
 
-    jQuery(document).ready(function () {
+    jQuery(document).ready(function() {
+
+        // initiate layout and plugins
 
         App.init();
-
-        Search.init();
 
     });
 
@@ -2164,20 +1858,7 @@
 
 <!-- END JAVASCRIPTS -->
 
-<script type="text/javascript">  var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-37564768-1']);
-_gaq.push(['_setDomainName', 'keenthemes.com']);
-_gaq.push(['_setAllowLinker', true]);
-_gaq.push(['_trackPageview']);
-(function () {
-    var ga = document.createElement('script');
-    ga.type = 'text/javascript';
-    ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(ga, s);
-})();</script>
-</body>
+<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
 
 <!-- END BODY -->
 

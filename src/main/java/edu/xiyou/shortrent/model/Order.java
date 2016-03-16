@@ -8,8 +8,12 @@ public class Order extends BaseModel{
     private Integer hourseid;
 
     private Integer owerid;
+    private String owerName;
+    private String owerMobile;
 
     private Integer customer;
+    private String customerName;
+    private String customerMobile;
 
     private Integer amount;
 
@@ -18,6 +22,16 @@ public class Order extends BaseModel{
     private Date endtime;
 
     private Short terminate;
+
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public Integer getId() {
         return id;
@@ -81,5 +95,37 @@ public class Order extends BaseModel{
 
     public void setTerminate(Short terminate) {
         this.terminate = terminate;
+    }
+
+    public String getOwerName() {
+        return owerName;
+    }
+
+    public void setOwerName(String owerName) {
+        this.owerName = owerName;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getOwerMobile() {
+        return owerMobile;
+    }
+
+    public void setOwerMobile(String owerMobile) {
+        this.owerMobile = owerMobile;
+    }
+
+    public String getCustomerMobile() {
+        return customerMobile;
+    }
+
+    public void setCustomerMobile(String customerMobile) {
+        this.customerMobile = customerMobile;
     }
 }
