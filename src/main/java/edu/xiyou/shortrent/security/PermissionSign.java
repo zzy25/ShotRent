@@ -40,4 +40,12 @@ public final class PermissionSign {
      * 房子审核操作
      */
     public final static String HOUSE_CHECK = "house:check";
+    /**
+     * 读取房屋操作
+     */
+    public final static String HOUSE_READ="house:check";
+    /**
+     * 删除房屋操作
+     */
+    public final static String HOUSE_DELETE = "house:delete";
 }
