@@ -5,8 +5,8 @@ import edu.xiyou.shortrent.exception.ArguException;
 import edu.xiyou.shortrent.exception.AuthException;
 import edu.xiyou.shortrent.model.User;
 import edu.xiyou.shortrent.model.vo.ResultVo;
+import edu.xiyou.shortrent.utils.ArguUtils;
 import edu.xiyou.shortrent.utils.HttpUtils;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -32,30 +32,25 @@ public class UserController extends BaseController {
         return "redirect:" + HttpUtils.getBasePath(request);
     }
 
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping(value = "/loginData.action", method = RequestMethod.POST)
-    public ResultVo<String> loginCheck(@RequestParam(value = "username") String username,
+    public String loginCheck(@RequestParam(value = "username") String username,
                                        @RequestParam(value = "password") String password,
                                        HttpServletRequest request, ModelMap modelMap) {
         ResultVo<String> resultVo = new ResultVo<>();
 
         try {
-            if (StringUtils.isBlank(password) || StringUtils.isBlank(username)) {
-                resultVo.setMsg("账号或密码不能为空");
-                resultVo.setApproved(false);
-                return resultVo;
-            } else if ((username.length() < 6 || username.length() > 30)
-                    || (password.length() < 6 || password.length() > 30)) {
-                resultVo.setMsg("账号和密码长度必须大于6并且小于30");
-                resultVo.setApproved(false);
-                return resultVo;
-            }
+            ArguUtils.notNull(username, "用户名");
+            ArguUtils.strLengthInterval(username, 2, 30, "用户名");
+            ArguUtils.notNull(password, "密码");
+            ArguUtils.strLengthInterval(password, 6, 30, "密码");
+
             User user = userService.loginCheck(username, password);
             request.getSession().setAttribute(UserConstant.USER_DETAIL, user);
             resultVo.setMsg("登陆成功");
             resultVo.setApproved(true);
 
-        } catch (AuthException e) {
+        } catch (ArguException e) {
             resultVo.setMsg(e.getMessage());
             resultVo.setApproved(false);
         } catch (Exception e) {
@@ -64,7 +59,12 @@ public class UserController extends BaseController {
             resultVo.setApproved(false);
         }
 
-        return resultVo;
+        modelMap.addAttribute("result", resultVo);
+        if (resultVo.isApproved()){
+            return "redirect:index";
+        }
+
+        return "login";
     }
 
     @RequestMapping(value = "/addUser.action")
@@ -73,9 +73,9 @@ public class UserController extends BaseController {
     }
 
 
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping(value = "/postUser.action", method = RequestMethod.POST)
-    public ResultVo<String> addUserData(@RequestParam("username") String username,
+    public String addUserData(@RequestParam("username") String username,
                                     @RequestParam("password") String password,
                                     @RequestParam("email") String email,
                                     @RequestParam("mobile") String mobile,
@@ -100,7 +100,11 @@ public class UserController extends BaseController {
             resultVo.setApproved(false);
         }
 
-        return resultVo;
+        modelMap.addAttribute("result", resultVo);
+        if (resultVo.isApproved()) {
+            return "redirect:/user/login";
+        }
+        return "addUser";
     }
 
     @RequestMapping(value = "update/{userId}.action")

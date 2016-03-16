@@ -83,7 +83,7 @@
       </if>
     </where>
   </select>
-  <insert id="insertSelective" parameterType="edu.xiyou.shortrent.model.House">
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="edu.xiyou.shortrent.model.House">
     insert into houses
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
