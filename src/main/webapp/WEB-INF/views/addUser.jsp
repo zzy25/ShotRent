@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
   User: andrew
@@ -10,7 +11,6 @@
   String path = request.getContextPath();
   String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
@@ -89,7 +89,7 @@
       </script>
     </c:if>
 
-    <form class="form-vertical register-form" action="<%=basePath%>user/postUser.action" method="post">
+    <form class="form-vertical register-form" >
 
       <h3 class="">创建</h3>
 
@@ -215,7 +215,7 @@
 
         </button>
 
-        <button type="submit" id="register-submit-btn" class="btn green pull-right">
+        <button type="button" id="register-submit-btn" class="btn green pull-right" id="addUserSubmit">
 
           创建 <i class="m-icon-swapright m-icon-white"></i>
 

@@ -12,7 +12,7 @@
 
     <meta charset="utf-8" />
 
-    <title> 短租网 | 房屋管理 </title>
+    <title> 短租网 | 用户管理 </title>
 
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -1451,23 +1451,23 @@
 
         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
-        <!--<div id="portlet-config" class="modal hide">-->
+        <div id="portlet-config" class="modal hide">
 
-            <!--<div class="modal-header">-->
+            <div class="modal-header">
 
-                <!--<button data-dismiss="modal" class="close" type="button"></button>-->
+                <button data-dismiss="modal" class="close" type="button"></button>
 
-                <!--<h3>配置</h3>-->
+                <h3>配置</h3>
 
-            <!--</div>-->
+            </div>
 
-            <!--<div class="modal-body">-->
+            <div class="modal-body">
 
-                <!--<p>这里将是一个配置形式</p>-->
+                <p>这里将是一个配置形式</p>
 
-            <!--</div>-->
+            </div>
 
-        <!--</div>-->
+        </div>
 
         <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
@@ -1575,7 +1575,7 @@
 
                     <h3 class="page-title">
 
-                        房屋管理 <small>房屋管理</small>
+                        用户管理 <small>用户管理</small>
 
                     </h3>
 
@@ -1591,15 +1591,9 @@
 
                         </li>
 
-                        <!--<li>-->
 
-                            <!--<a href="#">管理员</a>-->
 
-                            <!--<i class="icon-angle-right"></i>-->
-
-                        <!--</li>-->
-
-                        <li><a href="#">房屋管理</a></li>
+                        <li><a href="#">用户管理</a></li>
 
                     </ul>
 
@@ -1623,7 +1617,7 @@
 
                         <div class="portlet-title">
 
-                            <div class="caption"><i class="icon-globe"></i>房屋管理表</div>
+                            <div class="caption"><i class="icon-globe"></i>用户信息表</div>
 
 
 
@@ -1641,16 +1635,17 @@
 
 
 
-                                    <th class="hidden-480 ">发布者</th>
+                                    <th class="hidden-480 ">账号</th>
 
-                                    <th class="hidden-480">房屋地址</th>
+                                    <th class="hidden-480">用户名</th>
 
-                                    <th class="hidden-480 ">出租类型</th>
+                                    <th class="hidden-480 ">邮箱</th>
 
-                                    <th class="hidden-480">面积（平方米）</th>
+                                    <th class="hidden-480">电话号码</th>
 
-                                    <th class="hidden-480 ">单价（元/天）</th>
-                                    <th class="hidden-480">详细信息</th>
+                                    <th class="hidden-480">创建时间</th>
+
+                                    <th class="hidden-480 ">最后登录时间</th>
 
                                     <th class="hidden-480">操作</th>
 
@@ -1665,19 +1660,19 @@
 
                                 <tr class="odd gradeX">
 
+                                    <td> dafsdfda</td>
+
                                     <td>岳超刚</td>
 
-                                    <td>陕西省西安市</td>
+                                    <td class="hidden-480">545646@qq.com</td>
 
-                                    <td class="hidden-480">整租</td>
+                                    <td class="hidden-480">123456</td>
 
-                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">2016-03-09 15:45:17</td>
+                                    <td class="hidden-480">2016-03-12 18:20:52 </td>
 
-                                    <td class="center hidden-480">50</td>
-                                    <td class="hidden-480"><a href="<%=basePath%>rent/${item.houseid}" target="_blank">具体信息</a> </td>
-
-                                    <td><button type="button" class="btn green">上线</button>
-                                     <button type="button" class="btn red " >下线</button></td>
+                                    <td><button type="button" class="btn green">封号</button>
+                                        <button type="button" class="btn red " >解封</button></td>
 
                                 </tr>
 

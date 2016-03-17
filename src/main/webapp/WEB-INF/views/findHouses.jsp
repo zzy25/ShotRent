@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
@@ -13,7 +14,7 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
-<!DOCTYPE html>
+
 
 <!--[if IE 8]>
 <html lang="en" class="ie8"> <![endif]-->
@@ -290,8 +291,8 @@
 
                                         </div>--%>
 
-                                        <input type="submit" class="btn blue btn-block" value="查找"><%--查找--%> <i
-                                            class="m-icon-swapright m-icon-white"></i></input>
+                                        <input type="button" class="btn blue btn-block" value="查找"><%--查找--%> <i
+                                            class="m-icon-swapright m-icon-white" id="findHousesearch"></i></input>
 
                                     </form>
 

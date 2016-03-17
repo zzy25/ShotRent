@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
   User: andrew
@@ -11,7 +12,7 @@
   String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <jsp:useBean id="house" scope="page" type="edu.xiyou.shortrent.model.House"/>
-<!DOCTYPE html>
+
 
 <!--[if IE 8]>
 <html lang="en" class="ie8"> <![endif]-->

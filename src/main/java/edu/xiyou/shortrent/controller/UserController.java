@@ -70,9 +70,9 @@ public class UserController extends BaseController {
     }
 
 
-//    @ResponseBody
+    @ResponseBody
     @RequestMapping(value = "/postUser.action", method = RequestMethod.POST)
-    public String addUserData(@RequestParam("username") String username,
+    public ResultVo<String> addUserData(@RequestParam("username") String username,
                                     @RequestParam("password") String password,
                                     @RequestParam("email") String email,
                                     @RequestParam("mobile") String mobile,
@@ -98,10 +98,8 @@ public class UserController extends BaseController {
         }
 
         modelMap.addAttribute("result", resultVo);
-        if (resultVo.isApproved()) {
-            return "redirect:/user/login";
-        }
-        return "addUser";
+
+        return resultVo;
     }
 
     @RequestMapping(value = "update/{userId}.action")

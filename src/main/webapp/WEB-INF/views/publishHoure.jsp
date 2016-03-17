@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <jsp:useBean id="house" scope="request" type="edu.xiyou.shortrent.model.House"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="action" scope="page" type="java.lang.String"/>
@@ -13,7 +14,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<!DOCTYPE html>
+
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
@@ -415,7 +416,7 @@
 
                                 </div>
 
-                                <div class="control-group">
+                                <div class="control-group" name="furniture">
 
                                     <label class="control-label">屋内家具</label>
 
@@ -451,7 +452,7 @@
 
                                             </div>
 
-                                            <div class="span3">
+                                            <div class="span3" >
 
                                                 <label class="checkbox line">
 
@@ -500,9 +501,9 @@
 
                                 <div class="form-actions">
 
-                                    <button type="submit" class="btn blue">发布~快来住！</button>
+                                    <button type="button" class="btn blue" id="publishHourefabu">发布~快来住！</button>
 
-                                    <button type="button" class="btn">登记。先不租...</button>
+                                    <button type="button" class="btn" id="publishHouredengji">登记。先不租...</button>
 
                                 </div>
 

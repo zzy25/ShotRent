@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
@@ -14,7 +15,7 @@
 %>
 <jsp:useBean id="user" scope="page" type="edu.xiyou.shortrent.model.User"/>
 <jsp:useBean id="orderList" scope="page" type="java.util.List"/>
-<!DOCTYPE html>
+
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 

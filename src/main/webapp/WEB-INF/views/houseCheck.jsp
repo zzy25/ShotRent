@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -14,7 +15,7 @@
 %>
 
 %>
-<!DOCTYPE html>
+
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
@@ -97,23 +98,7 @@
 
     <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
-    <div id="portlet-config" class="modal hide">
 
-      <div class="modal-header">
-
-        <button data-dismiss="modal" class="close" type="button"></button>
-
-        <h3>配置</h3>
-
-      </div>
-
-      <div class="modal-body">
-
-        <p>这里将是一个配置形式</p>
-
-      </div>
-
-    </div>
 
     <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
@@ -287,19 +272,7 @@
 
             <div class="portlet-body">
 
-              <div class="clearfix">
 
-                <div class="btn-group">
-
-                  <button id="sample_editable_1_new" class="btn green">
-
-                    Add New <i class="icon-plus"></i>
-
-                  </button>
-
-                </div>
-
-              </div>
 
               <table class="table table-striped table-bordered table-hover" id="">
 
@@ -342,8 +315,8 @@
                         <td class="hidden-480"><a href="<%=basePath%>rent/${item.houseid}" target="_blank">具体信息</a> </td>
 
                         <td>
-                          <button type="button" class="btn green">通过</button>
-                          <button type="button" class="btn red " >驳回</button>
+                          <button type="button" class="btn green" onclick="houseCheck(${item.id}, 1)">通过</button>
+                          <button type="button" class="btn red " onclick="houseCheck(${item.id}, 0)">驳回</button>
                         </td>
                       </tr>
                     </c:forEach>
