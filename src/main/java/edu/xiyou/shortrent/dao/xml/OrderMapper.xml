@@ -20,6 +20,37 @@
     from orders
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectBySelective" parameterType="edu.xiyou.shortrent.model.Order" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from orders
+    <where>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="hourseid != null">
+        hourseId = #{hourseid,jdbcType=INTEGER}
+      </if>
+      <if test="owerid != null">
+        owerId = #{owerid,jdbcType=INTEGER}
+      </if>
+      <if test="customer != null">
+        customer = #{customer,jdbcType=INTEGER}
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=INTEGER}
+      </if>
+      <if test="begintime != null">
+        beginTime = #{begintime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endtime != null">
+        endTime = #{endtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="terminate != null">
+        terminate = #{terminate,jdbcType=SMALLINT}
+      </if>
+    </where>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from orders
     where id = #{id,jdbcType=INTEGER}

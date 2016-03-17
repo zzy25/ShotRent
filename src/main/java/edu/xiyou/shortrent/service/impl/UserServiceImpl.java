@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by andrew on 16-3-9.
@@ -27,10 +28,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User loginCheck(String username, String password) throws AuthException {
-        User user;
+        User user = null;
         try {
             user = userMapper.selectByUserName(username);
             if (user == null) {
+                logger.debug("loginCheck username={}, password={}查询不到对应的信息",username, password );
                 throw new AuthException("请输入正确的用户名密码");
             }
             String md5Password = AuthUtils.MD5(password);
@@ -40,7 +42,7 @@ public class UserServiceImpl implements UserService {
                 throw new AuthException("请输入正确的用户名密码");
             }
         } catch (Exception e) {
-            logger.error("loginCheck record={},exception={}", username, e);
+            logger.error("loginCheck record={}, exception={}",username, e);
             throw new AuthException("请输入正确的用户名密码");
         }
     }
@@ -109,6 +111,29 @@ public class UserServiceImpl implements UserService {
 
         return userMapper.updateByPrimaryKeySelective(user);
 
+    }
+
+    @Override
+    public User selectByUserName(String username) throws Exception {
+        ArguUtils.strLengthInterval(username, 2, 30, "用户名");
+        User user = null;
+        try {
+            user = userMapper.selectByUserName(username);
+        }catch (Exception e){
+            logger.error("selectByUserName record={}, exception={}", username, e);
+        }
+        return user;
+    }
+
+    @Override
+    public User authentication(User user) {
+        user.setPassword(AuthUtils.MD5(user.getPassword()));
+        return userMapper.authentication(user);
+    }
+
+    @Override
+    public List<User> selectBySelective(User user) throws Exception {
+        return userMapper.selectBySelective(user);
     }
 
 }

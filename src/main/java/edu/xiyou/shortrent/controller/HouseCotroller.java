@@ -4,9 +4,14 @@ import edu.xiyou.shortrent.constant.HouseConstant;
 import edu.xiyou.shortrent.constant.UserConstant;
 import edu.xiyou.shortrent.exception.ArguException;
 import edu.xiyou.shortrent.model.House;
+import edu.xiyou.shortrent.model.Role;
 import edu.xiyou.shortrent.model.User;
 import edu.xiyou.shortrent.model.vo.ResultVo;
+import edu.xiyou.shortrent.security.PermissionSign;
+import edu.xiyou.shortrent.security.RoleSign;
 import edu.xiyou.shortrent.utils.ArguUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +28,15 @@ import java.util.List;
 public class HouseCotroller extends BaseController{
 
     @RequestMapping("/create.action")
+//    @RequiresPermissions(value = PermissionSign.HOUSE_CREATE)
     public String createHouse(ModelMap modelMap) {
         modelMap.addAttribute("action", "<%=basePath%>house/createData.action");
         return "publishHoure";
     }
 
+    @ResponseBody
     @RequestMapping(value = "/createData.action", method = RequestMethod.POST)
+//    @RequiresPermissions(value = PermissionSign.HOUSE_CREATE)
     public String createData(@RequestParam("mobile") String mobile, @RequestParam("tel") String tel,
                                         @RequestParam("houseType") Short houseType, @RequestParam("address") String address,
                                         @RequestParam("area") Integer area, @RequestParam("price") Integer price,
@@ -68,8 +76,11 @@ public class HouseCotroller extends BaseController{
         return "publishHoure";
     }
 
-    @RequestMapping(value = "/ower/{owerId}.action")
-    public String listHouse(@PathVariable Integer owerid, HttpServletRequest request, ModelMap modelMap){
+    @RequestMapping(value = "/ower/houseList.action")
+//    @RequiresRoles(value = RoleSign.owner)
+    public String listHouse(HttpServletRequest request, ModelMap modelMap){
+        User user = (User) request.getSession().getAttribute(UserConstant.USER_DETAIL);
+        Integer owerid = user.getId();
         List<House> houseList = null;
         try {
             houseList = houseService.selectHouseByOweId(owerid);
@@ -92,7 +103,8 @@ public class HouseCotroller extends BaseController{
         return "houseInfo";
     }
 
-    @RequestMapping(value = "/update.action")
+    @RequestMapping(value = "/update.{houseId}action")
+//    @RequiresPermissions(PermissionSign.HOUSE_UPDATE)
     public String updateHouse(@PathVariable Integer houseId, HttpServletRequest request, ModelMap modelMap){
         House house = null;
         try {
@@ -101,13 +113,14 @@ public class HouseCotroller extends BaseController{
             logger.error("getHouse houseId={}, exception={}", houseId, e);
         }
         modelMap.addAttribute("house", house);
-        modelMap.addAttribute("action", "<%=basePath%>house/updateData.action");
+//        modelMap.addAttribute("action", "<%=basePath%>house/updateData.action");
         return "publishHoure";
     }
 
-//    @ResponseBody
+    @ResponseBody
     @RequestMapping(value = "/updateData.action", method = RequestMethod.POST)
-    public String updateHouseData(@RequestParam("houseId")Integer houseId,
+//    @RequiresPermissions(PermissionSign.HOUSE_UPDATE)
+    public ResultVo<House> updateHouseData(@RequestParam("houseId")Integer houseId,
                                        @RequestParam(value = "mobile", required = false)String mobile,
                                        @RequestParam(value = "tel", required = false)String tel,
                                        @RequestParam(value = "price", required = false)Integer price,
@@ -141,12 +154,13 @@ public class HouseCotroller extends BaseController{
             resultVo.setMsg("输入信息有误");
             resultVo.setApproved(false);
         }
-        modelMap.addAttribute("house", house);
-        modelMap.addAttribute("result", resultVo);
-        return "";
+        /*modelMap.addAttribute("house", house);
+        modelMap.addAttribute("result", resultVo);*/
+        return resultVo;
     }
 
     @RequestMapping(value = "/checkHouse.action")
+//    @RequiresRoles(RoleSign.admin)
     public String checkHouseList(HttpServletRequest request, ModelMap modelMap){
         List<House> houseList = null;
         House house = new House();
@@ -164,6 +178,7 @@ public class HouseCotroller extends BaseController{
 
     @ResponseBody
     @RequestMapping(value = "/check/${houseId}.action", method = RequestMethod.POST)
+//    @RequiresRoles(RoleSign.admin)
     public ResultVo<House> checkHouse(@PathVariable Integer houseId,@RequestParam("checked") Short checked,
                                       HttpServletRequest request, ModelMap modelMap){
         ResultVo<House> resultVo = new ResultVo<>();

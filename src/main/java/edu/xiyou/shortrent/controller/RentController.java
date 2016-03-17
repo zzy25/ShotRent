@@ -8,6 +8,8 @@ import edu.xiyou.shortrent.model.Order;
 import edu.xiyou.shortrent.model.User;
 import edu.xiyou.shortrent.model.vo.HouseVo;
 import edu.xiyou.shortrent.model.vo.ResultVo;
+import edu.xiyou.shortrent.security.RoleSign;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -97,8 +99,11 @@ public class RentController extends BaseController {
         return "houseInfo";
     }
 
-    @RequestMapping(value = "/ower/{owerId}.action")
-    public String findOrders(@PathVariable Integer owerId, HttpServletRequest request, ModelMap modelMap){
+    @RequestMapping(value = "/ower/orderList.action")
+//    @RequiresRoles(RoleSign.owner)
+    public String findOrders(HttpServletRequest request, ModelMap modelMap){
+        User user = (User) request.getSession().getAttribute(UserConstant.USER_DETAIL);
+        Integer owerId = user.getId();
         if (owerId == null){
             modelMap.addAttribute(CommenConstant.ERROR, "查找信息不能为空");
             return "orderList";
@@ -112,8 +117,6 @@ public class RentController extends BaseController {
         }catch (Exception e){
             logger.error("orderList owerId={}, exception={}", owerId, e);
         }
-        User user = (User) request.getSession().getAttribute(UserConstant.USER_DETAIL);
-        modelMap.addAttribute(UserConstant.USER_DETAIL, user);
         modelMap.addAttribute("orderList", orderList);
         return "orderList";
     }
@@ -155,6 +158,7 @@ public class RentController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "/order/updateData/${orderId}.action", method = RequestMethod.POST)
+//    @RequiresRoles(RoleSign.customer)
     public ResultVo<Order> updateOrderData(@PathVariable Integer orderId, @RequestParam("houseId")Integer houseId,
                                            @RequestParam("owerId")Integer owerId, @RequestParam("customerId")Integer customerId,
                                            @RequestParam(value = "amount", required = false)Integer amount,
@@ -192,6 +196,7 @@ public class RentController extends BaseController {
     }
 
     @RequestMapping(value = "/order/create.action")
+//    @RequiresRoles(RoleSign.customer)
     public String createOrder(HttpServletRequest request, ModelMap modelMap){
         modelMap.addAttribute(UserConstant.USER_DETAIL, request.getSession().getAttribute(UserConstant.USER_DETAIL));
         return "createOrder";
@@ -199,6 +204,7 @@ public class RentController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "/order/createData.action", method = RequestMethod.POST)
+//    @RequiresRoles(RoleSign.customer)
     public ResultVo<Order> createOrderData(@RequestParam("hourseId")Integer hourseId, @RequestParam("owerId")Integer owerId,
                                            @RequestParam("customerId")Integer customerId, @RequestParam("amount")Integer amount,
                                            @RequestParam("beginTime")Date beginTime, @RequestParam("endTime")Date endTime,

@@ -33,6 +33,7 @@ public class HouseServiceImpl implements HouseService {
         ArguUtils.strLonger(house.getContent(), 6, "房子简介");
 
         try {
+            logger.info("addHouse record={}", house);
             num = houseMapper.insertSelective(house);
         }catch (Exception e){
             logger.error("addHouse record={}, exception={}", house, e);
@@ -49,6 +50,7 @@ public class HouseServiceImpl implements HouseService {
             House house = new House();
             house.setOwerid(owerid);
             houseList = houseMapper.selectBySelective(house);
+            logger.info("selectHouseByOweId record={}", houseList);
         }catch (Exception e){
             logger.error("selectHouseByOweId owerid={}, exception={}", owerid, e);
             throw new Exception("通过业主id查询房子列表失败");
@@ -69,6 +71,7 @@ public class HouseServiceImpl implements HouseService {
         }
 
         try {
+            logger.info("updateHouse record={}", house);
             houseMapper.updateByPrimaryKeySelective(house);
         }catch (Exception e){
             logger.error("updateHouse record={}, exception={}", house, e);
@@ -82,6 +85,7 @@ public class HouseServiceImpl implements HouseService {
         House house;
         try {
             house = houseMapper.selectByPrimaryKey(houseId);
+            logger.info("selectHouseByHouseId house={}", house);
         }catch (Exception e){
             logger.error("selectHouseByHouseId houseId={}, exception={}", houseId, e);
             throw new Exception("查询信息失败");
@@ -94,6 +98,7 @@ public class HouseServiceImpl implements HouseService {
         List<House> houseList;
         try {
             houseList = houseMapper.selectBySelective(house);
+            logger.info("houseList={}", houseList);
         }catch (Exception e){
             logger.error("selectBySelective record={}, exception={}", house, e);
             throw new Exception("selectBySelective error");

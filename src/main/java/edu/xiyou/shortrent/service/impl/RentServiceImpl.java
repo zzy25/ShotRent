@@ -35,6 +35,7 @@ public class RentServiceImpl implements RentService {
         ArguUtils.notNull(house, "房间信息");
 
         try {
+            logger.info("selectBySelective house={}", house);
             houseList = houseMapper.selectBySelective(house);
         } catch (Exception e) {
             logger.error("selectBySeletive record={}, exception={}" + house, e);
@@ -51,6 +52,7 @@ public class RentServiceImpl implements RentService {
 
         try {
             house = houseMapper.selectByPrimaryKey(id);
+            logger.info("selectByPrimaryKey record={}", house);
         } catch (Exception e) {
             logger.error("selectByPrimaryKey record={}, exception={}" + id, e);
         }
@@ -64,6 +66,7 @@ public class RentServiceImpl implements RentService {
         try {
 
             houseList = houseMapper.selectByHouseVo(houseVo);
+            logger.info("selectByHouseVo record={}", houseList);
         }catch (Exception e){
             logger.error("selectByHouseVo record={}, exception={}", houseVo, e);
         }
