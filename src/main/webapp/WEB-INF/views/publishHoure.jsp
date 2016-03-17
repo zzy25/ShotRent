@@ -17,8 +17,7 @@
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!-->
-<html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
@@ -56,33 +55,33 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/bootstrap-fileupload.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/bootstrap-fileupload.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/jquery.gritter.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/jquery.gritter.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/chosen.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/chosen.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/select2_metro.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/select2_metro.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/jquery.tagsinput.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/jquery.tagsinput.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/clockface.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/clockface.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/bootstrap-wysihtml5.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/bootstrap-wysihtml5.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/datepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/datepicker.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/timepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/timepicker.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/colorpicker.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/colorpicker.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/bootstrap-toggle-buttons.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/bootstrap-toggle-buttons.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/daterangepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/daterangepicker.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/datetimepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/datetimepicker.css" />
 
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/multi-select-metro.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/multi-select-metro.css" />
 
     <link href="<%=basePath%>assets/media/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
 
@@ -109,7 +108,7 @@
 <div class="page-container row-fluid">
 
     <!-- BEGIN SIDEBAR -->
-
+    <c:set var="menuCurrent" value="0" scope="session"/>
     <jsp:include page="sidebar.jsp"/>
 
     <!-- END SIDEBAR -->
@@ -308,7 +307,7 @@
 
                                 <div class="controls">
 
-                                    <textarea class="span6 m-wrap" rows="3" name="content">${house.content}</textarea>
+                                    <textarea class="span6 m-wrap" rows="10d" name="content">${house.content}</textarea>
 
                                     <span class="help-inline">介绍您要出租的房屋</span>
 
@@ -343,7 +342,6 @@
 
                             </div>
 
-                                <div class="control-group">
 
                             <div class="control-group">
 
@@ -356,7 +354,7 @@
                                         <i class="icon-envelope"></i>
 
 
-                                        <input class="m-wrap "name="area" ${house.area} type="text" placeholder="" />
+                                        <input class="m-wrap "name="area" value="${house.area}"  type="text" placeholder="" />
 
                                     </div>
 
@@ -390,13 +388,13 @@
 
                                         <option value="0">选择</option>
 
-                                        <option value="0">普通</option>
+                                        <option value="0" <c:if test="${house.housetype == 0}">selected</c:if>>普通</option>
 
-                                        <option value="1">高层</option>
+                                        <option value="1" <c:if test="${house.housetype == 1}">selected</c:if>>高层</option>
 
-                                        <option value="2">别墅</option>
+                                        <option value="2" <c:if test="${house.housetype == 2}">selected</c:if>>别墅</option>
 
-                                        <option value="3">跃层</option>
+                                        <option value="3" <c:if test="${house.housetype == 3}">selected</c:if>>跃层</option>
 
                                     </select>
 
@@ -439,7 +437,6 @@
                                             </label>
 
                                         </div>
-                                            <div class="span3" >
 
                                         <div class="span3">
 
@@ -485,19 +482,19 @@
 
                                 </div>
 
-                                <div class="form-actions">
+                            </div>
 
-                                    <button type="button" class="btn blue" id="publishHourefabu">发布~快来住！</button>
+                            <div class="form-actions">
 
-                                    <button type="button" class="btn" id="publishHouredengji">登记。先不租...</button>
+                                <button type="button" class="btn blue" id="publishHourefabu">发布~快来住！</button>
 
-                                </div>
+                                <button type="button" class="btn" id="publishHouredengji">登记。先不租...</button>
 
-                            </form>
+                            </div>
 
-                            <!-- END FORM-->
+                        </form>
 
-                        </div>
+                        <!-- END FORM-->
 
                     </div>
 
@@ -534,7 +531,7 @@
 
 <!-- END PAGE -->
 
-                      &lt;!&ndash; BEGIN FORM&ndash;&gt;
+</div>
 
 <!-- END CONTAINER -->
 
@@ -644,6 +641,8 @@
 
 <script src="<%=basePath%>assets/media/js/form-components.js"></script>
 
+<script src="<%=basePath%>assets/media/js/app-script.js"></script>
+
 <!-- END PAGE LEVEL SCRIPTS -->
 
 <script>
@@ -662,20 +661,7 @@
 
 <!-- END JAVASCRIPTS -->
 
-<script type="text/javascript">  var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-37564768-1']);
-_gaq.push(['_setDomainName', 'keenthemes.com']);
-_gaq.push(['_setAllowLinker', true]);
-_gaq.push(['_trackPageview']);
-(function () {
-    var ga = document.createElement('script');
-    ga.type = 'text/javascript';
-    ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(ga, s);
-})();</script>
-</body>
+<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
 
 <!-- END BODY -->
 

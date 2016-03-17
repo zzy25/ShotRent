@@ -14,8 +14,6 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
-
-
 <!--[if IE 8]>
 <html lang="en" class="ie8"> <![endif]-->
 
@@ -90,7 +88,7 @@
 <div class="page-container row-fluid">
 
     <!-- BEGIN SIDEBAR -->
-
+    <c:set var="menuCurrent" value="3" scope="session"/>
     <jsp:include page="sidebar.jsp"/>
 
     <!-- END SIDEBAR -->
@@ -203,7 +201,7 @@
                                                 <i class="icon-map-marker"></i>
 
                                                 <input class="m-wrap span12" type="text"
-                                                       placeholder="请输入地点" name="addressContain">
+                                                       placeholder="请输入地点" name="addressContain"value="${houseVo.addressContain}">
 
                                             </div>
 
@@ -220,9 +218,9 @@
                                                     <div class="controls">
 
                                                         <input type="text" id="minArea" name="minArea"
-                                                               class="m-wrap span6" placeholder="请输入最小面积">
+                                                               class="m-wrap span6" placeholder="请输入最小面积" value="${houseVo.minArea}">
                                                         <input type="text" id="maxArea" name="maxArea"
-                                                               class="m-wrap span6" placeholder="请输入最大面积">
+                                                               class="m-wrap span6" placeholder="请输入最大面积" value="${houseVo.maxArea}">
 
                                                     </div>
                                                 </div>
@@ -236,9 +234,9 @@
                                                     <div class="controls">
 
                                                         <input type="text" id="mixPrice" name="minArea"
-                                                               class="m-wrap span6" placeholder="请输入最低价格">
+                                                               class="m-wrap span6" placeholder="请输入最低价格" value="${houseVo.minPrice}">
                                                         <input type="text" id="maxPrice" name="maxArea"
-                                                               class="m-wrap span6" placeholder="请输入最高价格">
+                                                               class="m-wrap span6" placeholder="请输入最高价格" value="${houseVo.maxPrice}">
                                                     </div>
 
                                                 </div>
@@ -291,8 +289,8 @@
 
                                         </div>--%>
 
-                                        <input type="button" class="btn blue btn-block" value="查找"><%--查找--%> <i
-                                            class="m-icon-swapright m-icon-white" id="findHousesearch"></i></input>
+                                        <button type="submit" class="btn blue btn-block" >查找 <i
+                                            class="m-icon-swapright m-icon-white"<%-- id="findHousesearch"--%>></i></button>
 
                                     </form>
 

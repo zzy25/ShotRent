@@ -9,60 +9,61 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-  String path = request.getContextPath();
-  String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-  <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
-  <title> 短租网 | 房屋审核 </title>
+    <title> 短租网 | 房屋审核 </title>
 
 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-  <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-  <meta content="" name="author" />
+    <meta content="" name="author"/>
 
-  <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
-  <link href="<%=basePath%>assets/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
-  <link href="<%=basePath%>assets/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
 
-  <link href="<%=basePath%>assets/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
-  <link href="<%=basePath%>assets/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
 
-  <link href="<%=basePath%>assets/media/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style.css" rel="stylesheet" type="text/css"/>
 
-  <link href="<%=basePath%>assets/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
 
-  <link href="<%=basePath%>assets/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="<%=basePath%>assets/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 
-  <link href="<%=basePath%>assets/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 
-  <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- END GLOBAL MANDATORY STYLES -->
 
-  <!-- BEGIN PAGE LEVEL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
 
-  <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/select2_metro.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/media/css/select2_metro.css"/>
 
-  <link rel="stylesheet" href="<%=basePath%>assets/media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" href="<%=basePath%>assets/media/css/DT_bootstrap.css"/>
 
-  <!-- END PAGE LEVEL STYLES -->
+    <!-- END PAGE LEVEL STYLES -->
 
-  <link rel="shortcut icon" href="<%=basePath%>assets/media/image/favicon.ico" />
+    <link rel="shortcut icon" href="<%=basePath%>assets/media/image/favicon.ico"/>
 
 </head>
 
@@ -82,344 +83,370 @@
 
 <div class="page-container row-fluid">
 
-  <!-- BEGIN SIDEBAR -->
+    <!-- BEGIN SIDEBAR -->
 
-  <jsp:include page="sidebar.jsp"/>
+    <c:set var="menuCurrent" value="2" scope="session"/>
+    <jsp:include page="sidebar.jsp"/>
 
-  <!-- END SIDEBAR -->
+    <!-- END SIDEBAR -->
 
-  <!-- BEGIN PAGE -->
+    <!-- BEGIN PAGE -->
 
-  <div class="page-content">
+    <div class="page-content">
 
-    <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
-    <div id="portlet-config" class="modal hide">
+        <div id="portlet-config" class="modal hide">
 
-      <div class="modal-header">
+            <div class="modal-header">
 
-        <button data-dismiss="modal" class="close" type="button"></button>
+                <button data-dismiss="modal" class="close" type="button"></button>
 
-        <h3>配置</h3>
-
-      </div>
-
-      <div class="modal-body">
-
-        <p>这里将是一个配置形式</p>
-
-      </div>
-
-    </div>
-
-    <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-
-    <!-- BEGIN PAGE CONTAINER-->
-
-    <div class="container-fluid">
-
-      <!-- BEGIN PAGE HEADER-->
-
-      <div class="row-fluid">
-
-        <div class="span12">
-
-          <!-- BEGIN STYLE CUSTOMIZER -->
-
-          <div class="color-panel hidden-phone">
-
-            <div class="color-mode-icons icon-color"></div>
-
-            <div class="color-mode-icons icon-color-close"></div>
-
-            <div class="color-mode">
-
-              <p>主体颜色</p>
-
-              <ul class="inline">
-
-                <li class="color-black current color-default" data-style="default"></li>
-
-                <li class="color-blue" data-style="blue"></li>
-
-                <li class="color-brown" data-style="brown"></li>
-
-                <li class="color-purple" data-style="purple"></li>
-
-                <li class="color-grey" data-style="grey"></li>
-
-                <li class="color-white color-light" data-style="light"></li>
-
-              </ul>
-
-              <label>
-
-                <span>布局</span>
-
-                <select class="layout-option m-wrap small">
-
-                  <option value="fluid" selected>Fluid</option>
-
-                  <option value="boxed">Boxed</option>
-
-                </select>
-
-              </label>
-
-              <label>
-
-                <span>标头</span>
-
-                <select class="header-option m-wrap small">
-
-                  <option value="fixed" selected>Fixed</option>
-
-                  <option value="default">Default</option>
-
-                </select>
-
-              </label>
-
-              <label>
-
-                <span>侧边栏</span>
-
-                <select class="sidebar-option m-wrap small">
-
-                  <option value="fixed">Fixed</option>
-
-                  <option value="default" selected>Default</option>
-
-                </select>
-
-              </label>
-
-              <label>
-
-                <span>页脚</span>
-
-                <select class="footer-option m-wrap small">
-
-                  <option value="fixed">Fixed</option>
-
-                  <option value="default" selected>Default</option>
-
-                </select>
-
-              </label>
+                <h3>配置</h3>
 
             </div>
 
-          </div>
+            <div class="modal-body">
 
-          <!-- END BEGIN STYLE CUSTOMIZER -->
+                <p>这里将是一个配置形式</p>
 
-          <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-
-          <h3 class="page-title">
-
-            房屋审核 <small>房屋审核</small>
-
-          </h3>
-
-          <ul class="breadcrumb">
-
-            <li>
-
-              <i class="icon-home"></i>
-
-              <a href="index.html">首页</a>
-
-              <i class="icon-angle-right"></i>
-
-            </li>
-
-            <li>
-
-              <a href="#">管理员</a>
-
-              <i class="icon-angle-right"></i>
-
-            </li>
-
-            <li><a href="#">房屋审核</a></li>
-
-          </ul>
-
-          <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
 
         </div>
 
-      </div>
+        <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
-      <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTAINER-->
 
-      <!-- BEGIN PAGE CONTENT-->
+        <div class="container-fluid">
 
-      <div class="row-fluid">
+            <!-- BEGIN PAGE HEADER-->
 
-        <div class="span12">
+            <div class="row-fluid">
 
-          <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="span12">
 
-          <div class="portlet box light-grey">
+                    <!-- BEGIN STYLE CUSTOMIZER -->
 
-            <div class="portlet-title">
+                    <div class="color-panel hidden-phone">
 
-              <div class="caption"><i class="icon-globe"></i>房屋审核表</div>
+                        <div class="color-mode-icons icon-color"></div>
 
-              <div class="tools">
+                        <div class="color-mode-icons icon-color-close"></div>
 
-                <a href="javascript:;" class="collapse"></a>
+                        <div class="color-mode">
 
-                <a href="#portlet-config" data-toggle="modal" class="config"></a>
+                            <p>主体颜色</p>
 
-                <a href="javascript:;" class="reload"></a>
+                            <ul class="inline">
 
-                <a href="javascript:;" class="remove"></a>
+                                <li class="color-black current color-default" data-style="default"></li>
 
-              </div>
+                                <li class="color-blue" data-style="blue"></li>
 
-            </div>
+                                <li class="color-brown" data-style="brown"></li>
 
-            <div class="portlet-body">
+                                <li class="color-purple" data-style="purple"></li>
 
-              <div class="clearfix">
+                                <li class="color-grey" data-style="grey"></li>
 
-                <div class="btn-group">
+                                <li class="color-white color-light" data-style="light"></li>
 
-                  <button id="sample_editable_1_new" class="btn green">
+                            </ul>
 
-                    Add New <i class="icon-plus"></i>
+                            <label>
 
-                  </button>
+                                <span>布局</span>
+
+                                <select class="layout-option m-wrap small">
+
+                                    <option value="fluid" selected>Fluid</option>
+
+                                    <option value="boxed">Boxed</option>
+
+                                </select>
+
+                            </label>
+
+                            <label>
+
+                                <span>标头</span>
+
+                                <select class="header-option m-wrap small">
+
+                                    <option value="fixed" selected>Fixed</option>
+
+                                    <option value="default">Default</option>
+
+                                </select>
+
+                            </label>
+
+                            <label>
+
+                                <span>侧边栏</span>
+
+                                <select class="sidebar-option m-wrap small">
+
+                                    <option value="fixed">Fixed</option>
+
+                                    <option value="default" selected>Default</option>
+
+                                </select>
+
+                            </label>
+
+                            <label>
+
+                                <span>页脚</span>
+
+                                <select class="footer-option m-wrap small">
+
+                                    <option value="fixed">Fixed</option>
+
+                                    <option value="default" selected>Default</option>
+
+                                </select>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <!-- END BEGIN STYLE CUSTOMIZER -->
+
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+                    <h3 class="page-title">
+
+                        房屋审核
+                        <small>房屋审核</small>
+
+                    </h3>
+
+                    <ul class="breadcrumb">
+
+                        <li>
+
+                            <i class="icon-home"></i>
+
+                            <a href="index.html">首页</a>
+
+                            <i class="icon-angle-right"></i>
+
+                        </li>
+
+                        <li>
+
+                            <a href="#">管理员</a>
+
+                            <i class="icon-angle-right"></i>
+
+                        </li>
+
+                        <li><a href="#">房屋审核</a></li>
+
+                    </ul>
+
+                    <!-- END PAGE TITLE & BREADCRUMB-->
 
                 </div>
 
-              </div>
+            </div>
 
-              <table class="table table-striped table-bordered table-hover" id="">
+            <!-- END PAGE HEADER-->
 
-                <thead>
+            <!-- BEGIN PAGE CONTENT-->
 
-                <tr>
+            <div class="row-fluid">
 
+                <div class="span12">
 
+                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
 
-                  <th class="hidden-480 ">发布者</th>
+                    <div class="portlet box light-grey">
 
-                  <th class="hidden-480">房屋地址</th>
+                        <div class="portlet-title">
 
-                  <th class="hidden-480 ">出租类型</th>
+                            <div class="caption"><i class="icon-globe"></i>房屋审核表</div>
 
-                  <th class="hidden-480">面积（平方米）</th>
+                            <div class="tools">
 
-                  <th class="hidden-480 ">单价（元/天）</th>
-                  <th class="hidden-480">详细信息</th>
+                                <a href="javascript:;" class="collapse"></a>
 
-                  <th class="hidden-480">操作</th>
+                                <a href="#portlet-config" data-toggle="modal" class="config"></a>
 
+                                <a href="javascript:;" class="reload"></a>
 
-                </tr>
+                                <a href="javascript:;" class="remove"></a>
 
-                </thead>
+                            </div>
 
-                <tbody>
-                <c:choose>
-                  <c:when test="${houseList != null && houseList.size() > 0}">
-                    <c:forEach items="${houseList}" var="item">
-                      <tr class="odd gradeX">
+                        </div>
 
-                        <td>${item.owerName}</td>
+                        <div class="portlet-body">
 
-                        <td>${item.address}</td>
+                            <div class="clearfix">
 
-                        <td class="hidden-480">整租</td>
+                                <div class="btn-group">
 
-                        <td class="hidden-480">${item.area}</td>
+                                    <button id="sample_editable_1_new" class="btn green">
 
-                        <td class="center hidden-480">${item.price}</td>
-                        <td class="hidden-480"><a href="<%=basePath%>rent/${item.id}.action" target="_blank">具体信息</a> </td>
+                                        Add New <i class="icon-plus"></i>
 
-                        <td><button type="button" class="btn green">通过</button>
-                          <button type="button" class="btn red " >驳回</button></td>
+                                    </button>
 
-                      </tr>
-                    </c:forEach>
-                  </c:when>
-                  <c:when test="${houseList == null || houseList.size()== 0}">
-                    <tr><td colspan="12" align="center"/> 暂无数据!</tr>
-                  </c:when>
-                </c:choose>
+                                </div>
+
+                            </div>
+
+                            <table class="table table-striped table-bordered table-hover" id="">
+
+                                <thead>
+
+                                <tr>
 
 
-                <%--<tr class="odd gradeX">
+                                    <th class="hidden-480 ">发布者</th>
 
-                  <td>岳超刚</td>
+                                    <th class="hidden-480">房屋地址</th>
 
-                  <td>陕西省西安市</td>
+                                    <th class="hidden-480 ">出租类型</th>
 
-                  <td class="hidden-480">整租</td>
+                                    <th class="hidden-480">面积（平方米）</th>
 
-                  <td class="hidden-480">20</td>
+                                    <th class="hidden-480 ">单价（元/天）</th>
 
-                  <td class="center hidden-480">50</td>
-                  <td class="hidden-480"><a href="<%=basePath%>rent/${item.houseid}" target="_blank">具体信息</a> </td>
+                                    <th class="hidden-480">审核状态</th>
 
-                  <td><button type="button" class="btn green">通过</button>
-                    <button type="button" class="btn red " >驳回</button></td>
+                                    <th class="hidden-480">详细信息</th>
 
-                </tr>--%>
+                                    <th class="hidden-480">操作</th>
 
 
-                </tbody>
+                                </tr>
 
-              </table>
+                                </thead>
+
+                                <tbody>
+                                <c:choose>
+                                    <c:when test="${houseList != null && houseList.size() > 0}">
+                                        <c:forEach items="${houseList}" var="item">
+                                            <tr class="odd gradeX">
+
+                                                <td>${item.owerName}</td>
+
+                                                <td>${item.address}</td>
+
+                                                <td class="hidden-480">整租</td>
+
+                                                <td class="hidden-480">${item.area}</td>
+
+                                                <td class="center hidden-480">${item.price}</td>
+
+                                                <td class="center hidden-480">
+                                                    <c:if test="${item.checked == 0}">
+                                                        <span class="label label-important">未审核</span>
+                                                    </c:if>
+                                                    <c:if test="${item.checked == 1}">
+                                                        <span class="label label-success">审核通过</span>
+                                                    </c:if>
+                                                </td>
+
+                                                <td class="hidden-480"><a href="<%=basePath%>rent/${item.id}.action"
+                                                                          target="_blank">具体信息</a></td>
+
+                                                <td>
+                                                    <c:if test="${item.checked == 0}">
+                                                        <button type="button" class="btn green"
+                                                                onclick="houseChecked(${item.id}, 1)">通过
+                                                        </button>
+                                                    </c:if>
+                                                    <c:if test="${item.checked == 1}">
+                                                    <button type="button" class="btn red "
+                                                            onclick="houseChecked(${item.id}, 0)">驳回
+                                                    </button>
+                                                </td>
+                                                </c:if>
+
+                                            </tr>
+                                        </c:forEach>
+                                    </c:when>
+                                    <c:when test="${houseList == null || houseList.size()== 0}">
+                                        <tr>
+                                            <td colspan="12" align="center"/>
+                                            暂无数据!
+                                        </tr>
+                                    </c:when>
+                                </c:choose>
+
+
+                                <%--<tr class="odd gradeX">
+
+                                  <td>岳超刚</td>
+
+                                  <td>陕西省西安市</td>
+
+                                  <td class="hidden-480">整租</td>
+
+                                  <td class="hidden-480">20</td>
+
+                                  <td class="center hidden-480">50</td>
+                                  <td class="hidden-480"><a href="<%=basePath%>rent/${item.houseid}" target="_blank">具体信息</a> </td>
+
+                                  <td><button type="button" class="btn green">通过</button>
+                                    <button type="button" class="btn red " >驳回</button></td>
+
+                                </tr>--%>
+
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                    </div>
+
+                    <!-- END EXAMPLE TABLE PORTLET-->
+
+                </div>
 
             </div>
 
+            <div class="row-fluid">
 
-          </div>
+                <div class="span6 responsive" data-tablet="span12 fix-offset" data-desktop="span6">
 
-          <!-- END EXAMPLE TABLE PORTLET-->
-
-        </div>
-
-      </div>
-
-      <div class="row-fluid">
-
-        <div class="span6 responsive" data-tablet="span12 fix-offset" data-desktop="span6">
-
-          <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
 
 
+                    <!-- END EXAMPLE TABLE PORTLET-->
 
-          <!-- END EXAMPLE TABLE PORTLET-->
+                </div>
 
-        </div>
+                <div class="span6 responsive" data-tablet="span12 fix-offset" data-desktop="span6">
 
-        <div class="span6 responsive" data-tablet="span12 fix-offset" data-desktop="span6">
-
-          <!-- BEGIN EXAMPLE TABLE PORTLET-->
-
+                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
 
 
-          <!-- END EXAMPLE TABLE PORTLET-->
+                    <!-- END EXAMPLE TABLE PORTLET-->
+
+                </div>
+
+            </div>
+
+            <!-- END PAGE CONTENT-->
 
         </div>
 
-      </div>
-
-      <!-- END PAGE CONTENT-->
+        <!-- END PAGE CONTAINER-->
 
     </div>
 
-    <!-- END PAGE CONTAINER-->
-
-  </div>
-
-  <!-- END PAGE -->
+    <!-- END PAGE -->
 
 </div>
 
@@ -459,7 +486,7 @@
 
 <script src="<%=basePath%>assets/media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="<%=basePath%>assets/media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="<%=basePath%>assets/media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -479,19 +506,34 @@
 
 <script src="<%=basePath%>assets/media/js/table-managed.js"></script>
 
+<script src="<%=basePath%>assets/media/js/app-script.js"></script>
+
 <script>
 
-  jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
-    App.init();
+        App.init();
 
-    TableManaged.init();
+        TableManaged.init();
 
-  });
+    });
 
 </script>
 
-<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
+<script type="text/javascript">  var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37564768-1']);
+_gaq.push(['_setDomainName', 'keenthemes.com']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+(function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();</script>
+</body>
 
 <!-- END BODY -->
 

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%--<%@ page trimDirectiveWhitespaces="true" %>--%>
 <%--
@@ -62,7 +63,7 @@
 
         </li>
 
-        <li class="">
+        <li class="<c:if test="${menuCurrent eq 0}">active</c:if>">
 
             <a href="javascript:;">
 
@@ -84,13 +85,13 @@
 
                 </li>
 
-                <li>
+                <%--<li>
 
                     <a href="<%=basePath%>house/update.action">
 
                         发布房屋</a>
 
-                </li>
+                </li>--%>
 
                 <li>
 
@@ -266,7 +267,7 @@
 
  <%--       </li>--%>
 
-        <li class="">
+        <li class="<c:if test="${menuCurrent eq 1}">active</c:if>">
 
             <a href="javascript:;">
 
@@ -340,7 +341,7 @@
 
         </li>
 
-        <li class="">
+        <li class="<c:if test="${menuCurrent eq 2}">active</c:if>">
 
             <a href="javascript:;">
 
@@ -448,7 +449,7 @@
 
         </li>
 
-        <li class="active ">
+        <li class="<c:if test="${menuCurrent eq 3}">active</c:if> ">
 
             <a href="javascript:;">
 
@@ -496,7 +497,7 @@
 
                 </li>
 --%>
-                <li class="active">
+                <li>
 
                     <a href="<%=basePath%>rent/listHouses.action">
 
@@ -506,7 +507,7 @@
 
                <%-- <li>
 
-                    <a href="extra_invoice.html">
+                    <a href="createOrder.html">
 
                         Invoice</a>
 

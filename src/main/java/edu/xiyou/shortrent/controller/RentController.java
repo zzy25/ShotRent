@@ -1,5 +1,6 @@
 package edu.xiyou.shortrent.controller;
 
+import com.google.common.collect.Maps;
 import edu.xiyou.shortrent.constant.CommenConstant;
 import edu.xiyou.shortrent.constant.UserConstant;
 import edu.xiyou.shortrent.exception.ArguException;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by andrew on 16-3-9.
@@ -52,7 +54,7 @@ public class RentController extends BaseController {
         houseVo.setMaxArea(maxArea);
         houseVo.setMinArea(minArea);
         houseVo.setMaxPrice(maxPrice);
-        houseVo.setMinArea(minPrice);
+        houseVo.setMinPrice(minPrice);
         houseVo.setAddressContain(addressContain);
         houseVo.setHouseType(houseType);
 
@@ -70,6 +72,7 @@ public class RentController extends BaseController {
         }
         modelMap.addAttribute("houseList", houseList);
         resultVo.setElement(houseList);
+        modelMap.addAttribute("houseVo", houseVo);
         return "findHouses";
     }
 
@@ -103,6 +106,9 @@ public class RentController extends BaseController {
 //    @RequiresRoles(RoleSign.owner)
     public String findOrders(HttpServletRequest request, ModelMap modelMap){
         User user = (User) request.getSession().getAttribute(UserConstant.USER_DETAIL);
+        if (user == null){
+            return "redirect:/user/login.action";
+        }
         Integer owerId = user.getId();
         if (owerId == null){
             modelMap.addAttribute(CommenConstant.ERROR, "查找信息不能为空");
@@ -113,7 +119,22 @@ public class RentController extends BaseController {
         try {
             Order order = new Order();
             order.setOwerid(owerId);
-            orderList = orderService.selectBySelective(order);
+            User emptyUser = new User();
+            List<User> userList = userService.selectBySelective(emptyUser);
+            Map<Integer, User> userMap = Maps.newHashMap();
+            for (User user1 : userList){
+                userMap.put(user1.getId(), user1);
+            }
+
+            for (Order order1 : orderList){
+                User owner = userMap.get(order1.getOwerid());
+                order1.setOwerName(owner.getUsername());
+                order1.setOwerMobile(owner.getMobile());
+
+                User customer = userMap.get(order1.getCustomer());
+                order1.setCustomerMobile(customer.getUsername());
+                order1.setCustomerMobile(customer.getMobile());
+            }
         }catch (Exception e){
             logger.error("orderList owerId={}, exception={}", owerId, e);
         }
@@ -198,7 +219,11 @@ public class RentController extends BaseController {
     @RequestMapping(value = "/order/create.action")
 //    @RequiresRoles(RoleSign.customer)
     public String createOrder(HttpServletRequest request, ModelMap modelMap){
-        modelMap.addAttribute(UserConstant.USER_DETAIL, request.getSession().getAttribute(UserConstant.USER_DETAIL));
+        User user = (User) request.getSession().getAttribute(UserConstant.USER_DETAIL);
+        if (user == null){
+            return "redirect:/user/login.action";
+        }
+        modelMap.addAttribute(UserConstant.USER_DETAIL, user);
         return "createOrder";
     }
 

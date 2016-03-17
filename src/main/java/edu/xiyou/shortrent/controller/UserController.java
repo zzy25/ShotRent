@@ -121,6 +121,8 @@ public class UserController extends BaseController {
             user.setCreatetime(new Date());
             user.setUpdatetime(new Date());
             userService.addUser(user);
+            resultVo.setApproved(true);
+            resultVo.setMsg("创建成功");
         } catch (AuthException e) {
             resultVo.setMsg(e.getMessage());
             resultVo.setApproved(false);
@@ -139,6 +141,9 @@ public class UserController extends BaseController {
     public String updateUser(ModelMap modelMap, HttpServletRequest request) {
 
         User user = (User) request.getSession().getAttribute(UserConstant.USER_DETAIL);
+        if (user == null){
+            return "redirect:/user/login.action";
+        }
         Integer userId = user.getId();
         logger.info("user={}", user);
         try {

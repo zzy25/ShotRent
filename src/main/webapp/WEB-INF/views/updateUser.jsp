@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
@@ -80,7 +81,7 @@
 <div class="page-container row-fluid">
 
     <!-- BEGIN SIDEBAR MENU -->
-
+    <c:set var="menuCurrent" value="1" scope="session"/>
     <jsp:include page="sidebar.jsp"/>
 
     <!-- END SIDEBAR MENU -->

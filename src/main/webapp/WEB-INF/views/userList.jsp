@@ -84,7 +84,7 @@
 <div class="page-container row-fluid">
 
     <!-- BEGIN SIDEBAR -->
-
+    <c:set var="menuCurrent" value="2" scope="session"/>
     <jsp:include page="sidebar.jsp"/>
 
     <!-- END SIDEBAR -->
@@ -316,7 +316,7 @@
                                             <td class="center hidden-480"><fmt:formatDate value="${item.createtime}" pattern="yyyy年MM月dd日"/> </td>
                                             <td class="hidden-480"><fmt:formatDate value="${item.updatetime}" pattern="yyyy年MM月dd日"/> </td>
 
-                                            <td><button type="button" class="btn green">封号</button>
+                                            <td><button type="button" class="btn green" >封号</button>
                                                 <button type="button" class="btn red " >解封</button></td>
 
                                         </tr>

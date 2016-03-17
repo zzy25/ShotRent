@@ -253,22 +253,22 @@
     from houses
     <where>
       <if test="maxArea != null">
-        area <![CDATA[<=]]> #{maxArea,jdbcType=INTEGER}
+        and area <![CDATA[<=]]> #{maxArea,jdbcType=INTEGER}
       </if>
       <if test="minArea != null">
-        area <![CDATA[>=]]> #{minArea,jdbcType=INTEGER}
+        and area <![CDATA[>=]]> #{minArea,jdbcType=INTEGER}
       </if>
       <if test="maxPrice != null">
-        price <![CDATA[<=]]> #{maxPrice,jdbcType=INTEGER}
+        and price <![CDATA[<=]]> #{maxPrice,jdbcType=INTEGER}
       </if>
       <if test="minPrice != null">
-        price <![CDATA[>=]]> #{minPrice,jdbcType=INTEGER}
+        and price <![CDATA[>=]]> #{minPrice,jdbcType=INTEGER}
       </if>
       <if test="addressContain != null and addressContain != ''">
-        locate(address,#{addressContain,jdbcType=VARCHAR}) <![CDATA[>]]> 0
+        and locate(address,#{addressContain,jdbcType=VARCHAR}) <![CDATA[>]]> 0
       </if>
       <if test="houseType != null">
-        houseType = #{houseType,jdbcType=SMALLINT}
+        and houseType = #{houseType,jdbcType=SMALLINT}
       </if>
     </where>
   </select>

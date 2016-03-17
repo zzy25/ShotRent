@@ -85,7 +85,7 @@
 <div class="page-container row-fluid">
 
     <!-- BEGIN SIDEBAR -->
-
+    <c:set var="menuCurrent" value="3" scope="session"/>
     <jsp:include page="sidebar.jsp"/>
 
     <!-- END SIDEBAR -->
@@ -384,7 +384,7 @@
                                     </c:when>
                                 </c:choose>
 
-                                <tr class="odd gradeX">
+                               <%-- <tr class="odd gradeX">
 
                                     <!--<td><input type="checkbox" class="checkboxes" value="1" /></td>-->
 
@@ -406,7 +406,7 @@
 
                                     <td class="hidden-480"><a class="btn red mini">终止</a></td>
 
-                                </tr>
+                                </tr>--%>
 
                                 </tbody>
 

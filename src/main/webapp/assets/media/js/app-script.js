@@ -30,9 +30,10 @@ $.ready(
             },
             function(result){
                 if (result.approved){
-                    window.location ="/index.action";
+                    alert("注册成功");
+                    window.location ="/user/login.action";
                 }else{
-                    alert("创建失败 , "+result.msg);
+                    alert("注册失败 , "+result.msg);
                 }
             }
         );
@@ -48,14 +49,13 @@ $.ready(
                 address : $("[name='address']").val(),
                 area : $("[name='area']").val(),
                 price : $("[name='price']").val(),
-                conten : $("[name='conten']").val(),
-                furniture: $("[name='furniture']").val(),
-                online:1
-
+                content : $("[name='content']").val(),
+                online: "1"
             },
             function(result){
+
                 if (result.approved){
-                    window.location ="/index.action";
+                    window.location ="/rent/" + result.element.id + ".action";
                 }else{
                     alert("发布失败 , "+result.msg);
                 }
@@ -73,14 +73,13 @@ $.ready(
                 address : $("[name='address']").val(),
                 area : $("[name='area']").val(),
                 price : $("[name='price']").val(),
-                conten : $("[name='conten']").val(),
-                furniture: $("[name='furniture']").val(),
-                online:0
+                content : $("[name='content']").val(),
+                online: "0"
 
             },
             function(result){
                 if (result.approved){
-                    window.location ="/index.action";
+                    window.location ="/rent/" + result.element.id + ".action";;
                 }else{
                     alert("登记失败 , "+result.msg);
                 }
@@ -115,15 +114,32 @@ $.ready(
 );
 var houseCheck =function(houseId, check){
     $.post(
+        "/house/online/"+ houseId + ".action",
+        {
+            online :check
+        },
+        function(result){
+            if (result.approved){
+                alert("修改成功");
+                window.location.reload();
+            }else{
+                alert("修改失败 , "+ result.msg);
+            }
+        }
+    );
+}
+var houseChecked = function(houseId, check){
+    $.post(
         "/house/check/"+ houseId + ".action",
         {
             checked :check
         },
         function(result){
             if (result.approved){
-                window.location ="/index.action";
+                alert("修改成功");
+                window.location.reload();
             }else{
-                alert("修改失败 , "+result.msg);
+                alert("修改失败 , "+ result.msg);
             }
         }
     );

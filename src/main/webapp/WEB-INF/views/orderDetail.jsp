@@ -86,7 +86,7 @@
 <div class="page-container row-fluid">
 
     <!-- BEGIN SIDEBAR -->
-
+    <c:set var="menuCurrent" value="3" scope="session"/>
     <jsp:include page="sidebar.jsp"/>
 
     <!-- END SIDEBAR -->

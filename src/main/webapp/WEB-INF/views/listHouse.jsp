@@ -85,7 +85,7 @@
 <div class="page-container row-fluid">
 
     <!-- BEGIN SIDEBAR -->
-
+    <c:set var="menuCurrent" value="0" scope="session"/>
     <jsp:include page="sidebar.jsp"/>
 
     <!-- END SIDEBAR -->
@@ -288,12 +288,15 @@
 
                                     <th class="hidden-480">房屋地址</th>
 
-                                    <th class="hidden-480 ">出租类型</th>
-
                                     <th class="hidden-480">面积（平方米）</th>
 
                                     <th class="hidden-480 ">单价（元/天）</th>
+
                                     <th class="hidden-480">详细信息</th>
+
+                                    <th class="hidden-480">审核状态</th>
+
+                                    <th class="hidden-480 ">是否上线</th>
 
                                     <th class="hidden-480">操作</th>
 
@@ -313,17 +316,38 @@
 
                                                 <td>${item.address}</td>
 
-                                                <td class="hidden-480">整租</td>
-
                                                 <td class="hidden-480">${item.area}</td>
 
                                                 <td class="center hidden-480">${item.price}</td>
                                                 <td class="hidden-480"><a href="<%=basePath%>rent/${item.id}.action"
                                                                           target="_blank">具体信息</a></td>
 
+                                                <td class="hidden-480">
+                                                    <c:if test="${item.checked == 1}">
+                                                        <span class="label label-mini label-success">通过</span>
+                                                    </c:if>
+                                                    <c:if test="${item.checked == 0}">
+                                                        <span class="label label-mini label-important">驳回</span>
+                                                    </c:if>
+                                                </td>
+
+                                                <td class="hidden-480">
+                                                    <c:if test="${item.online == 1}">
+                                                        <span class="label label-mini label-success">上线</span>
+                                                    </c:if>
+                                                    <c:if test="${item.online == 0}">
+                                                        <span class="label label-mini label-important">下线</span>
+                                                    </c:if>
+                                                </td>
+
                                                 <td>
-                                                    <button type="button" class="btn green">上线</button>
-                                                    <button type="button" class="btn red ">下线</button>
+                                                    <c:if test="${item.online == 0}">
+                                                        <a class="btn green" onclick="houseCheck(${item.id}, 1)">上线</a>
+                                                    </c:if>
+                                                    <c:if test="${item.online == 1}">
+                                                        <a class="btn red " onclick="houseCheck(${item.id}, 0)">下线</a>
+                                                    </c:if>
+                                                    <a class="btn " href="/house/update/${item.id}.action">修改</a>
                                                 </td>
 
                                             </tr>
@@ -336,7 +360,7 @@
                                     </c:when>
                                 </c:choose>
 
-                                <tr class="odd gradeX">
+                               <%-- <tr class="odd gradeX">
 
                                     <td>岳超刚</td>
 
@@ -355,7 +379,7 @@
                                         <button type="button" class="btn red ">下线</button>
                                     </td>
 
-                                </tr>
+                                </tr>--%>
 
 
                                 </tbody>
@@ -480,6 +504,8 @@
 <script src="<%=basePath%>assets/media/js/app.js"></script>
 
 <script src="<%=basePath%>assets/media/js/table-managed.js"></script>
+
+<script src="<%=basePath%>assets/media/js/app-script.js"></script>
 
 <script>
 

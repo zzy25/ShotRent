@@ -54,19 +54,11 @@ public class UserServiceImpl implements UserService {
         String password = user.getPassword();
         String email = user.getEmail();
         String mobile = user.getMobile();
-        if (StringUtils.isBlank(username) || StringUtils.isBlank(password)
-                || StringUtils.isBlank(email) || StringUtils.isBlank(mobile)) {
-            throw new AuthException("用户名，密码，邮箱，手机号不能为空");
-        } else if (username.length() < 6 || username.length() > 30) {
-            throw new AuthException("账号和密码长度必须大于6并且小于30");
-        } else if (password.length() < 6 || password.length() > 30) {
-            throw new AuthException("账号和密码长度必须大于6并且小于30");
-        }
 
+        if (userMapper.selectByUserName(username) != null){
+            throw new AuthException("该用户名已经被使用");
+        }
         try {
-            if (userMapper.selectByUserName(username) != null){
-                throw new AuthException("该用户名已经被使用");
-            }
             user.setPassword(AuthUtils.MD5(user.getPassword()));
             if (userMapper.insertSelective(user) > 0){
                 return true;
@@ -106,7 +98,7 @@ public class UserServiceImpl implements UserService {
         }
 
         if (user.getPassword() != null){
-            ArguUtils.strLengthInterval(user.getPassword(), 6, 30, "用户名");
+            ArguUtils.strLengthInterval(user.getPassword(), 2, 30, "用户名");
         }
 
         return userMapper.updateByPrimaryKeySelective(user);
