@@ -1,18 +1,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
   User: zhuoxiong
-  Date: 2016/3/15
-  Time: 20:31
+  Date: 2016/3/17
+  Time: 2:22
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isErrorPage="true" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
@@ -27,7 +27,8 @@
 
     <meta charset="utf-8"/>
 
-    <title>短租网 | 租赁管理 - 订单管理</title>
+    <title> 短租网 | 房屋管理 </title>
+
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
@@ -95,23 +96,23 @@
 
         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
-        <div id="portlet-config" class="modal hide">
+        <!--<div id="portlet-config" class="modal hide">-->
 
-            <div class="modal-header">
+        <!--<div class="modal-header">-->
 
-                <button data-dismiss="modal" class="close" type="button"></button>
+        <!--<button data-dismiss="modal" class="close" type="button"></button>-->
 
-                <h3>portlet Settings</h3>
+        <!--<h3>配置</h3>-->
 
-            </div>
+        <!--</div>-->
 
-            <div class="modal-body">
+        <!--<div class="modal-body">-->
 
-                <p>Here will be a configuration form</p>
+        <!--<p>这里将是一个配置形式</p>-->
 
-            </div>
+        <!--</div>-->
 
-        </div>
+        <!--</div>-->
 
         <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
@@ -135,7 +136,7 @@
 
                         <div class="color-mode">
 
-                            <p>THEME COLOR</p>
+                            <p>主体颜色</p>
 
                             <ul class="inline">
 
@@ -155,7 +156,7 @@
 
                             <label>
 
-                                <span>Layout</span>
+                                <span>布局</span>
 
                                 <select class="layout-option m-wrap small">
 
@@ -169,7 +170,7 @@
 
                             <label>
 
-                                <span>Header</span>
+                                <span>标头</span>
 
                                 <select class="header-option m-wrap small">
 
@@ -183,7 +184,7 @@
 
                             <label>
 
-                                <span>Sidebar</span>
+                                <span>侧边栏</span>
 
                                 <select class="sidebar-option m-wrap small">
 
@@ -197,7 +198,7 @@
 
                             <label>
 
-                                <span>Footer</span>
+                                <span>页脚</span>
 
                                 <select class="footer-option m-wrap small">
 
@@ -219,8 +220,8 @@
 
                     <h3 class="page-title">
 
-                        订单管理
-                        <small></small>
+                        房屋管理
+                        <small>房屋管理</small>
 
                     </h3>
 
@@ -230,21 +231,21 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="index.html">短租网</a>
+                            <a href="index.html">首页</a>
 
                             <i class="icon-angle-right"></i>
 
                         </li>
 
-                        <li>
+                        <!--<li>-->
 
-                            <a href="#">租赁管理</a>
+                        <!--<a href="#">管理员</a>-->
 
-                            <i class="icon-angle-right"></i>
+                        <!--<i class="icon-angle-right"></i>-->
 
-                        </li>
+                        <!--</li>-->
 
-                        <li><a href="#">订单管理</a></li>
+                        <li><a href="#">房屋管理</a></li>
 
                     </ul>
 
@@ -268,37 +269,13 @@
 
                         <div class="portlet-title">
 
-                            <div class="caption"><i class="icon-globe"></i>订单列表</div>
+                            <div class="caption"><i class="icon-globe"></i>房屋管理表</div>
 
-                            <div class="tools">
-
-                                <a href="javascript:;" class="collapse"></a>
-
-                                <a href="#portlet-config" data-toggle="modal" class="config"></a>
-
-                                <a href="javascript:;" class="reload"></a>
-
-                                <a href="javascript:;" class="remove"></a>
-
-                            </div>
 
                         </div>
 
                         <div class="portlet-body">
 
-                            <div class="clearfix">
-
-                                <div class="btn-group">
-
-                                    <button id="sample_editable_1_new" class="btn green">
-
-                                        Add New <i class="icon-plus"></i>
-
-                                    </button>
-
-                                </div>
-
-                            </div>
 
                             <table class="table table-striped table-bordered table-hover" id="">
 
@@ -306,112 +283,87 @@
 
                                 <tr>
 
-                                    <!--<th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>-->
 
-                                    <th class="hidden-480">订单标号</th>
+                                    <th class="hidden-480 ">发布者</th>
 
-                                    <th class="hidden-480">房屋编号</th>
+                                    <th class="hidden-480">房屋地址</th>
 
-                                    <th class="hidden-480">业主</th>
+                                    <th class="hidden-480 ">出租类型</th>
 
-                                    <th class="hidden-480">租客</th>
+                                    <th class="hidden-480">面积（平方米）</th>
 
-                                    <th class="hidden-480">租住开始时间</th>
+                                    <th class="hidden-480 ">单价（元/天）</th>
+                                    <th class="hidden-480">详细信息</th>
 
-                                    <th class="hidden-480">租住结束时间</th>
+                                    <th class="hidden-480">操作</th>
 
-                                    <th class="hidden-480">租金</th>
-
-                                    <th class="hidden-480">订单状态</th>
-
-                                    <th class="hidden-480">操作订单</th>
-
-                                    <!--<th ></th>-->
 
                                 </tr>
 
                                 </thead>
 
                                 <tbody>
-                                <c:choose>
-                                    <c:when test="${orderList != null and orderList.size() > 0}">
-                                        <c:forEach items="${orderList}" var="item" varStatus="status">
 
+                                <c:choose>
+                                    <c:when test="${houseList != null and houseList.size() > 0}">
+                                        <c:forEach items="${houseList}" var="item" varStatus="status">
                                             <tr class="odd gradeX">
 
-                                                <!--<td><input type="checkbox" class="checkboxes" value="1" /></td>-->
+                                                <td>${item.owerName}</td>
 
-                                                <td class="hidden-480">${item.id}</td>
+                                                <td>${item.address}</td>
 
-                                                <td class="hidden-480">${item.hourseid}</td>
+                                                <td class="hidden-480">整租</td>
 
-                                                <td class="hidden-480">${item.owerName}</td>
+                                                <td class="hidden-480">${item.area}</td>
 
-                                                <td class="hidden-480">${item.customerName}</td>
+                                                <td class="center hidden-480">${item.price}</td>
+                                                <td class="hidden-480"><a href="<%=basePath%>rent/${item.id}.action"
+                                                                          target="_blank">具体信息</a></td>
 
-                                                <td class="hidden-480"><fmt:formatDate value="${item.begintime}"
-                                                                                       pattern="yyyy年MM月dd日"/></td>
-
-                                                <td class="hidden-480"><fmt:formatDate value="${item.endtime}"
-                                                                                       pattern="yyyy年MM月dd日"/></td>
-
-                                                <td class="center hidden-480">${item.amount}</td>
-
-                                                <td class="hidden-480">
-                                                    <c:if test="${item.terminate == 0}">
-                                                        <span class="label label-success label-mini">正常</span>
-                                                    </c:if>
-                                                    <c:if test="${item.terminate == 1}">
-                                                        <span class="label label-important label-mini">终止</span>
-                                                    </c:if>
+                                                <td>
+                                                    <button type="button" class="btn green">上线</button>
+                                                    <button type="button" class="btn red ">下线</button>
                                                 </td>
-                                                <td class="hidden-480">
-                                                    <c:if test="${item.terminate == 0}">
-                                                        <a class="btn red mini" onclick="">终止</a>
-                                                    </c:if>
-                                                    <c:if test="${item.terminate == 1}">
-                                                        <a class="btn red mini disabled">终止</a>
-                                                    </c:if>
-                                                </td>
+
                                             </tr>
                                         </c:forEach>
                                     </c:when>
-                                    <c:when test="${orderList == null || orderList.size() == 0}">
+                                    <c:when test="${houseList == null || houseList.size() == 0}">
                                         <tr>
-                                            <td colspan="12" align="center">暂无数据！</td>
+                                            <td colspan="12" align="center">暂无数据!!</td>
                                         </tr>
                                     </c:when>
                                 </c:choose>
 
                                 <tr class="odd gradeX">
 
-                                    <!--<td><input type="checkbox" class="checkboxes" value="1" /></td>-->
+                                    <td>岳超刚</td>
 
-                                    <td class="hidden-480">0110123</td>
+                                    <td>陕西省西安市</td>
 
-                                    <td class="hidden-480">shuxer</td>
+                                    <td class="hidden-480">整租</td>
 
-                                    <td class="hidden-480"><a href="mailto:shuxer@gmail.com">shuxer@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
 
-                                    <td class="hidden-480">120</td>
+                                    <td class="center hidden-480">50</td>
+                                    <td class="hidden-480"><a href="<%=basePath%>rent/${item.houseid}" target="_blank">具体信息</a>
+                                    </td>
 
-                                    <td class="hidden-480">2015-01-01</td>
-
-                                    <td class="hidden-480">2015-02-03</td>
-
-                                    <td class="center hidden-480">12 Jan 2012</td>
-
-                                    <td class="hidden-480"><span class="label label-success label-mini">正常</span></td>
-
-                                    <td class="hidden-480"><a class="btn red mini">终止</a></td>
+                                    <td>
+                                        <button type="button" class="btn green">上线</button>
+                                        <button type="button" class="btn red ">下线</button>
+                                    </td>
 
                                 </tr>
+
 
                                 </tbody>
 
                             </table>
 
                         </div>
+
 
                     </div>
 
@@ -420,6 +372,29 @@
                 </div>
 
             </div>
+
+            <div class="row-fluid">
+
+                <div class="span6 responsive" data-tablet="span12 fix-offset" data-desktop="span6">
+
+                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+
+                    <!-- END EXAMPLE TABLE PORTLET-->
+
+                </div>
+
+                <div class="span6 responsive" data-tablet="span12 fix-offset" data-desktop="span6">
+
+                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+
+                    <!-- END EXAMPLE TABLE PORTLET-->
+
+                </div>
+
+            </div>
+
             <!-- END PAGE CONTENT-->
 
         </div>
@@ -436,7 +411,25 @@
 
 <!-- BEGIN FOOTER -->
 
-<jsp:include page="footer.jsp"/>
+<div class="footer">
+
+    <div class="footer-inner">
+
+        2013 &copy; Metronic by keenthemes.
+
+    </div>
+
+    <div class="footer-tools">
+
+			<span class="go-top">
+
+			<i class="icon-angle-up"></i>
+
+			</span>
+
+    </div>
+
+</div>
 
 <!-- END FOOTER -->
 

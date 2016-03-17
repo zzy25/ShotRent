@@ -133,4 +133,44 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <!-- 用户登录验证查询 -->
+  <select id="authentication" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where username = #{record.username,jdbcType=VARCHAR} and password = #{record.password,jdbcType=CHAR}
+  </select>
+
+  <select id="selectBySelective" resultMap="BaseResultMap" parameterType="edu.xiyou.shortrent.model.User">
+    select
+    <include refid="Base_Column_List" />
+    from users
+    <where>
+      <if test="id != null">
+        id = #{id, jdbcType=INTEGER}
+      </if>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=SMALLINT}
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+
 </mapper>

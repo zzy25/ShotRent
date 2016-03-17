@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<%--<%@ page trimDirectiveWhitespaces="true" %>--%>
 <%--
   Created by IntelliJ IDEA.
   User: zhuoxiong
@@ -5,6 +7,11 @@
   Time: 19:33
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <div class="page-sidebar nav-collapse collapse">
 
     <!-- BEGIN SIDEBAR MENU -->
@@ -45,11 +52,11 @@
 
         <li class="start ">
 
-            <a href="index.html">
+            <a href="<%=basePath%>index.action">
 
                 <i class="icon-home"></i>
 
-                <span class="title">Dashboard</span>
+                <span class="title">首页</span>
 
             </a>
 
@@ -61,7 +68,7 @@
 
                 <i class="icon-cogs"></i>
 
-                <span class="title">Layouts</span>
+                <span class="title">房屋管理</span>
 
                 <span class="arrow "></span>
 
@@ -71,37 +78,45 @@
 
                 <li>
 
-                    <a href="layout_horizontal_sidebar_menu.html">
+                    <a href="<%=basePath%>house/create.action">
 
-                        Horzontal & Sidebar Menu</a>
-
-                </li>
-
-                <li>
-
-                    <a href="layout_horizontal_menu1.html">
-
-                        Horzontal Menu 1</a>
+                        创建房屋</a>
 
                 </li>
 
                 <li>
 
-                    <a href="layout_horizontal_menu2.html">
+                    <a href="<%=basePath%>house/update.action">
 
-                        Horzontal Menu 2</a>
+                        发布房屋</a>
+
+                </li>
+
+                <li>
+
+                    <a href="<%=basePath%>house/ower/houseList.action">
+
+                        房屋管理</a>
+
+                </li>
+                <%--<li>
+
+                    &lt;%&ndash;<a href="<%=basePath%>house/checkHouse.action">&ndash;%&gt;
+                        <a href="<%=basePath%>house/update.action">
+
+                        修改房屋</a>
 
                 </li>
 
                 <li>
 
-                    <a href="layout_promo.html">
+                    <a href="<%=basePath%>house/ower/houseList.action">
 
-                        Promo Page</a>
+                        查询我的房屋</a>
 
-                </li>
+                </li>--%>
 
-                <li>
+                <%--<li>
 
                     <a href="layout_email.html">
 
@@ -147,13 +162,13 @@
 
                         Non-Responsive Boxed Layout</a>
 
-                </li>
+                </li>--%>
 
             </ul>
 
         </li>
 
-        <li class="">
+       <%-- <li class="">
 
             <a href="javascript:;">
 
@@ -164,8 +179,8 @@
                 <span class="arrow "></span>
 
             </a>
-
-            <ul class="sub-menu">
+--%>
+            <%--<ul class="sub-menu">
 
                 <li>
 
@@ -247,9 +262,9 @@
 
                 </li>
 
-            </ul>
+            </ul>--%>
 
-        </li>
+ <%--       </li>--%>
 
         <li class="">
 
@@ -257,7 +272,7 @@
 
                 <i class="icon-table"></i>
 
-                <span class="title">Form Stuff</span>
+                <span class="title">用户管理</span>
 
                 <span class="arrow "></span>
 
@@ -265,7 +280,7 @@
 
             <ul class="sub-menu">
 
-                <li>
+                <%--<li>
 
                     <a href="form_layout.html">
 
@@ -280,24 +295,24 @@
                         Advance Form Samples</a>
 
                 </li>
+--%>
+                <%--<li>
+
+                    <a href="<%=basePath%>user/addUser.action">
+
+                       注册用户</a>
+
+                </li>--%>
 
                 <li>
 
-                    <a href="form_component.html">
+                    <a href="<%=basePath%>user/update.action">
 
-                        Form Components</a>
+                        修改个人信息</a>
 
                 </li>
 
-                <li>
-
-                    <a href="form_wizard.html">
-
-                        Form Wizard</a>
-
-                </li>
-
-                <li>
+                <%--<li>
 
                     <a href="form_validation.html">
 
@@ -319,7 +334,7 @@
 
                         Dropzone File Upload</a>
 
-                </li>
+                </li>--%>
 
             </ul>
 
@@ -331,7 +346,7 @@
 
                 <i class="icon-briefcase"></i>
 
-                <span class="title">Pages</span>
+                <span class="title">系统管理</span>
 
                 <span class="arrow "></span>
 
@@ -339,7 +354,7 @@
 
             <ul class="sub-menu">
 
-                <li>
+                <%--<li>
 
                     <a href="page_timeline.html">
 
@@ -378,28 +393,28 @@
                         Blog Post</a>
 
                 </li>
-
+--%>
                 <li>
 
-                    <a href="page_news.html">
+                    <a href="<%=basePath%>house/checkHouse.action">
 
                         <i class="icon-coffee"></i>
 
-                        News</a>
+                       审核房屋</a>
 
                 </li>
 
                 <li>
 
-                    <a href="page_news_item.html">
+                    <a href="<%=basePath%>user/userList.action">
 
                         <i class="icon-bell"></i>
 
-                        News View</a>
+                        用户信息管理</a>
 
                 </li>
 
-                <li>
+                <%--<li>
 
                     <a href="page_about.html">
 
@@ -427,7 +442,7 @@
 
                         Calendar</a>
 
-                </li>
+                </li>--%>
 
             </ul>
 
@@ -439,7 +454,7 @@
 
                 <i class="icon-gift"></i>
 
-                <span class="title">Extra</span>
+                <span class="title">租赁管理</span>
 
                 <span class="selected"></span>
 
@@ -451,13 +466,13 @@
 
                 <li>
 
-                    <a href="extra_profile.html">
+                    <a href="<%=basePath%>rent/ower/orderList.action">
 
-                        User Profile</a>
+                       查看订单</a>
 
                 </li>
 
-                <li>
+                <%--<li>
 
                     <a href="extra_lock.html">
 
@@ -480,16 +495,16 @@
                         Inbox</a>
 
                 </li>
-
+--%>
                 <li class="active">
 
-                    <a href="extra_search.html">
+                    <a href="<%=basePath%>rent/listHouses.action">
 
-                        Search Results</a>
+                        搜索房屋</a>
 
                 </li>
 
-                <li>
+               <%-- <li>
 
                     <a href="extra_invoice.html">
 
@@ -512,8 +527,8 @@
                         Image Manager</a>
 
                 </li>
-
-                <li>
+--%>
+                <%--<li>
 
                     <a href="extra_404_option1.html">
 
@@ -528,36 +543,36 @@
                         404 Page Option 2</a>
 
                 </li>
-
+--%>
                 <li>
 
-                    <a href="extra_404_option3.html">
+                    <a href="<%=basePath%>rent/ower/orderList.action">
 
-                        404 Page Option 3</a>
+                        订单管理</a>
 
                 </li>
 
-                <li>
+                <%--<li>
 
                     <a href="extra_500_option1.html">
 
                         500 Page Option 1</a>
 
-                </li>
+                </li>--%>
 
-                <li>
+                <%--<li>
 
                     <a href="extra_500_option2.html">
 
                         500 Page Option 2</a>
 
-                </li>
+                </li>--%>
 
             </ul>
 
         </li>
 
-        <li>
+        <%--<li>
 
             <a class="active" href="javascript:;">
 
@@ -730,8 +745,8 @@
             </ul>
 
         </li>
-
-        <li class="">
+--%>
+        <%--<li class="">
 
             <a href="javascript:;">
 
@@ -753,19 +768,19 @@
 
                 </li>
 
-                <li>
+                &lt;%&ndash;<li>
 
                     <a href="login_soft.html">
 
                         Login Form 2</a>
 
                 </li>
-
+&ndash;%&gt;
             </ul>
 
-        </li>
+        </li>--%>
 
-        <li class="">
+       <%-- <li class="">
 
             <a href="javascript:;">
 
@@ -821,9 +836,9 @@
 
             </ul>
 
-        </li>
+        </li>--%>
 
-        <li class="">
+        <%--<li class="">
 
             <a href="javascript:;">
 
@@ -835,7 +850,7 @@
 
             </a>
 
-            <ul class="sub-menu">
+           &lt;%&ndash; <ul class="sub-menu">
 
                 <li>
 
@@ -853,7 +868,7 @@
 
                 </li>
 
-            </ul>
+            </ul>&ndash;%&gt;
 
         </li>
 
@@ -889,9 +904,9 @@
 
             </ul>
 
-        </li>
+        </li>--%>
 
-        <li class="last ">
+        <%--<li class="last ">
 
             <a href="charts.html">
 
@@ -901,7 +916,7 @@
 
             </a>
 
-        </li>
+        </li>--%>
 
     </ul>
 

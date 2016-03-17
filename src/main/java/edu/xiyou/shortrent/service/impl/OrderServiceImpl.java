@@ -40,6 +40,7 @@ public class OrderServiceImpl implements OrderService {
         }
         try {
             orderList = orderMapper.selectBySelective(order);
+            logger.info("selectBySelective record={}", orderList);
         } catch (Exception e) {
             logger.error("selectBySelective record={}, exception={}", order, e);
         }
@@ -53,6 +54,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = null;
         try {
             order = orderMapper.selectByPrimaryKey(orderId);
+            logger.info("selectByPrimaryKey record={}", order);
         } catch (Exception e) {
             logger.error("selectByPrimaryKey record={}, exception={}", orderId, e);
         }
@@ -70,6 +72,7 @@ public class OrderServiceImpl implements OrderService {
         if (ArguUtils.fieldAllNull(order, order.getClass(), "amount", "starttime", "endtime", "terminate")) {
             return 0;
         }
+        logger.info("updateBySelective record={}", order);
         try {
             if (order.getTerminate() != null){
                 House house = new House();
@@ -106,6 +109,7 @@ public class OrderServiceImpl implements OrderService {
             throw new ArguException("房子已经被租住了");
         }
         try {
+            logger.info("insertBySelective record={}", house);
             return orderMapper.insertSelective(order);
         }catch (Exception e){
             logger.error("insertBySelective record={}, exception={}", order, e);

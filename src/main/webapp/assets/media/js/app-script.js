@@ -10,6 +10,8 @@ $.ready(
                 password : $("[name='password']").val()
             },
             function(result){
+                //writeObject(result);
+                console.log(result);
                 if (result.approved){
                     window.location ="/index.action";
                 }else{
@@ -18,7 +20,6 @@ $.ready(
             }
         );
     })
-
 
 );
 

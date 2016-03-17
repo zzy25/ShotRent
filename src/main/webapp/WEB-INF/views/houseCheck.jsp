@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -8,13 +9,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-<%
   String path = request.getContextPath();
   String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-
-%>
-<!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
@@ -313,6 +310,8 @@
 
                   <th class="hidden-480">房屋地址</th>
 
+                  <th class="hidden-480 ">出租类型</th>
+
                   <th class="hidden-480">面积（平方米）</th>
 
                   <th class="hidden-480 ">单价（元/天）</th>
@@ -326,32 +325,33 @@
                 </thead>
 
                 <tbody>
-
                 <c:choose>
-                  <c:when test="${houseList != null && houseList.size() >= 0}">
-                    <c:forEach items="${houseList}" var="item" varStatus="status">
+                  <c:when test="${houseList != null && houseList.size() > 0}">
+                    <c:forEach items="${houseList}" var="item">
                       <tr class="odd gradeX">
 
                         <td>${item.owerName}</td>
 
                         <td>${item.address}</td>
 
+                        <td class="hidden-480">整租</td>
+
                         <td class="hidden-480">${item.area}</td>
 
                         <td class="center hidden-480">${item.price}</td>
-                        <td class="hidden-480"><a href="<%=basePath%>rent/${item.houseid}" target="_blank">具体信息</a> </td>
+                        <td class="hidden-480"><a href="<%=basePath%>rent/${item.id}.action" target="_blank">具体信息</a> </td>
 
-                        <td>
-                          <button type="button" class="btn green">通过</button>
-                          <button type="button" class="btn red " >驳回</button>
-                        </td>
+                        <td><button type="button" class="btn green">通过</button>
+                          <button type="button" class="btn red " >驳回</button></td>
+
                       </tr>
                     </c:forEach>
                   </c:when>
-                  <c:when test="${houseList == null || houseList.size() == 0}">
-                    <tr><td colspan="12" align="center" >暂无数据！</td></tr>
+                  <c:when test="${houseList == null || houseList.size()== 0}">
+                    <tr><td colspan="12" align="center"/> 暂无数据!</tr>
                   </c:when>
                 </c:choose>
+
 
                 <%--<tr class="odd gradeX">
 
@@ -370,7 +370,6 @@
                     <button type="button" class="btn red " >驳回</button></td>
 
                 </tr>--%>
-
 
 
                 </tbody>

@@ -10,7 +10,6 @@
   String path = request.getContextPath();
   String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<jsp:useBean id="house" scope="page" type="edu.xiyou.shortrent.model.House"/>
 <!DOCTYPE html>
 
 <!--[if IE 8]>

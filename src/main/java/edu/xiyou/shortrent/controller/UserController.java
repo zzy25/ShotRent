@@ -5,8 +5,15 @@ import edu.xiyou.shortrent.exception.ArguException;
 import edu.xiyou.shortrent.exception.AuthException;
 import edu.xiyou.shortrent.model.User;
 import edu.xiyou.shortrent.model.vo.ResultVo;
+import edu.xiyou.shortrent.security.PermissionSign;
 import edu.xiyou.shortrent.utils.ArguUtils;
 import edu.xiyou.shortrent.utils.HttpUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by andrew on 16-3-9.
@@ -37,8 +45,8 @@ public class UserController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "/loginData.action", method = RequestMethod.POST)
     public ResultVo<String> loginCheck(@RequestParam(value = "username") String username,
-                                   @RequestParam(value = "password") String password,
-                                   HttpServletRequest request, ModelMap modelMap) {
+                             @RequestParam(value = "password") String password,
+                             HttpServletRequest request, ModelMap modelMap) {
         ResultVo<String> resultVo = new ResultVo<>();
 
         try {
@@ -47,8 +55,12 @@ public class UserController extends BaseController {
             ArguUtils.notNull(password, "密码");
             ArguUtils.strLengthInterval(password, 6, 30, "密码");
 
-            User user = userService.loginCheck(username, password);
-            request.getSession().setAttribute(UserConstant.USER_DETAIL, user);
+            Subject subject = SecurityUtils.getSubject();
+            // 身份验证
+            subject.login(new UsernamePasswordToken(username, password));
+            // 验证成功在Session中保存用户信息
+            final User authUserInfo = userService.selectByUserName(username);
+            request.getSession().setAttribute(UserConstant.USER_DETAIL, authUserInfo);
             resultVo.setMsg("登陆成功");
             resultVo.setApproved(true);
         } catch (ArguException e) {
@@ -60,23 +72,44 @@ public class UserController extends BaseController {
             resultVo.setApproved(false);
         }
 
-        modelMap.addAttribute("result", resultVo.getMsg());
         return resultVo;
+       /* try {
+            Subject subject = SecurityUtils.getSubject();
+            // 已登陆则 跳到首页
+            if (subject.isAuthenticated()) {
+                return "redirect:/";
+            }
+            // 身份验证
+            subject.login(new UsernamePasswordToken(username, password));
+            // 验证成功在Session中保存用户信息
+            final User authUserInfo = userService.selectByUserName(username);
+            request.getSession().setAttribute(UserConstant.USER_DETAIL, authUserInfo);
+        } catch (AuthenticationException e) {
+            // 身份验证失败
+            modelMap.addAttribute("error", "用户名或密码错误 ！");
+            return "login";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/";*/
+//        modelMap.addAttribute("result", resultVo.getMsg());
     }
 
     @RequestMapping(value = "/addUser.action")
-    public String addUser(){
+//    @RequiresPermissions(value = PermissionSign.USER_CREATE)
+    public String addUser() {
         return "addUser";
     }
 
 
-//    @ResponseBody
+    @ResponseBody
     @RequestMapping(value = "/postUser.action", method = RequestMethod.POST)
-    public String addUserData(@RequestParam("username") String username,
-                                    @RequestParam("password") String password,
-                                    @RequestParam("email") String email,
-                                    @RequestParam("mobile") String mobile,
-                                    HttpServletRequest request, ModelMap modelMap) {
+//    @RequiresPermissions(PermissionSign.USER_CREATE)
+    public ResultVo<String> addUserData(@RequestParam("username") String username,
+                                        @RequestParam("password") String password,
+                                        @RequestParam("email") String email,
+                                        @RequestParam("mobile") String mobile,
+                                        HttpServletRequest request, ModelMap modelMap) {
         ResultVo<String> resultVo = new ResultVo<>();
         User user = new User();
 
@@ -97,31 +130,33 @@ public class UserController extends BaseController {
             resultVo.setApproved(false);
         }
 
-        modelMap.addAttribute("result", resultVo);
-        if (resultVo.isApproved()) {
-            return "redirect:/user/login";
-        }
-        return "addUser";
+//        modelMap.addAttribute("result", resultVo);
+        return resultVo;
     }
 
-    @RequestMapping(value = "update/{userId}.action")
-    public String updateUser(@PathVariable Integer userId, ModelMap modelMap){
-        User user;
+    @RequestMapping(value = "/update.action")
+//    @RequiresPermissions(PermissionSign.USER_UPDATE)
+    public String updateUser(ModelMap modelMap, HttpServletRequest request) {
+
+        User user = (User) request.getSession().getAttribute(UserConstant.USER_DETAIL);
+        Integer userId = user.getId();
+        logger.info("user={}", user);
         try {
             user = userService.selectByPrimaryKey(userId);
             modelMap.addAttribute("user", user);
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("updateUser record={}, exception={}", userId, e);
         }
         return "updateUser";
     }
 
     @ResponseBody
-    @RequestMapping(value = "updateData/{userId}.action", method = RequestMethod.POST)
-    public ResultVo<User> updateUserData(@PathVariable Integer userId, @RequestParam(value = "username", required = false)String username,
-                                         @RequestParam(value = "password", required = false)String password, @RequestParam(value = "mobile", required = false)String mobile,
-                                         @RequestParam(value = "email", required = false)String email,@RequestParam(value = "permission", required = false)Short permission,
-                                         HttpServletRequest request, ModelMap modelMap){
+    @RequestMapping(value = "updateData.action", method = RequestMethod.POST)
+//    @RequiresPermissions(PermissionSign.USER_UPDATE)
+    public ResultVo<User> updateUserData(@PathVariable Integer userId, @RequestParam(value = "username", required = false) String username,
+                                         @RequestParam(value = "password", required = false) String password, @RequestParam(value = "mobile", required = false) String mobile,
+                                         @RequestParam(value = "email", required = false) String email, @RequestParam(value = "permission", required = false) Short permission,
+                                         HttpServletRequest request, ModelMap modelMap) {
 
         User user = new User();
         user.setId(userId);
@@ -138,14 +173,29 @@ public class UserController extends BaseController {
             userService.updateBySelective(user);
             resultVo.setApproved(true);
             resultVo.setMsg("修改成功");
-        }catch (ArguException e){
+        } catch (ArguException e) {
             resultVo.setApproved(false);
             resultVo.setMsg(e.getMessage());
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("updateUserData record={}, exception={}", user, e);
             resultVo.setApproved(false);
             resultVo.setMsg("输入信息有误");
         }
         return resultVo;
+    }
+
+
+    @RequestMapping("/userList.action")
+    public String findUsers(ModelMap modelMap, HttpServletRequest request){
+
+        List<User> userList = null;
+        try {
+            User user = new User();
+            userList = userService.selectBySelective(user);
+        } catch (Exception e) {
+            logger.error("findUsers exception={}", e);
+        }
+        modelMap.addAttribute("userList", userList);
+        return "userList";
     }
 }
