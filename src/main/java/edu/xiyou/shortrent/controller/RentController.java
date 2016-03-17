@@ -10,12 +10,18 @@ import edu.xiyou.shortrent.model.User;
 import edu.xiyou.shortrent.model.vo.HouseVo;
 import edu.xiyou.shortrent.model.vo.ResultVo;
 import edu.xiyou.shortrent.security.RoleSign;
+import edu.xiyou.shortrent.service.MailService;
+import org.apache.commons.lang.time.DateFormatUtils;
+import org.apache.commons.lang.time.DateUtils;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +32,9 @@ import java.util.Map;
 @Controller
 @RequestMapping("/rent")
 public class RentController extends BaseController {
+
+    @Resource
+    private MailService mailService;
 
     @RequestMapping(value = "/listHouses.action")
     public String listHouses(ModelMap modelMap) {
@@ -218,12 +227,19 @@ public class RentController extends BaseController {
 
     @RequestMapping(value = "/order/create.action")
 //    @RequiresRoles(RoleSign.customer)
-    public String createOrder(HttpServletRequest request, ModelMap modelMap){
+    public String createOrder(@RequestParam("houseId")Integer houseId, HttpServletRequest request, ModelMap modelMap){
         User user = (User) request.getSession().getAttribute(UserConstant.USER_DETAIL);
         if (user == null){
             return "redirect:/user/login.action";
         }
+        House house = null;
+        try {
+             house = houseService.selectHouseByHouseId(houseId);
+        } catch (Exception e) {
+            logger.error("createOrder record={}, exception={}", houseId, e);
+        }
         modelMap.addAttribute(UserConstant.USER_DETAIL, user);
+        modelMap.addAttribute("house", house);
         return "createOrder";
     }
 
@@ -232,29 +248,50 @@ public class RentController extends BaseController {
 //    @RequiresRoles(RoleSign.customer)
     public ResultVo<Order> createOrderData(@RequestParam("hourseId")Integer hourseId, @RequestParam("owerId")Integer owerId,
                                            @RequestParam("customerId")Integer customerId, @RequestParam("amount")Integer amount,
-                                           @RequestParam("beginTime")Date beginTime, @RequestParam("endTime")Date endTime,
+                                           @RequestParam("beginTime")String beginTimeStr, @RequestParam("endTime")String endTimeStr,
                                            HttpServletRequest request, ModelMap modelMap){
 
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
         ResultVo<Order> resultVo = new ResultVo<>();
         Order order = new Order();
         order.setHourseid(hourseId);
         order.setOwerid(owerId);
         order.setCustomer(customerId);
         order.setAmount(amount);
-        order.setBegintime(beginTime);
-        order.setEndtime(endTime);
+        try {
+            order.setBegintime(format.parse(beginTimeStr));
+            order.setEndtime(format.parse(endTimeStr));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         try {
+            User owner = userService.selectByPrimaryKey(owerId);
+            User customer = userService.selectByPrimaryKey(customerId);
             orderService.insertBySelective(order);
+            if (owner.getEmail() != null && owner.getEmail().length() > 5){
+                mailService.sendMail(owner.getEmail(), "您的房子被租了", "您的房子被租了，详情请登录短租网");
+            }
+            if (customer.getEmail() != null && customer.getEmail().length() > 5){
+                mailService.sendMail(customer.getEmail(), "恭喜您租房成功", "恭喜您租房成功，详情请登录租房网");
+            }
             resultVo.setApproved(true);
-            resultVo.setMsg("查找成功");
+            resultVo.setMsg("添加成功");
         } catch (ArguException e) {
             resultVo.setApproved(false);
             resultVo.setMsg(e.getMessage());
         } catch (Exception e){
             resultVo.setApproved(false);
-            resultVo.setMsg("查找失败");
+            resultVo.setMsg("添加失败");
         }
         return resultVo;
+    }
+
+    public MailService getMailService() {
+        return mailService;
+    }
+
+    public void setMailService(MailService mailService) {
+        this.mailService = mailService;
     }
 }

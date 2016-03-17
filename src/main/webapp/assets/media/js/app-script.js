@@ -106,9 +106,30 @@ $.ready(
                 }
             }
         );
+    }),
+
+    $("#createOrderSubmit").click(function(){
+        $.post(
+            "/rent/order/createData.action",
+            {
+                hourseId : $("[name='houseId']").text(),
+                customerId : $("[name='customerId']").text(),
+                owerId : $("[name='owerId']").text(),
+                endTime : $("[name='endTime']").val(),
+                beginTime : $("[name='beginTime']").val(),
+                amount : $("[name='amount']").val()
+
+            },
+            function(result){
+                if (result.approved){
+                    alert("创建成功");
+                    window.location ="/index.action";
+                }else{
+                    alert("创建失败 , "+ result.msg);
+                }
+            }
+        );
     })
-
-
 
 
 );

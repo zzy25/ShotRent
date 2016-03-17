@@ -440,7 +440,7 @@
 
                             <div class="top-news">
 
-                                <a href="<%=basePath%>rent/order/create.action" class="btn green">
+                                <a href="<%=basePath%>rent/order/create.action?houseId=${house.id}" class="btn green">
 
                                     <span style=" text-align:center; ">订购</span>
 

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
@@ -34,33 +36,33 @@
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
-    <link href="<%=basePath%>asstes/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
-    <link href="<%=basePath%>asstes/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="<%=basePath%>assets/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="screen"/>
 
-    <link href="<%=basePath%>asstes/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
-    <link href="<%=basePath%>asstes/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
 
-    <link href="<%=basePath%>asstes/media/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/style.css" rel="stylesheet" type="text/css"/>
 
-    <link href="<%=basePath%>asstes/media/css/style-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="<%=basePath%>assets/media/css/style-responsive.css" rel="stylesheet" type="text/css" />
 
-    <link href="<%=basePath%>asstes/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="<%=basePath%>assets/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 
-    <link href="<%=basePath%>asstes/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link href="<%=basePath%>asstes/media/css/invoice.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=basePath%>assets/media/css/invoice.css" rel="stylesheet" type="text/css"/>
 
-    <link href="<%=basePath%>asstes/media/css/print.css" rel="stylesheet" type="text/css" media="print"/>
+    <link href="<%=basePath%>assets/media/css/print.css" rel="stylesheet" type="text/css" media="print"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="<%=basePath%>asstes/media/image/favicon.ico" />
+    <link rel="shortcut icon" href="<%=basePath%>assets/media/image/favicon.ico" />
 
 </head>
 
@@ -81,7 +83,7 @@
 <div class="page-container row-fluid">
 
     <!-- BEGIN SIDEBAR -->
-
+    <c:set var="menuCurrent" value="3" scope="session"/>
     <jsp:include page="sidebar.jsp"/>
 
     <!-- END SIDEBAR -->
@@ -184,7 +186,8 @@
 
                             <!--<th class="hidden-480">描述</th>-->
                             <th class="hidden-480">地址</th>
-                            <th class="hidden-480">面积</th>
+                            <th class="hidden-480">开始时间</th>
+                            <th class="hidden-480">结束时间</th>
                             <th class="hidden-480">价格</th>
                             <!--<th class="hidden-480">单价</th>-->
 
@@ -202,14 +205,22 @@
                             <!--<td>1</td>-->
                             <!--<td><output username="text" >owerdid</output><td>-->
                             <!--<td>主卧</td>-->
-                            <td class="hidden-480">10020</td>
-                            <td class="hidden-480">12312</td>
-                            <td class="hidden-480">江西省</td>
+                            <td class="hidden"><span name="customerId">${user.id}</span></td>
+                            <td class="hidden-480"><span name="houseId">${house.id}</span></td>
+                            <td class="hidden-480"><span name="owerId"> ${house.owerid}</span></td>
+                            <td class="hidden-480"><span name="address"> ${house.address}</span></td>
 
                             <!--<td class="hidden-480">双人床，衣柜</td>-->
-                            <td class="hidden-480">123</td>
+                            <td class="hidden-480">
+                                <input name="beginTime" placeholder="2016/02/22"/>
+                            </td>
+                            <td class="hidden-480">
+                                <input name="endTime" placeholder="2016/03/07"/>
+                            </td>
                             <!--<td class="hidden-480">32</td>-->
-                            <td class="hidden-480">121</td>
+                            <td class="hidden-480">
+                                <input name="amount" value="222">
+                            </td>
                             <!--<td class="hidden-480">$75</td>-->
                             <!--<td class="hidden-480">21</td>-->
                             <!--<td>$2152</td>-->
@@ -318,7 +329,7 @@
 
                         <!--<a class="btn blue big hidden-print" onclick="javascript:window.print();">Print <i class="icon-print icon-big"></i></a>-->
 
-                        <a class="btn green big hidden-print">提交订单<i class="m-icon-big-swapright m-icon-white"></i></a>
+                        <a class="btn green big hidden-print" id="createOrderSubmit">提交订单<i class="m-icon-big-swapright m-icon-white"></i></a>
 
                     </div>
 
@@ -350,35 +361,53 @@
 
 <!-- BEGIN CORE PLUGINS -->
 
-<script src="<%=basePath%>asstes/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 
-<script src="<%=basePath%>asstes/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
 <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 
-<script src="<%=basePath%>asstes/media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 
-<script src="<%=basePath%>asstes/media/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!--[if lt IE 9]>
 
-<script src="<%=basePath%>asstes/media/js/excanvas.min.js"></script>
+<script src="<%=basePath%>assets/media/js/excanvas.min.js"></script>
 
-<script src="<%=basePath%>asstes/media/js/respond.min.js"></script>
+<script src="<%=basePath%>assets/media/js/respond.min.js"></script>
 
 <![endif]-->
 
-<script src="<%=basePath%>asstes/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
 
-<script src="<%=basePath%>asstes/media/js/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.blockui.min.js" type="text/javascript"></script>
 
-<script src="<%=basePath%>asstes/media/js/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="<%=basePath%>assets/media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="<%=basePath%>asstes/media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="<%=basePath%>assets/media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+
+<script type="text/javascript" src="<%=basePath%>assets/media/js/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript" src="<%=basePath%>assets/media/js/bootstrap-datetimepicker.js"></script>
+
+<script type="text/javascript" src="<%=basePath%>assets/media/js/clockface.js"></script>
+
+<script type="text/javascript" src="<%=basePath%>assets/media/js/date.js"></script>
+
+<script type="text/javascript" src="<%=basePath%>assets/media/js/daterangepicker.js"></script>
+
+<script type="text/javascript" src="<%=basePath%>assets/media/js/bootstrap-colorpicker.js"></script>
+
+<script type="text/javascript" src="<%=basePath%>assets/media/js/bootstrap-timepicker.js"></script>
 
 <!-- END CORE PLUGINS -->
 
-<script src="<%=basePath%>asstes/media/js/app.js"></script>
+<script src="<%=basePath%>assets/media/js/app.js"></script>
+
+<script src="<%=basePath%>assets/media/js/form-components.js"></script>
+
+<script src="<%=basePath%>assets/media/js/app-script.js"></script>
 
 <script>
 
@@ -386,6 +415,7 @@
 
         App.init();
 
+        FormComponents.init();
     });
 
 </script>

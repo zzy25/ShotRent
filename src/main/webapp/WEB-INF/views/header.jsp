@@ -442,7 +442,7 @@
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                        <c:if test="${user != null}">{
+                        <c:if test="${user != null}">
                             <img alt="" src="<%=basePath%>assets/media/image/avatar1_small.jpg"/>
                         </c:if>
                         <c:if test="${user == null}">
