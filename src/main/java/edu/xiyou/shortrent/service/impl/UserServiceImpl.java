@@ -98,9 +98,9 @@ public class UserServiceImpl implements UserService {
         }
 
         if (user.getPassword() != null){
-            ArguUtils.strLengthInterval(user.getPassword(), 2, 30, "用户名");
+            ArguUtils.strLengthInterval(user.getPassword(), 2, 30, "密码");
         }
-
+        user.setPassword(AuthUtils.MD5(user.getPassword()));
         return userMapper.updateByPrimaryKeySelective(user);
 
     }

@@ -105,7 +105,7 @@ public class OrderServiceImpl implements OrderService {
         if (house == null) {
             throw new ArguException("查不到对应房字信息");
         }
-        if (house.getRented() != HouseConstant.HOUSE_UNRENTED) {
+        if (house.getRented() == HouseConstant.HOUSE_RENTED) {
             throw new ArguException("房子已经被租住了");
         }
         try {

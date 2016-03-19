@@ -637,13 +637,13 @@
 
                                         </a>
 
-                                        <a href="javascript:;" class="btn blue button-next">
+                                        <a <%--href="javascript:;"--%> onclick="updateUser(${user.id})" class="btn blue button-next">
 
                                             确认 <i class="m-icon-swapright m-icon-white"></i>
 
                                         </a>
 
-                                        <a href="javascript:;" class="btn green button-submit">
+                                        <a  class="btn green button-submit">
 
                                             确认<i class="m-icon-swapright m-icon-white"></i>
 
@@ -734,6 +734,8 @@
 <script src="<%=basePath%>assets/media/js/app.js"></script>
 
 <script src="<%=basePath%>assets/media/js/form-wizard.js"></script>
+
+<script src="<%=basePath%>assets/media/js/app-script.js"></script>
 
 <!-- END PAGE LEVEL SCRIPTS -->
 

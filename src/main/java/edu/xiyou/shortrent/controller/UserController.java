@@ -7,6 +7,7 @@ import edu.xiyou.shortrent.model.User;
 import edu.xiyou.shortrent.model.vo.ResultVo;
 import edu.xiyou.shortrent.security.PermissionSign;
 import edu.xiyou.shortrent.utils.ArguUtils;
+import edu.xiyou.shortrent.utils.AuthUtils;
 import edu.xiyou.shortrent.utils.HttpUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -55,10 +56,14 @@ public class UserController extends BaseController {
             ArguUtils.notNull(password, "密码");
             ArguUtils.strLengthInterval(password, 6, 30, "密码");
 
-            Subject subject = SecurityUtils.getSubject();
+           /* Subject subject = SecurityUtils.getSubject();
             // 身份验证
             subject.login(new UsernamePasswordToken(username, password));
             // 验证成功在Session中保存用户信息
+            final User authUserInfo = userService.selectByUserName(username);
+            request.getSession().setAttribute(UserConstant.USER_DETAIL, authUserInfo);*/
+
+            userService.loginCheck(username, password);
             final User authUserInfo = userService.selectByUserName(username);
             request.getSession().setAttribute(UserConstant.USER_DETAIL, authUserInfo);
             resultVo.setMsg("登陆成功");
@@ -156,11 +161,14 @@ public class UserController extends BaseController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "updateData.action", method = RequestMethod.POST)
+    @RequestMapping(value = "/updateData.action", method = RequestMethod.POST)
 //    @RequiresPermissions(PermissionSign.USER_UPDATE)
-    public ResultVo<User> updateUserData(@PathVariable Integer userId, @RequestParam(value = "username", required = false) String username,
-                                         @RequestParam(value = "password", required = false) String password, @RequestParam(value = "mobile", required = false) String mobile,
-                                         @RequestParam(value = "email", required = false) String email, @RequestParam(value = "permission", required = false) Short permission,
+    public ResultVo<User> updateUserData(@RequestParam("userId") Integer userId,
+                                         @RequestParam(value = "username", required = false) String username,
+                                         @RequestParam(value = "password", required = false) String password,
+                                         @RequestParam(value = "mobile", required = false) String mobile,
+                                         @RequestParam(value = "email", required = false) String email,
+                                         @RequestParam(value = "permission", required = false) Short permission,
                                          HttpServletRequest request, ModelMap modelMap) {
 
         User user = new User();

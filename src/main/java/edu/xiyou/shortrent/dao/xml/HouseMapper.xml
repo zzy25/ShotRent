@@ -270,6 +270,7 @@
       <if test="houseType != null">
         and houseType = #{houseType,jdbcType=SMALLINT}
       </if>
+      and online = 1 and checked = 1 and rented = 0
     </where>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

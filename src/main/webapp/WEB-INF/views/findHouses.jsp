@@ -233,9 +233,9 @@
 
                                                     <div class="controls">
 
-                                                        <input type="text" id="mixPrice" name="minArea"
+                                                        <input type="text" id="mixPrice" name="minPrice"
                                                                class="m-wrap span6" placeholder="请输入最低价格" value="${houseVo.minPrice}">
-                                                        <input type="text" id="maxPrice" name="maxArea"
+                                                        <input type="text" id="maxPrice" name="maxPrice"
                                                                class="m-wrap span6" placeholder="请输入最高价格" value="${houseVo.maxPrice}">
                                                     </div>
 

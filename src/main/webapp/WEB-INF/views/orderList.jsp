@@ -368,10 +368,10 @@
                                                 </td>
                                                 <td class="hidden-480">
                                                     <c:if test="${item.terminate == 0}">
-                                                        <a class="btn red mini" onclick="">终止</a>
+                                                        <a class="btn red mini" onclick="" >终止</a>
                                                     </c:if>
                                                     <c:if test="${item.terminate == 1}">
-                                                        <a class="btn red mini disabled">终止</a>
+                                                        <a class="btn red mini disabled">执行</a>
                                                     </c:if>
                                                 </td>
                                             </tr>

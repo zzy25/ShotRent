@@ -1,7 +1,9 @@
 package edu.xiyou.shortrent.controller;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import edu.xiyou.shortrent.constant.CommenConstant;
+import edu.xiyou.shortrent.constant.HouseConstant;
 import edu.xiyou.shortrent.constant.UserConstant;
 import edu.xiyou.shortrent.exception.ArguException;
 import edu.xiyou.shortrent.model.House;
@@ -40,7 +42,10 @@ public class RentController extends BaseController {
     public String listHouses(ModelMap modelMap) {
         List<House> houseList = null;
         try {
-            houseList = rentService.selectBySelective(new House());
+            House house = new House();
+            house.setOnline(HouseConstant.HOUSE_ONLINE);
+            house.setChecked(HouseConstant.HOUSE_CHECKED);
+            houseList = rentService.selectBySelective(house);
         }catch (Exception e){
             logger.error("findHouses exception={}", e);
         }
@@ -124,8 +129,19 @@ public class RentController extends BaseController {
             return "orderList";
         }
 
-        List<Order> orderList = null;
+        List<Order> orderList = Lists.newArrayList();
         try {
+            Order owerOrder = new Order();
+            owerOrder.setOwerid(owerId);
+            List<Order> owerList = orderService.selectBySelective(owerOrder);
+
+            Order customOrder = new Order();
+            customOrder.setCustomer(owerId);
+            List<Order> customList = orderService.selectBySelective(customOrder);
+
+            orderList.addAll(owerList);
+            orderList.addAll(customList);
+
             Order order = new Order();
             order.setOwerid(owerId);
             User emptyUser = new User();
@@ -141,7 +157,7 @@ public class RentController extends BaseController {
                 order1.setOwerMobile(owner.getMobile());
 
                 User customer = userMap.get(order1.getCustomer());
-                order1.setCustomerMobile(customer.getUsername());
+                order1.setCustomerName(customer.getUsername());
                 order1.setCustomerMobile(customer.getMobile());
             }
         }catch (Exception e){

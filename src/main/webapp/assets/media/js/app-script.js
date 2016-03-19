@@ -166,6 +166,28 @@ var houseChecked = function(houseId, check){
     );
 }
 
+var updateUser = function(userId){
+    $.post(
+        "/user/updateData.action",
+        {
+            userId : userId,
+            username : $("[name='username']").val(),
+            password : $("[name='password']").val(),
+            email : $("[name='email']").val(),
+            mobile : $("[name='mobile']").val(),
+            permission : "0"
+        },
+        function(result){
+            if (result.approved){
+                alert("修改成功");
+                window.location.reload();
+            }else{
+                alert("修改失败 , "+ result.msg);
+            }
+        }
+    );
+}
+
 var writeObject = function(obj){
     var msg = "";
     for (var i in obj){

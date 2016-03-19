@@ -186,7 +186,7 @@ public class HouseCotroller extends BaseController{
         House house = new House();
 
         try {
-            house.setChecked(HouseConstant.HOUSE_CHECKED);
+            house.setChecked(HouseConstant.HOUSE_UNCHECK);
             house.setOnline(HouseConstant.HOUSE_ONLINE);
             houseList = houseService.selectBySelective(house);
             User emptyUser = new User();
